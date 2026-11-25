@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>neoru-droid - Каталог русификаторов и мод-меню</title>
+  <meta name="description" content="Русификаторы со шрифтами, внутриигровые мод-меню и русские таблицы Cheat Engine от neoru-droid для Windows и Steam Deck.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23141a24'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='18' fill='%23f2b84b'%3EN%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1>Мастерская neoru-droid</h1>
+        <p class="hero-lead">Русификаторы с подобранными шрифтами, внутриигровые мод-меню и таблицы Cheat Engine для одиночных игр на Windows и Steam Deck.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Перейти на Boosty</a>
+          <a class="btn btn-secondary" href="https://github.com/neoru-droid" target="_blank" rel="noopener">Профиль GitHub</a>
+        </div>
+      </div>
+      <aside class="boosty-note" aria-label="Как работает доступ">
+        <p class="note-title">Ранний доступ и заказ игр</p>
+        <p class="note-text">Релизы выходят в открытый доступ. Подписчики на Boosty от 150 ₽ получают новинки и патчи на 48 часов раньше и могут предложить следующую игру в разбор.</p>
+      </aside>
+    </div>
+  </header>
+
+  <section class="toolbar" aria-label="Поиск и фильтры каталога">
+    <div class="container toolbar-inner">
+      <div class="search-wrap">
+        <label class="sr-only" for="search-input">Поиск игры или функции</label>
+        <input id="search-input" type="search" placeholder="Найти игру, шрифт или функцию..." autocomplete="off">
+      </div>
+      <div class="filter-row" role="group" aria-label="Фильтр по типу">
+        <button class="chip is-active" type="button" data-type="all">Все (9)</button>
+        <button class="chip" type="button" data-type="translation">Русификаторы</button>
+        <button class="chip" type="button" data-type="mod">Мод-меню и .CT</button>
+        <button class="chip" type="button" data-platform="macos">macOS</button>
+      </div>
+      <div class="meta-row">
+        <span id="results-count" aria-live="polite">Показано: 9</span>
+        <label class="sort-label" for="sort-select">Порядок:</label>
+        <select id="sort-select">
+          <option value="alpha">По алфавиту</option>
+          <option value="newest">Сначала свежие</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <main class="container main-content">
+    <div id="games-grid" class="games-grid"></div>
+    <div id="empty-state" class="empty-state" hidden>
+      <p>По такому запросу игр пока нет.</p>
+      <button id="reset-filters" class="btn btn-secondary" type="button">Сбросить фильтры</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Автор: neoru-droid</p>
+      <div class="footer-links">
+        <a href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Страница на Boosty</a>
+        <a href="https://boosty.to/cd_tixo/posts/2a55d7e9-0f53-4d93-9f66-280981158dec" target="_blank" rel="noopener">Закреп на Boosty</a>
+        <a href="https://steamcommunity.com/id/cd-_-TiXo/myworkshopfiles/?section=guides" target="_blank" rel="noopener">Руководства Steam</a>
+        <a href="https://github.com/neoru-droid" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

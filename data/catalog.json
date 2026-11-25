@@ -1,0 +1,394 @@
+[
+  {
+    "slug": "playrooms",
+    "title": "Playrooms",
+    "appid": "5037510",
+    "track": "track1",
+    "has_translation": true,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.0",
+    "steam_build": "1.0.2 (26787924 / 26705387)",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "Перевод интерфейса Playrooms95, 177 реплик скрепки Балли, телетекста и 4 шрифтов плюс сборка 2-в-1 с мод-меню и таблицей Cheat Engine.",
+    "features": [
+      "Интерфейс Playrooms95, письма и описания навыков на русском",
+      "4 кириллических шрифта без обрезки текста",
+      "Внутриигровое мод-меню и таблица .CT v1.0 с сохранением достижений"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/0008f686-0666-4398-a5c7-c8a5b6d26d69",
+    "github_url": "https://github.com/neoru-droid/playrooms-ru",
+    "steam_guide_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3844623165",
+    "zog_url": "https://forum.zoneofgames.ru/topic/84635-playrooms/",
+    "pg_cards": [
+      {
+        "id": "1893135",
+        "kind": "cheat_mod",
+        "url": "https://www.playground.ru/playrooms/cheat/playrooms_chit_mod_na_beskonechnuyu_vynoslivost_skorost_fonarik_i_besplatnye_navyki-1893135"
+      },
+      {
+        "id": "1893464",
+        "kind": "ct",
+        "url": "https://www.playground.ru/playrooms/cheat/playrooms_tablitsa_dlya_cheat_engine_vynoslivost_fonarik_skorost_shary_i_dengi-1893464"
+      }
+    ],
+    "keywords": [
+      "плейрумс",
+      "скрепка",
+      "балли",
+      "русификатор"
+    ]
+  },
+  {
+    "slug": "deleted-wiki",
+    "title": "Deleted Wiki: Clean Up the Lost Files",
+    "appid": "5204830",
+    "track": "track1",
+    "has_translation": true,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.0",
+    "steam_build": "1.0.24 (26304123)",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": true
+    },
+    "summary": "Перевод 631 предмета, 15 скриптов, форума, реплик вИИрона и экрана 29 достижений со шрифтом Underdog плюс сборка 2-в-1 и таблица Cheat Engine.",
+    "features": [
+      "3 039 переведённых строк, поиск с поддержкой е/ё",
+      "Шрифт Underdog с полной кириллицей и 29 достижений",
+      "Внутриигровое мод-меню, таблица .CT v1.0 и поддержка macOS"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/7446d8dd-7024-4e12-9a7e-9e93afa01ec7",
+    "github_url": "https://github.com/neoru-droid/deleted-wiki-ru",
+    "steam_guide_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3842897222",
+    "zog_url": "https://forum.zoneofgames.ru/topic/84612-deleted-wiki-clean-up-the-lost-files/",
+    "pg_cards": [
+      {
+        "id": "1892416",
+        "kind": "localization",
+        "url": "https://www.playground.ru/misc/file/deleted_wiki_clean_up_the_lost_files_rusifikator_teksta_i_shriftov-1892416"
+      },
+      {
+        "id": "1893660",
+        "kind": "ct",
+        "url": "https://www.playground.ru/misc/cheat/deleted_wiki_clean_up_the_lost_files_tablitsa_dlya_cheat_engine_ochki_sortirovki_zaryad_100_skripty_i_sortboty-1893660"
+      }
+    ],
+    "keywords": [
+      "вики",
+      "удаленная вики",
+      "удалённая вики",
+      "корвид"
+    ]
+  },
+  {
+    "slug": "we-march-as-one",
+    "title": "We March as One",
+    "appid": "5189160",
+    "track": "track1",
+    "has_translation": true,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.2",
+    "steam_build": "26651298",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "Перевод кампании на 50 уровней, древа навыков и 30 достижений со всеми 5 игровыми шрифтами плюс сборка 2-в-1 с мод-меню и таблицей Cheat Engine.",
+    "features": [
+      "5 адаптированных шрифтов с кириллицей и экран 30 достижений",
+      "Единый установщик 2-в-1 с независимым откатом файлов",
+      "Мод-меню на 10 функций и таблица .CT v1.0"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/73fae114-79d9-4305-99cc-8d8af1d157ce",
+    "github_url": "https://github.com/neoru-droid/we-march-as-one-ru",
+    "steam_guide_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3840161059",
+    "zog_url": "https://forum.zoneofgames.ru/topic/84548-we-march-as-one/",
+    "pg_cards": [
+      {
+        "id": "1890832",
+        "kind": "localization",
+        "url": "https://www.playground.ru/we_march_as_one/file/we_march_as_one_rusifikator_teksta_s_originalnymi_shriftami-1890832"
+      },
+      {
+        "id": "1893659",
+        "kind": "ct",
+        "url": "https://www.playground.ru/we_march_as_one/cheat/we_march_as_one_tablitsa_dlya_cheat_engine_zoloto_slava_sposobnosti_drevo_navykov_i_vse_urovni-1893659"
+      }
+    ],
+    "keywords": [
+      "марш",
+      "стратегия",
+      "уровни"
+    ]
+  },
+  {
+    "slug": "zombies-arent-real",
+    "title": "Zombies Aren't Real",
+    "appid": "5185890",
+    "track": "track1",
+    "has_translation": true,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.3",
+    "steam_build": "0.44.0 (26799228)",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "Перевод 3 009 строк кампании, снаряжения и кооператива с пиксельным шрифтом 8x8 и гладким Tactical HUD плюс сборка 2-в-1 и таблица Cheat Engine.",
+    "features": [
+      "3 009 строк и 7 мутаторов, кастомный пиксельный и HUD-шрифт",
+      "Единый установщик 2-в-1 с мод-меню v1.0 и таблицей .CT v1.0",
+      "Достижения работают без ограничений"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/0ec0506b-063f-4be2-a788-40ebe320add7",
+    "github_url": "https://github.com/neoru-droid/zombies-arent-real-ru",
+    "steam_guide_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3840725363",
+    "zog_url": "https://forum.zoneofgames.ru/topic/84550-zombies-aren-t-real/",
+    "pg_cards": [
+      {
+        "id": "1891032",
+        "kind": "localization",
+        "url": "https://www.playground.ru/misc/file/zombies_arent_real_rusifikator_teksta_s_originalnymi_shriftami-1891032"
+      },
+      {
+        "id": "1893069",
+        "kind": "cheat_mod",
+        "url": "https://www.playground.ru/misc/cheat/zombies_arent_real_chit_mod_na_neuyazvimye_steny_boezapas_byudzhet_i_vsyo_oruzhie-1893069"
+      },
+      {
+        "id": "1893658",
+        "kind": "ct",
+        "url": "https://www.playground.ru/misc/cheat/zombies_arent_real_tablitsa_dlya_cheat_engine_byudzhet_50_000_navyki_neuyazvimye_steny_boezapas_i_orda-1893658"
+      }
+    ],
+    "keywords": [
+      "зомби",
+      "кооп",
+      "пиксельный"
+    ]
+  },
+  {
+    "slug": "frontier-tale",
+    "title": "Frontier Tale",
+    "appid": "4829780",
+    "track": "track1",
+    "has_translation": true,
+    "has_mod_menu": false,
+    "has_ct": false,
+    "version": "1.3",
+    "steam_build": "2.1.7 (26862122)",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "Полный перевод сюжета, диалогов, предметов, рецептов, подписей мини-карты и заданий без обрезки текста под патч 2.1.7.",
+    "features": [
+      "7 036 строк текста под актуальную сборку 2.1.7",
+      "Установщик Windows и скрипт для Steam Deck / Linux",
+      "Быстрый возврат оригинальных файлов"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/486ebb53-422d-4023-9da7-b1fdbc0b2a7f",
+    "github_url": "https://github.com/neoru-droid/frontier-tale-ru",
+    "steam_guide_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3840837132",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1891317",
+        "kind": "localization",
+        "url": "https://www.playground.ru/misc/file/frontier_tale_rusifikator_teksta_dlya_vseh_versij_igry-1891317"
+      }
+    ],
+    "keywords": [
+      "фронтир",
+      "рпг",
+      "приключение"
+    ]
+  },
+  {
+    "slug": "here-comes-the-horde",
+    "title": "Here Comes the Horde",
+    "appid": "5066010",
+    "track": "track2",
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.1",
+    "steam_build": "1.2.0 (26864614)",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "Внутриигровое мод-меню с 8 настройками баланса и таблица Cheat Engine v1.1 (исправлены Души и сохранение прогресса после перезапуска).",
+    "features": [
+      "Неуязвимая стена 500 000 HP, быстрый призыв и бесплатная стройка",
+      "Множители золота и душ, таланты за 1 душу",
+      "Поддержка версии 1.2.0 и Demo 5322720"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/b3cdcac4-e365-460f-9d19-4536f8c2df0c",
+    "github_url": "https://github.com/neoru-droid/here-comes-the-horde-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1893208",
+        "kind": "cheat_mod",
+        "url": "https://www.playground.ru/here_comes_the_horde/cheat/here_comes_the_horde_chit_mod_na_neuyazvimuyu_stenu_zoloto_dushi_deshyovye_talanty_i_bystryj_prizyv-1893208"
+      },
+      {
+        "id": "1893467",
+        "kind": "ct",
+        "url": "https://www.playground.ru/here_comes_the_horde/cheat/here_comes_the_horde_tablitsa_dlya_cheat_engine_beskonechnoe_zoloto_strojka_stena_i_dushi-1893467"
+      }
+    ],
+    "keywords": [
+      "орда",
+      "орды",
+      "стена",
+      "души"
+    ]
+  },
+  {
+    "slug": "booster-pack-heroes",
+    "title": "Booster Pack Heroes",
+    "appid": "4618570",
+    "track": "track2",
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.0",
+    "steam_build": "1.0.30d",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": true
+    },
+    "summary": "Русское мод-меню, стартовое сохранение CheatMod и таблица Cheat Engine с настройкой валют, урона курсора, неуязвимости башни и фольгированных бустеров.",
+    "features": [
+      "Начисление монет, мастерства, черепов, фолиума, космо и зенита",
+      "Режим бога, бесконечный урон курсора, 100% фольгированные и гигантские карты",
+      "Работает на Windows, Steam Deck и macOS"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/955a2671-c452-4955-b234-15400619ae78",
+    "github_url": "https://github.com/neoru-droid/booster-pack-heroes-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1893641",
+        "kind": "save",
+        "url": "https://www.playground.ru/misc/cheat/booster_pack_heroes_sohranenie_999_999_monet_50_000_masterstva_cherepa_folium_i_zenit-1893641"
+      },
+      {
+        "id": "1893642",
+        "kind": "ct",
+        "url": "https://www.playground.ru/misc/cheat/booster_pack_heroes_tablitsa_dlya_cheat_engine_monety_masterstvo_rezhim_boga_i_folgirovannye_bustery-1893642"
+      }
+    ],
+    "keywords": [
+      "бустеры",
+      "карты",
+      "герои",
+      "фольга"
+    ]
+  },
+  {
+    "slug": "how-they-built-the-pyramids",
+    "title": "How They Built the Pyramids",
+    "appid": "5458210",
+    "track": "track2",
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.0",
+    "steam_build": "0.43.0",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "Русское мод-меню, сохранение с золотом и лагерем 10 уровня, а также таблица Cheat Engine на ресурсы стройки, скорость бега и защиту от жары.",
+    "features": [
+      "Монеты +1 000 / +10 000, прокачка 5 командных веток до 10 уровня",
+      "Пополнение кирпичей и глины, отключение жары и обмороков",
+      "Быстрый бег x1.9, высокий прыжок и лёгкая переноска"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/41ca289e-3e82-4c0f-af84-9cad91e1b84a",
+    "github_url": "https://github.com/neoru-droid/how-they-built-the-pyramids-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1893513",
+        "kind": "save",
+        "url": "https://www.playground.ru/how_they_built_the_pyramids/cheat/how_they_built_the_pyramids_sohranenie_so_startovym_zolotom_i_prokachannym_lagerem-1893513"
+      },
+      {
+        "id": "1893640",
+        "kind": "ct",
+        "url": "https://www.playground.ru/how_they_built_the_pyramids/cheat/how_they_built_the_pyramids_tablitsa_dlya_cheat_engine_monety_uluchsheniya_10_urovnya_kirpichi_i_zaschita_ot_zhary-1893640"
+      }
+    ],
+    "keywords": [
+      "пирамиды",
+      "пирамид",
+      "египет",
+      "стройка"
+    ]
+  },
+  {
+    "slug": "one-more-lawn",
+    "title": "One More Lawn",
+    "appid": "5378110",
+    "track": "track2",
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.0",
+    "steam_build": "1.0.3",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "Русское мод-меню (.omlmod) и таблица Cheat Engine на турбо-косилку, широкую деку 4.4 м, бесконечное топливо, покос площади 18x18 и выбор погоды.",
+    "features": [
+      "Скорость косилки x2.5, дека 4.4 м, покос 18x18 м",
+      "Бесконечное топливо и заряд гольф-каров, высокий прыжок",
+      "Начисление денег и управление погодой / временем суток"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/67ce4af5-4975-4f8e-9f0c-e64ab7899433",
+    "github_url": "https://github.com/neoru-droid/one-more-lawn-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1893643",
+        "kind": "cheat_mod",
+        "url": "https://www.playground.ru/misc/cheat/one_more_lawn_chit_mod_na_bystruyu_kosilku_shirokuyu_deku_toplivo_dengi_i_pogodu-1893643"
+      },
+      {
+        "id": "1893646",
+        "kind": "ct",
+        "url": "https://www.playground.ru/misc/cheat/one_more_lawn_tablitsa_dlya_cheat_engine_skorost_kosilki_shirokaya_deka_i_vysokij_pryzhok-1893646"
+      }
+    ],
+    "keywords": [
+      "газон",
+      "косилка",
+      "трава"
+    ]
+  }
+]
