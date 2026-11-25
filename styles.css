@@ -279,6 +279,23 @@ body { margin: 0; overflow-x: clip; }
   flex-direction: column;
   gap: 10px;
 }
+.ea-banner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(242, 184, 75, 0.35);
+  background: rgba(242, 184, 75, 0.08);
+  font-size: 13px;
+  color: var(--accent);
+}
+.ea-clock {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
 .card-actions .btn-primary { width: 100%; }
 .card-links {
   display: flex;

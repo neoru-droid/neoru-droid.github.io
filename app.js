@@ -18,6 +18,20 @@
       .replaceAll('"', "&quot;");
   }
 
+  function withUtm(rawUrl, slug) {
+    const base = String(rawUrl || "").split("?")[0];
+    const campaign = String(slug || "hub").replaceAll("-", "_");
+    return `${base}?utm_source=catalog_site&utm_medium=web&utm_campaign=${encodeURIComponent(campaign)}`;
+  }
+
+  function formatCountdown(msLeft) {
+    const totalSec = Math.max(0, Math.floor(msLeft / 1000));
+    const hrs = String(Math.floor(totalSec / 3600)).padStart(2, "0");
+    const mins = String(Math.floor((totalSec % 3600) / 60)).padStart(2, "0");
+    const secs = String(totalSec % 60).padStart(2, "0");
+    return `${hrs}:${mins}:${secs}`;
+  }
+
   function renderCard(game) {
     const badges = [];
     if (game.has_translation) badges.push('<span class="badge badge-ru">Русификатор</span>');
@@ -36,6 +50,14 @@
       secLinks.push(`<a href="${escapeHtml(game.zog_url)}" target="_blank" rel="noopener">Zone of Games</a>`);
     }
 
+    const unlockMs = game.early_access_until ? Date.parse(game.early_access_until) : NaN;
+    const isEarly = Number.isFinite(unlockMs) && unlockMs > Date.now();
+    const eaBlock = isEarly
+      ? `<div class="ea-banner" data-ea-until="${escapeHtml(String(unlockMs))}"><span>Ранний доступ бустерам</span><span class="ea-clock">Бесплатно всем через ${formatCountdown(unlockMs - Date.now())}</span></div>`
+      : "";
+    const ctaText = isEarly ? "Ранний доступ на Boosty (150 ₽)" : "Скачать на Boosty";
+    const boostyHref = withUtm(game.boosty_url, game.slug);
+
     return `
       <article class="card">
         <img class="card-cover" src="media/${escapeHtml(game.slug)}.jpg" alt="${escapeHtml(game.title)}" width="800" height="450" loading="lazy">
@@ -47,12 +69,34 @@
           <div class="badges">${badges.join("")}</div>
           <p class="card-summary">${escapeHtml(game.summary)}</p>
           <div class="card-actions">
-            <a class="btn btn-primary" href="${escapeHtml(game.boosty_url)}" target="_blank" rel="noopener">Скачать на Boosty</a>
+            ${eaBlock}
+            <a class="btn btn-primary" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener">${ctaText}</a>
             <div class="card-links">${secLinks.join("")}</div>
           </div>
         </div>
       </article>`;
   }
+
+  function tickEarlyAccessTimers() {
+    const banners = document.querySelectorAll(".ea-banner[data-ea-until]");
+    if (!banners.length) return;
+    const now = Date.now();
+    banners.forEach((banner) => {
+      const unlockMs = Number(banner.getAttribute("data-ea-until"));
+      const diff = unlockMs - now;
+      if (diff <= 0) {
+        const actions = banner.closest(".card-actions");
+        const btn = actions ? actions.querySelector(".btn-primary") : null;
+        if (btn) btn.textContent = "Скачать на Boosty";
+        banner.remove();
+        return;
+      }
+      const clock = banner.querySelector(".ea-clock");
+      if (clock) clock.textContent = "Бесплатно всем через " + formatCountdown(diff);
+    });
+  }
+
+  setInterval(tickEarlyAccessTimers, 1000);
 
   function applyFilters() {
     const q = state.query.trim().toLowerCase();
