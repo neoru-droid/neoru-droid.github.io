@@ -8,7 +8,7 @@
   const typeBtns = Array.from(document.querySelectorAll("[data-type]"));
   const platformBtn = document.querySelector("[data-platform='macos']");
 
-  const state = { query: "", type: "all", macosOnly: false, sort: "alpha", games: [] };
+  const state = { query: "", type: "all", macosOnly: false, sort: "newest", games: [] };
 
   function escapeHtml(text) {
     return String(text)
@@ -150,9 +150,9 @@
     state.query = "";
     state.type = "all";
     state.macosOnly = false;
-    state.sort = "alpha";
+    state.sort = "newest";
     searchInput.value = "";
-    sortSelect.value = "alpha";
+    sortSelect.value = "newest";
     typeBtns.forEach((b) => b.classList.toggle("is-active", b.dataset.type === "all"));
     if (platformBtn) platformBtn.classList.remove("is-active");
     applyFilters();

@@ -1,93 +1,5 @@
 [
   {
-    "slug": "playrooms",
-    "title": "Playrooms",
-    "appid": "5037510",
-    "track": "track1",
-    "has_translation": true,
-    "has_mod_menu": true,
-    "has_ct": true,
-    "version": "1.0",
-    "steam_build": "1.0.2 (26787924 / 26705387)",
-    "platforms": {
-      "windows": true,
-      "steamdeck": true,
-      "macos": false
-    },
-    "summary": "Перевод интерфейса Playrooms95, 177 реплик скрепки Балли, телетекста и 4 шрифтов плюс сборка 2-в-1 с мод-меню и таблицей Cheat Engine.",
-    "features": [
-      "Интерфейс Playrooms95, письма и описания навыков на русском",
-      "4 кириллических шрифта без обрезки текста",
-      "Внутриигровое мод-меню и таблица .CT v1.0"
-    ],
-    "boosty_url": "https://boosty.to/cd_tixo/posts/0008f686-0666-4398-a5c7-c8a5b6d26d69",
-    "github_url": "https://github.com/neoru-droid/playrooms-ru",
-    "steam_guide_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3844623165",
-    "zog_url": "https://forum.zoneofgames.ru/topic/84635-playrooms/",
-    "pg_cards": [
-      {
-        "id": "1893135",
-        "kind": "cheat_mod",
-        "url": "https://www.playground.ru/playrooms/cheat/playrooms_chit_mod_na_beskonechnuyu_vynoslivost_skorost_fonarik_i_besplatnye_navyki-1893135"
-      },
-      {
-        "id": "1893464",
-        "kind": "ct",
-        "url": "https://www.playground.ru/playrooms/cheat/playrooms_tablitsa_dlya_cheat_engine_vynoslivost_fonarik_skorost_shary_i_dengi-1893464"
-      }
-    ],
-    "keywords": [
-      "плейрумс",
-      "скрепка",
-      "балли",
-      "русификатор"
-    ]
-  },
-  {
-    "slug": "deleted-wiki",
-    "title": "Deleted Wiki: Clean Up the Lost Files",
-    "appid": "5204830",
-    "track": "track1",
-    "has_translation": true,
-    "has_mod_menu": true,
-    "has_ct": true,
-    "version": "1.0",
-    "steam_build": "1.0.24 (26304123)",
-    "platforms": {
-      "windows": true,
-      "steamdeck": true,
-      "macos": true
-    },
-    "summary": "Перевод 631 предмета, 15 скриптов, форума, реплик вИИрона и экрана 29 достижений со шрифтом Underdog плюс сборка 2-в-1 и таблица Cheat Engine.",
-    "features": [
-      "3 039 переведённых строк, поиск с поддержкой е/ё",
-      "Шрифт Underdog с полной кириллицей и 29 достижений",
-      "Внутриигровое мод-меню, таблица .CT v1.0 и поддержка macOS"
-    ],
-    "boosty_url": "https://boosty.to/cd_tixo/posts/7446d8dd-7024-4e12-9a7e-9e93afa01ec7",
-    "github_url": "https://github.com/neoru-droid/deleted-wiki-ru",
-    "steam_guide_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3842897222",
-    "zog_url": "https://forum.zoneofgames.ru/topic/84612-deleted-wiki-clean-up-the-lost-files/",
-    "pg_cards": [
-      {
-        "id": "1892416",
-        "kind": "localization",
-        "url": "https://www.playground.ru/misc/file/deleted_wiki_clean_up_the_lost_files_rusifikator_teksta_i_shriftov-1892416"
-      },
-      {
-        "id": "1893660",
-        "kind": "ct",
-        "url": "https://www.playground.ru/misc/cheat/deleted_wiki_clean_up_the_lost_files_tablitsa_dlya_cheat_engine_ochki_sortirovki_zaryad_100_skripty_i_sortboty-1893660"
-      }
-    ],
-    "keywords": [
-      "вики",
-      "удаленная вики",
-      "удалённая вики",
-      "корвид"
-    ]
-  },
-  {
     "slug": "we-march-as-one",
     "title": "We March as One",
     "appid": "5189160",
@@ -149,7 +61,7 @@
     "features": [
       "3 009 строк и 7 мутаторов, пиксельный и тактический шрифты",
       "Сборка 2-в-1 с мод-меню v1.0 и таблицей .CT v1.0",
-      "Поддержка кооператива и открытые достижения Steam"
+      "Поддержка одиночной игры и кооператива"
     ],
     "boosty_url": "https://boosty.to/cd_tixo/posts/0ec0506b-063f-4be2-a788-40ebe320add7",
     "github_url": "https://github.com/neoru-droid/zombies-arent-real-ru",
@@ -217,6 +129,94 @@
     ]
   },
   {
+    "slug": "deleted-wiki",
+    "title": "Deleted Wiki: Clean Up the Lost Files",
+    "appid": "5204830",
+    "track": "track1",
+    "has_translation": true,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.0",
+    "steam_build": "1.0.24 (26304123)",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": true
+    },
+    "summary": "Перевод 631 предмета, 15 скриптов, форума, реплик вИИрона и экрана 29 достижений со шрифтом Underdog плюс сборка 2-в-1 и таблица Cheat Engine.",
+    "features": [
+      "3 039 переведённых строк, поиск с поддержкой е/ё",
+      "Шрифт Underdog с полной кириллицей и 29 достижений",
+      "Внутриигровое мод-меню, таблица .CT v1.0 и поддержка macOS"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/7446d8dd-7024-4e12-9a7e-9e93afa01ec7",
+    "github_url": "https://github.com/neoru-droid/deleted-wiki-ru",
+    "steam_guide_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3842897222",
+    "zog_url": "https://forum.zoneofgames.ru/topic/84612-deleted-wiki-clean-up-the-lost-files/",
+    "pg_cards": [
+      {
+        "id": "1892416",
+        "kind": "localization",
+        "url": "https://www.playground.ru/misc/file/deleted_wiki_clean_up_the_lost_files_rusifikator_teksta_i_shriftov-1892416"
+      },
+      {
+        "id": "1893660",
+        "kind": "ct",
+        "url": "https://www.playground.ru/misc/cheat/deleted_wiki_clean_up_the_lost_files_tablitsa_dlya_cheat_engine_ochki_sortirovki_zaryad_100_skripty_i_sortboty-1893660"
+      }
+    ],
+    "keywords": [
+      "вики",
+      "удаленная вики",
+      "удалённая вики",
+      "корвид"
+    ]
+  },
+  {
+    "slug": "playrooms",
+    "title": "Playrooms",
+    "appid": "5037510",
+    "track": "track1",
+    "has_translation": true,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.0",
+    "steam_build": "1.0.2 (26787924 / 26705387)",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "Перевод интерфейса Playrooms95, 177 реплик скрепки Балли, телетекста и 4 шрифтов плюс сборка 2-в-1 с мод-меню и таблицей Cheat Engine.",
+    "features": [
+      "Интерфейс Playrooms95, письма и описания навыков на русском",
+      "4 кириллических шрифта без обрезки текста",
+      "Внутриигровое мод-меню и таблица .CT v1.0"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/0008f686-0666-4398-a5c7-c8a5b6d26d69",
+    "github_url": "https://github.com/neoru-droid/playrooms-ru",
+    "steam_guide_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3844623165",
+    "zog_url": "https://forum.zoneofgames.ru/topic/84635-playrooms/",
+    "pg_cards": [
+      {
+        "id": "1893135",
+        "kind": "cheat_mod",
+        "url": "https://www.playground.ru/playrooms/cheat/playrooms_chit_mod_na_beskonechnuyu_vynoslivost_skorost_fonarik_i_besplatnye_navyki-1893135"
+      },
+      {
+        "id": "1893464",
+        "kind": "ct",
+        "url": "https://www.playground.ru/playrooms/cheat/playrooms_tablitsa_dlya_cheat_engine_vynoslivost_fonarik_skorost_shary_i_dengi-1893464"
+      }
+    ],
+    "keywords": [
+      "плейрумс",
+      "скрепка",
+      "балли",
+      "русификатор"
+    ]
+  },
+  {
     "slug": "here-comes-the-horde",
     "title": "Here Comes the Horde",
     "appid": "5066010",
@@ -275,7 +275,7 @@
       "steamdeck": true,
       "macos": true
     },
-    "summary": "Русское мод-меню, стартовое сохранение со всеми ресурсами и таблица Cheat Engine на валюты, урон курсора, неуязвимость башни и фольгированные бустеры.",
+    "summary": "Мод-меню на русском, стартовое сохранение со всеми ресурсами и таблица Cheat Engine на валюты, урон курсора, неуязвимость башни и фольгированные бустеры.",
     "features": [
       "Монеты, мастерство, черепа, фолиум, космо и зенит",
       "Режим бога, бесконечный урон курсора, 100% фольгированные и гигантские карты",
@@ -319,7 +319,7 @@
       "steamdeck": true,
       "macos": false
     },
-    "summary": "Русское мод-меню, стартовое сохранение с золотом и лагерем 10 уровня, а также таблица Cheat Engine на ресурсы стройки, быстрый бег и защиту от жары.",
+    "summary": "Мод-меню на русском, стартовое сохранение с золотом и лагерем 10 уровня, а также таблица Cheat Engine на ресурсы стройки, быстрый бег и защиту от жары.",
     "features": [
       "Монеты +1 000 / +10 000 и прокачка всех 5 веток лагеря до 10 уровня",
       "Запас кирпичей и глины, отключение жары и обмороков",
@@ -363,7 +363,7 @@
       "steamdeck": true,
       "macos": false
     },
-    "summary": "Русское мод-меню (.omlmod) и таблица Cheat Engine на быструю косилку, широкую деку 4.4 м, бесконечное топливо, покос участка 18x18 м и смену погоды.",
+    "summary": "Мод-меню на русском (.omlmod) и таблица Cheat Engine на быструю косилку, широкую деку 4.4 м, бесконечное топливо, покос участка 18x18 м и смену погоды.",
     "features": [
       "Скорость косилки x2.5, дека 4.4 м и покос участка 18x18 м",
       "Бесконечное топливо, заряд гольф-каров и высокий прыжок",
@@ -407,7 +407,7 @@
       "steamdeck": true,
       "macos": false
     },
-    "summary": "Русское мод-меню прямо в игре, стартовое сохранение с 10 000 000 $ и таблица Cheat Engine на деньги, золотые слитки, очки навыков, инструменты и магнит купюр.",
+    "summary": "Мод-меню на русском, стартовое сохранение с 10 000 000 $ и таблица Cheat Engine на деньги, золотые слитки, очки навыков, инструменты и магнит купюр.",
     "features": [
       "Деньги, золотые слитки, уровни, очки навыков и скидка 95% на улучшения",
       "Все инструменты со старта, магнит купюр, вечные бустеры и ускорение игры",
