@@ -121,6 +121,7 @@
       btn.addEventListener("click", () => {
         showShot(idx);
         lightbox.showModal();
+        lightbox.focus({ preventScroll: true });
       });
     });
     if (lbPrev) lbPrev.addEventListener("click", () => showShot(activeIdx - 1));
@@ -215,9 +216,10 @@
     const pageHref = `games/${encodeURIComponent(game.slug)}/`;
     const cleanGh = escapeHtml(String(game.github_url || "").replace(/\/$/, ""));
     const ghReleases = `${cleanGh}/releases/latest`;
+    const freeLabel = game.has_translation ? "Русификатор · бесплатно ↗" : ".CT и сейв · бесплатно ↗";
     const ctaBtns = isEarly
       ? `<a class="btn btn-primary" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a>` +
-        `<a class="btn btn-shelf" data-ea-free-btn="1" href="${ghReleases}" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a>`
+        `<a class="btn btn-shelf" data-ea-free-btn="1" href="${ghReleases}" target="_blank" rel="noopener">${freeLabel}</a>`
       : `<a class="btn btn-shelf" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a>` +
         `<a class="btn btn-secondary" href="${pageHref}">Кадры и детали</a>`;
     const linksItems = isEarly

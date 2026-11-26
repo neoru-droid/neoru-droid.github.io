@@ -453,7 +453,6 @@
       "баксы",
       "слитки"
     ],
-    "early_access_until": "2026-11-27T20:00:00+10:00",
     "cover_cdn_url": "https://images.boosty.to/image/aefdb84a-6da9-4c19-830c-0800ae17c89e",
     "cover_color": "#3e3f31"
   },
@@ -553,5 +552,105 @@
     ],
     "cover_cdn_url": "https://images.boosty.to/image/f277435c-6fd4-4c30-8046-071a18813b98",
     "cover_color": "#3d3a42"
+  },
+  {
+    "slug": "the-magus-circle",
+    "title": "The Magus Circle",
+    "appid": "2796640",
+    "track": "track1",
+    "owned_on_steam": false,
+    "has_translation": true,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.0",
+    "steam_build": "26344172",
+    "early_access_until": "2026-11-28T18:00:00+10:00",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": true
+    },
+    "summary": "6 706 строк диалогов, заклинаний, 111 реликвий и 68 достижений с пиксельными шрифтами плюс гримуар настроек и .CT.",
+    "features": [
+      "6 706 строк перевода, пиксельные шрифты с кириллицей и экран 68 достижений",
+      "Двухстраничный гримуар мод-меню на 8 функций и таблица .CT v1.0",
+      "Установщик для Windows и скрипты для Steam Deck и macOS"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/1156f6fc-0f95-4945-845f-a1da765de3fe",
+    "github_url": "https://github.com/neoru-droid/the-magus-circle-ru",
+    "mod_github_url": "https://github.com/neoru-droid/the-magus-circle-mod-ru",
+    "steam_guide_url": "",
+    "steam_discussion_url": "https://steamcommunity.com/app/2796640/discussions/0/563674514368708651/",
+    "zog_url": "https://forum.zoneofgames.ru/topic/84691-the-magus-circle/",
+    "pg_cards": [
+      {
+        "id": "1894015",
+        "kind": "localization",
+        "url": "https://www.playground.ru/misc/file/the_magus_circle_rusifikator_teksta_dostizhenij_i_pikselnyh_shriftov-1894015"
+      },
+      {
+        "id": "1894020",
+        "kind": "ct",
+        "url": "https://www.playground.ru/misc/cheat/the_magus_circle_tablitsa_dlya_cheat_engine_neuyazvimost_beskonechnaya_mana_uron_s_1_udara_urovni_anima_i_magnit-1894020"
+      }
+    ],
+    "keywords": [
+      "магус",
+      "маг",
+      "гримуар",
+      "заклинания",
+      "рогалик"
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/711fa663-835d-4712-8ec5-850c502a8469",
+    "cover_color": "#1c2238"
+  },
+  {
+    "slug": "pc-store-together",
+    "title": "PC Store Together",
+    "appid": "4990940",
+    "track": "track2",
+    "owned_on_steam": false,
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.0",
+    "steam_build": "26903133",
+    "early_access_until": "2026-11-28T18:00:00+10:00",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "Старт магазина с бюджетом 250 000 $ и 28 уровнем репутации, все навыки ремонта, очистка ПК от пыли и вирусов и 30 C.",
+    "features": [
+      "+10 000 $ и +100 000 $, +5 000 репутации, все навыки ремонта и погашение аренды",
+      "Мгновенная чистка пыли и вирусов на верстаке, охлаждение 30 C и ускорение бега",
+      "Стартовое сохранение на 250 000 $ (28 уровень) и таблица .CT v1.0"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/6a6f1442-48c9-4107-94a0-0d108e2b061b",
+    "github_url": "https://github.com/neoru-droid/pc-store-together-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1894024",
+        "kind": "ct",
+        "url": "https://www.playground.ru/misc/cheat/pc_store_together_tablitsa_dlya_cheat_engine_dengi_reputatsiya_navyki_remonta_arenda_chistka_pk_i_30_c-1894024"
+      },
+      {
+        "id": "1894026",
+        "kind": "save",
+        "url": "https://www.playground.ru/misc/cheat/pc_store_together_startovoe_sohranenie_magazina_s_byudzhetom_250_000_i_28_urovnem_reputatsii-1894026"
+      }
+    ],
+    "keywords": [
+      "магазин пк",
+      "сборка пк",
+      "ремонт пк",
+      "компьютеры",
+      "симулятор"
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/72dae576-3aa0-4afe-b257-581da5f7b886",
+    "cover_color": "#232933"
   }
 ]

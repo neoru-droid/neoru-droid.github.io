@@ -70,7 +70,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 body { margin: 0; overflow-x: clip; }
-body.has-mobile-bar { padding-block-end: 80px; }
 
 h1, h2, h3 {
   font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -486,10 +485,18 @@ p, li, dd { text-wrap: pretty; }
 
 /* Calm Horizontal Order Strip Below Shelf */
 .order-strip {
-  margin-block-start: 20px;
-  padding-block-start: 28px;
+  margin-block-start: 24px;
+  padding-block: 28px;
   border-block-start: 1px solid var(--color-border-subtle);
 }
+.order-compact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+}
+.order-compact-copy { min-width: 0; }
 .order-strip-head {
   display: flex;
   flex-wrap: wrap;
@@ -778,6 +785,7 @@ p, li, dd { text-wrap: pretty; }
   color: var(--color-text-primary);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.76), inset 0 0 0 1px var(--color-border-strong);
 }
+.lightbox:focus { outline: none; }
 .lightbox::backdrop {
   background: rgba(10, 10, 10, 0.88);
   backdrop-filter: blur(4px);
@@ -805,21 +813,33 @@ p, li, dd { text-wrap: pretty; }
 }
 .lightbox-controls { display: flex; gap: 8px; }
 
-/* Clean 2-Column Details on Hairlines */
+/* Clean 2-Column Details on Symmetric 50/50 Center Hairline */
 .details-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-  gap: 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
   align-items: start;
 }
-.detail-col h2 {
-  margin: 0 0 14px;
+.detail-col:first-child { padding-inline-end: 28px; }
+.detail-col + .detail-col {
+  padding-inline-start: 28px;
+  border-inline-start: 1px solid var(--color-border-subtle);
+}
+.detail-head-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+  min-height: 36px;
+  margin: 0 0 16px;
+  padding-block-end: 8px;
+  border-block-end: 1px solid var(--color-border-subtle);
+}
+.detail-head-row h2 {
+  margin: 0;
   font-size: 1.1875rem;
   line-height: 1.25;
-}
-.detail-col + .detail-col {
-  padding-inline-start: 32px;
-  border-inline-start: 1px solid var(--color-border-subtle);
 }
 .feature-list, .install-steps {
   margin: 0;
@@ -833,14 +853,14 @@ p, li, dd { text-wrap: pretty; }
 .tab-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-block-end: 16px;
-  border-block-end: 1px solid var(--color-border-subtle);
+  align-items: center;
+  gap: 14px;
+  margin: 0;
 }
 .tab-btn {
   position: relative;
-  min-height: 34px;
-  padding: 6px 2px 8px;
+  min-height: 28px;
+  padding: 2px 2px 8px;
   border: 0;
   background: transparent;
   color: var(--color-text-muted);
@@ -853,7 +873,7 @@ p, li, dd { text-wrap: pretty; }
   content: "";
   position: absolute;
   inset-inline: 0;
-  inset-block-end: -1px;
+  inset-block-end: -9px;
   height: 2px;
   background: var(--color-accent-solid);
 }
@@ -946,7 +966,7 @@ p, li, dd { text-wrap: pretty; }
 /* Footer */
 .site-footer {
   border-block-start: 1px solid var(--color-border-subtle);
-  padding-block: 24px 36px;
+  padding-block: 26px;
   color: var(--color-text-muted);
   font-size: 0.84375rem;
 }
@@ -989,9 +1009,11 @@ p, li, dd { text-wrap: pretty; }
 
 @media (max-width: 980px) {
   .game-hero, .details-grid, .tier-columns { grid-template-columns: 1fr; }
+  .detail-col:first-child { padding-inline-end: 0; }
   .detail-col + .detail-col {
     padding-inline-start: 0;
     padding-block-start: 24px;
+    margin-block-start: 24px;
     border-inline-start: 0;
     border-block-start: 1px solid var(--color-border-subtle);
   }
@@ -1000,6 +1022,7 @@ p, li, dd { text-wrap: pretty; }
 }
 
 @media (max-width: 767px) {
+  body.has-mobile-bar { padding-block-end: 80px; }
   .brand-tag { display: none; }
   .nav-links { gap: 10px 12px; }
   .nav-link { font-size: 0.8125rem; }
@@ -1092,7 +1115,7 @@ p, li, dd { text-wrap: pretty; }
         <button class="btn btn-primary" type="submit">Найти на полке</button>
       </form>
       <div class="empty-actions">
-        <a class="btn btn-secondary" href="/games/ski-e-o/">Ski-E-O! Ski Resort Tycoon</a><a class="btn btn-secondary" href="/games/dice-hoarder/">Dice Hoarder</a><a class="btn btn-secondary" href="/games/shred-a-billion/">SHRED A BILLION</a><a class="btn btn-secondary" href="/games/one-more-lawn/">One More Lawn</a>
+        <a class="btn btn-secondary" href="/games/pc-store-together/">PC Store Together</a><a class="btn btn-secondary" href="/games/the-magus-circle/">The Magus Circle</a><a class="btn btn-secondary" href="/games/ski-e-o/">Ski-E-O! Ski Resort Tycoon</a><a class="btn btn-secondary" href="/games/dice-hoarder/">Dice Hoarder</a>
         <a class="btn btn-secondary" href="https://boosty.to/cd_tixo?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=404_order" target="_blank" rel="noopener">Предложить свою игру на Boosty ↗</a>
       </div>
     </div>

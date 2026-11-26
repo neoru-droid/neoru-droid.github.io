@@ -78,7 +78,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 body { margin: 0; overflow-x: clip; }
-body.has-mobile-bar { padding-block-end: 80px; }
 
 h1, h2, h3 {
   font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -494,10 +493,18 @@ p, li, dd { text-wrap: pretty; }
 
 /* Calm Horizontal Order Strip Below Shelf */
 .order-strip {
-  margin-block-start: 20px;
-  padding-block-start: 28px;
+  margin-block-start: 24px;
+  padding-block: 28px;
   border-block-start: 1px solid var(--color-border-subtle);
 }
+.order-compact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+}
+.order-compact-copy { min-width: 0; }
 .order-strip-head {
   display: flex;
   flex-wrap: wrap;
@@ -786,6 +793,7 @@ p, li, dd { text-wrap: pretty; }
   color: var(--color-text-primary);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.76), inset 0 0 0 1px var(--color-border-strong);
 }
+.lightbox:focus { outline: none; }
 .lightbox::backdrop {
   background: rgba(10, 10, 10, 0.88);
   backdrop-filter: blur(4px);
@@ -813,21 +821,33 @@ p, li, dd { text-wrap: pretty; }
 }
 .lightbox-controls { display: flex; gap: 8px; }
 
-/* Clean 2-Column Details on Hairlines */
+/* Clean 2-Column Details on Symmetric 50/50 Center Hairline */
 .details-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-  gap: 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
   align-items: start;
 }
-.detail-col h2 {
-  margin: 0 0 14px;
+.detail-col:first-child { padding-inline-end: 28px; }
+.detail-col + .detail-col {
+  padding-inline-start: 28px;
+  border-inline-start: 1px solid var(--color-border-subtle);
+}
+.detail-head-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+  min-height: 36px;
+  margin: 0 0 16px;
+  padding-block-end: 8px;
+  border-block-end: 1px solid var(--color-border-subtle);
+}
+.detail-head-row h2 {
+  margin: 0;
   font-size: 1.1875rem;
   line-height: 1.25;
-}
-.detail-col + .detail-col {
-  padding-inline-start: 32px;
-  border-inline-start: 1px solid var(--color-border-subtle);
 }
 .feature-list, .install-steps {
   margin: 0;
@@ -841,14 +861,14 @@ p, li, dd { text-wrap: pretty; }
 .tab-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-block-end: 16px;
-  border-block-end: 1px solid var(--color-border-subtle);
+  align-items: center;
+  gap: 14px;
+  margin: 0;
 }
 .tab-btn {
   position: relative;
-  min-height: 34px;
-  padding: 6px 2px 8px;
+  min-height: 28px;
+  padding: 2px 2px 8px;
   border: 0;
   background: transparent;
   color: var(--color-text-muted);
@@ -861,7 +881,7 @@ p, li, dd { text-wrap: pretty; }
   content: "";
   position: absolute;
   inset-inline: 0;
-  inset-block-end: -1px;
+  inset-block-end: -9px;
   height: 2px;
   background: var(--color-accent-solid);
 }
@@ -954,7 +974,7 @@ p, li, dd { text-wrap: pretty; }
 /* Footer */
 .site-footer {
   border-block-start: 1px solid var(--color-border-subtle);
-  padding-block: 24px 36px;
+  padding-block: 26px;
   color: var(--color-text-muted);
   font-size: 0.84375rem;
 }
@@ -997,9 +1017,11 @@ p, li, dd { text-wrap: pretty; }
 
 @media (max-width: 980px) {
   .game-hero, .details-grid, .tier-columns { grid-template-columns: 1fr; }
+  .detail-col:first-child { padding-inline-end: 0; }
   .detail-col + .detail-col {
     padding-inline-start: 0;
     padding-block-start: 24px;
+    margin-block-start: 24px;
     border-inline-start: 0;
     border-block-start: 1px solid var(--color-border-subtle);
   }
@@ -1008,6 +1030,7 @@ p, li, dd { text-wrap: pretty; }
 }
 
 @media (max-width: 767px) {
+  body.has-mobile-bar { padding-block-end: 80px; }
   .brand-tag { display: none; }
   .nav-links { gap: 10px 12px; }
   .nav-link { font-size: 0.8125rem; }
@@ -1119,23 +1142,23 @@ p, li, dd { text-wrap: pretty; }
       </div>
     </section>
 
-    <section class="game-section" aria-labelledby="shots-heading"><div class="section-head"><h2 id="shots-heading">Живые кадры из игры</h2><p class="section-sub">Нажмите на кадр, чтобы открыть в полном размере</p></div><div class="shots-grid"><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/0f76f2a1-1088-4368-bf05-c3bd50347f59" data-shot-fallback="../../media/shots/frontier-tale-1.webp" data-shot-cap="Главное меню на русском"><img src="https://images.boosty.to/image/0f76f2a1-1088-4368-bf05-c3bd50347f59" data-fallback="../../media/shots/frontier-tale-1.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Главное меню на русском" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Главное меню на русском</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/d0a4f33f-c094-4544-a308-e3c59f84736d" data-shot-fallback="../../media/shots/frontier-tale-2.webp" data-shot-cap="Перевод сюжетных диалогов"><img src="https://images.boosty.to/image/d0a4f33f-c094-4544-a308-e3c59f84736d" data-fallback="../../media/shots/frontier-tale-2.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Перевод сюжетных диалогов" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Перевод сюжетных диалогов</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/f90c7de6-f3e4-4805-803b-2f29ab754d7e" data-shot-fallback="../../media/shots/frontier-tale-3.webp" data-shot-cap="Предметы, задания и мини-карта"><img src="https://images.boosty.to/image/f90c7de6-f3e4-4805-803b-2f29ab754d7e" data-fallback="../../media/shots/frontier-tale-3.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Предметы, задания и мини-карта" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Предметы, задания и мини-карта</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/4f8ef929-5f74-401c-8891-8bb2c60c8eec" data-shot-fallback="../../media/shots/frontier-tale-4.webp" data-shot-cap="Установщик с возвратом оригинала"><img src="https://images.boosty.to/image/4f8ef929-5f74-401c-8891-8bb2c60c8eec" data-fallback="../../media/shots/frontier-tale-4.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Установщик с возвратом оригинала" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Установщик с возвратом оригинала</span></button></div><dialog id="shot-lightbox" class="lightbox" aria-label="Просмотр скриншота"><div class="lightbox-inner"><img id="lightbox-img" class="lightbox-img" alt=""><div class="lightbox-bar"><p id="lightbox-cap" class="lightbox-cap"></p><div class="lightbox-controls"><button id="lightbox-prev" class="btn btn-secondary" type="button">← Назад</button><button id="lightbox-next" class="btn btn-secondary" type="button">Вперёд →</button><button id="lightbox-close" class="btn btn-primary" type="button">Закрыть</button></div></div></div></dialog></section>
+    <section class="game-section" aria-labelledby="shots-heading"><div class="section-head"><h2 id="shots-heading">Живые кадры из игры</h2><p class="section-sub">Нажмите на кадр, чтобы открыть в полном размере</p></div><div class="shots-grid"><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/0f76f2a1-1088-4368-bf05-c3bd50347f59" data-shot-fallback="../../media/shots/frontier-tale-1.webp" data-shot-cap="Главное меню на русском"><img src="https://images.boosty.to/image/0f76f2a1-1088-4368-bf05-c3bd50347f59" data-fallback="../../media/shots/frontier-tale-1.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Главное меню на русском" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Главное меню на русском</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/d0a4f33f-c094-4544-a308-e3c59f84736d" data-shot-fallback="../../media/shots/frontier-tale-2.webp" data-shot-cap="Перевод сюжетных диалогов"><img src="https://images.boosty.to/image/d0a4f33f-c094-4544-a308-e3c59f84736d" data-fallback="../../media/shots/frontier-tale-2.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Перевод сюжетных диалогов" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Перевод сюжетных диалогов</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/f90c7de6-f3e4-4805-803b-2f29ab754d7e" data-shot-fallback="../../media/shots/frontier-tale-3.webp" data-shot-cap="Предметы, задания и мини-карта"><img src="https://images.boosty.to/image/f90c7de6-f3e4-4805-803b-2f29ab754d7e" data-fallback="../../media/shots/frontier-tale-3.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Предметы, задания и мини-карта" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Предметы, задания и мини-карта</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/4f8ef929-5f74-401c-8891-8bb2c60c8eec" data-shot-fallback="../../media/shots/frontier-tale-4.webp" data-shot-cap="Установщик с возвратом оригинала"><img src="https://images.boosty.to/image/4f8ef929-5f74-401c-8891-8bb2c60c8eec" data-fallback="../../media/shots/frontier-tale-4.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Установщик с возвратом оригинала" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Установщик с возвратом оригинала</span></button></div><dialog id="shot-lightbox" class="lightbox" tabindex="-1" aria-label="Просмотр скриншота"><div class="lightbox-inner"><img id="lightbox-img" class="lightbox-img" alt=""><div class="lightbox-bar"><p id="lightbox-cap" class="lightbox-cap"></p><div class="lightbox-controls"><button id="lightbox-prev" class="btn btn-secondary" type="button">← Назад</button><button id="lightbox-next" class="btn btn-secondary" type="button">Вперёд →</button><button id="lightbox-close" class="btn btn-primary" type="button">Закрыть</button></div></div></div></dialog></section>
 
     <section class="game-section">
       <div class="details-grid">
         <div class="detail-col">
-          <h2>Что входит в сборку</h2>
+          <div class="detail-head-row"><h2>Что входит в сборку</h2></div>
           <ul class="feature-list"><li>7 036 переведённых строк под версию 2.1.7</li><li>Установщик для Windows и скрипт для Steam Deck</li><li>Удаление перевода и возврат английской версии из установщика</li><li>Проверено на сборке Steam: 2.1.7 (26862122)</li></ul>
         </div>
         <div class="detail-col">
-          <h2>Установка за минуту</h2>
-          <div class="tab-list" role="tablist" aria-label="Платформа установки"><button class="tab-btn" role="tab" type="button" aria-selected="true" aria-controls="panel-win">Windows</button><button class="tab-btn" role="tab" type="button" aria-selected="false" aria-controls="panel-deck">Steam Deck</button></div><div id="panel-win" class="tab-panel" role="tabpanel"><ol class="install-steps"><li>Скачайте архив со страницы игры на Boosty и распакуйте в любую папку.</li><li>Запустите установщик, проверьте путь к папке игры в Steam и нажмите «Установить».</li><li>Запустите игру из библиотеки Steam. Возврат оригинальных файлов игры доступен в том же установщике.</li></ol></div><div id="panel-deck" class="tab-panel" role="tabpanel" hidden><ol class="install-steps"><li>В режиме рабочего стола скачайте и распакуйте архив сборки.</li><li>Запустите скрипт <code>install-steamdeck.sh</code> - он скопирует файлы в папку игры и подскажет параметр запуска Proton при необходимости.</li><li>Вернитесь в игровой режим Steam Deck и запустите игру из библиотеки Steam.</li></ol></div>
+          <div class="detail-head-row"><h2>Установка за минуту</h2><div class="tab-list" role="tablist" aria-label="Платформа установки"><button class="tab-btn" role="tab" type="button" aria-selected="true" aria-controls="panel-win">Windows</button><button class="tab-btn" role="tab" type="button" aria-selected="false" aria-controls="panel-deck">Steam Deck</button></div></div>
+          <div id="panel-win" class="tab-panel" role="tabpanel"><ol class="install-steps"><li>Скачайте архив со страницы игры на Boosty и распакуйте в любую папку.</li><li>Запустите установщик, проверьте путь к папке игры в Steam и нажмите «Установить».</li><li>Запустите игру из библиотеки Steam. Возврат оригинальных файлов игры доступен в том же установщике.</li></ol></div><div id="panel-deck" class="tab-panel" role="tabpanel" hidden><ol class="install-steps"><li>В режиме рабочего стола скачайте и распакуйте архив сборки.</li><li>Запустите скрипт <code>install-steamdeck.sh</code> - он скопирует файлы в папку игры и подскажет параметр запуска Proton при необходимости.</li><li>Вернитесь в игровой режим Steam Deck и запустите игру из библиотеки Steam.</li></ol></div>
         </div>
       </div>
     </section>
 
-    <section id="order-game" class="order-strip" aria-label="Ранний доступ и заказ своей игры"><div class="order-strip-head"><div><h2 class="order-strip-title">Предложить или заказать свою игру</h2><p class="order-strip-sub">Готовые сборки открываются всем; первые 48 часов новинки и свежие патчи выходят на Boosty.</p></div><a class="btn btn-secondary" href="https://boosty.to/cd_tixo?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=order_game" target="_blank" rel="noopener">Выбрать уровень на Boosty ↗</a></div><dl class="tier-columns"><div class="tier-col"><dt>120 ₽</dt><dd>ранний доступ (-20% на первый месяц вместо 150 ₽ или разово за пост)</dd></div><div class="tier-col"><dt>350 ₽</dt><dd>предложить свою игру в приоритетную очередь разбора</dd></div><div class="tier-col"><dt>750 ₽</dt><dd>разбор подходящей одиночной игры вне очереди и свои настройки</dd></div></dl></section>
-    <section class="game-section" aria-labelledby="related-heading"><div class="section-head"><h2 id="related-heading">Другие сборки в каталоге</h2><a class="card-detail-link" href="../../">Все игры на полке →</a></div><div class="related-grid"><a class="related-card" href="../playrooms/"><img src="https://images.boosty.to/image/68b74efd-f3a5-4069-9727-9db9bfeaba26" data-fallback="../../media/playrooms.webp" referrerpolicy="no-referrer" style="background:#323e35" alt="Playrooms" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Playrooms</span><span class="related-meta">v1.0 · Win, Deck</span></span></a><a class="related-card" href="../deleted-wiki/"><img src="https://images.boosty.to/image/46c534f1-7eab-45e3-9935-647c40087eae" data-fallback="../../media/deleted-wiki.webp" referrerpolicy="no-referrer" style="background:#23272d" alt="Deleted Wiki: Clean Up the Lost Files" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Deleted Wiki: Clean Up the Lost Files</span><span class="related-meta">v1.0 · Win, Deck, macOS</span></span></a><a class="related-card" href="../zombies-arent-real/"><img src="https://images.boosty.to/image/bed6f4da-3d74-4217-911d-5f6a36eecd07" data-fallback="../../media/zombies-arent-real.webp" referrerpolicy="no-referrer" style="background:#39362f" alt="Zombies Aren&#x27;t Real" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Zombies Aren&#x27;t Real</span><span class="related-meta">v1.3 · Win, Deck</span></span></a></div></section>
+    <section id="order-game" class="game-section order-compact" aria-labelledby="order-heading"><div class="order-compact-copy"><h2 id="order-heading" class="order-strip-title">Нужен перевод или мод-меню под другую игру?</h2><p class="order-strip-sub">Приоритетная очередь разбора - от 350 ₽/мес, разбор вне очереди - 750 ₽/мес на Boosty.</p></div><a class="btn btn-shelf" href="https://boosty.to/cd_tixo?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=order_game" target="_blank" rel="noopener">Заказать на Boosty ↗</a></section>
+    <section class="game-section" aria-labelledby="related-heading"><div class="section-head"><h2 id="related-heading">Другие сборки в каталоге</h2><a class="card-detail-link" href="../../">Все игры на полке →</a></div><div class="related-grid"><a class="related-card" href="../the-magus-circle/"><img src="https://images.boosty.to/image/711fa663-835d-4712-8ec5-850c502a8469" data-fallback="../../media/the-magus-circle.webp" referrerpolicy="no-referrer" style="background:#1c2238" alt="The Magus Circle" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">The Magus Circle</span><span class="related-meta">v1.0 · Win, Deck, macOS</span></span></a><a class="related-card" href="../playrooms/"><img src="https://images.boosty.to/image/68b74efd-f3a5-4069-9727-9db9bfeaba26" data-fallback="../../media/playrooms.webp" referrerpolicy="no-referrer" style="background:#323e35" alt="Playrooms" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Playrooms</span><span class="related-meta">v1.0 · Win, Deck</span></span></a><a class="related-card" href="../deleted-wiki/"><img src="https://images.boosty.to/image/46c534f1-7eab-45e3-9935-647c40087eae" data-fallback="../../media/deleted-wiki.webp" referrerpolicy="no-referrer" style="background:#23272d" alt="Deleted Wiki: Clean Up the Lost Files" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Deleted Wiki: Clean Up the Lost Files</span><span class="related-meta">v1.0 · Win, Deck, macOS</span></span></a></div></section>
   </main>
 
   <div id="mobile-cta-bar" class="mobile-cta-bar is-docked-hidden">
@@ -1270,6 +1293,7 @@ p, li, dd { text-wrap: pretty; }
       btn.addEventListener("click", () => {
         showShot(idx);
         lightbox.showModal();
+        lightbox.focus({ preventScroll: true });
       });
     });
     if (lbPrev) lbPrev.addEventListener("click", () => showShot(activeIdx - 1));
@@ -1364,9 +1388,10 @@ p, li, dd { text-wrap: pretty; }
     const pageHref = `games/${encodeURIComponent(game.slug)}/`;
     const cleanGh = escapeHtml(String(game.github_url || "").replace(/\/$/, ""));
     const ghReleases = `${cleanGh}/releases/latest`;
+    const freeLabel = game.has_translation ? "Русификатор · бесплатно ↗" : ".CT и сейв · бесплатно ↗";
     const ctaBtns = isEarly
       ? `<a class="btn btn-primary" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a>` +
-        `<a class="btn btn-shelf" data-ea-free-btn="1" href="${ghReleases}" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a>`
+        `<a class="btn btn-shelf" data-ea-free-btn="1" href="${ghReleases}" target="_blank" rel="noopener">${freeLabel}</a>`
       : `<a class="btn btn-shelf" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a>` +
         `<a class="btn btn-secondary" href="${pageHref}">Кадры и детали</a>`;
     const linksItems = isEarly
