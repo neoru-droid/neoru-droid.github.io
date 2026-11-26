@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#131312">
+  <link rel="preconnect" href="https://images.boosty.to" crossorigin>
   <title>Playrooms - русификатор текста, сборка 2-в-1 и таблица .CT | neoru-droid</title>
   <meta name="description" content="Система Playrooms95, 177 реплик скрепки Балли, письма, телетекст и 4 шрифта игры плюс выносливость и фонарик. Патч Steam 1.0.2 (26787924 / 26705387) (Windows, Steam Deck).">
   <link rel="canonical" href="https://neoru-droid.github.io/games/playrooms/">
@@ -15,11 +16,1019 @@
   <meta property="og:image" content="https://neoru-droid.github.io/media/playrooms.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="../../media/favicon.png">
-  <link rel="stylesheet" href="../../styles.css">
+  <script>addEventListener("error",function(e){var t=e.target,f=t&&t.getAttribute&&t.getAttribute("data-fallback");if(f&&t.src!==f){t.removeAttribute("data-fallback");t.src=f;}},true);</script>
+  <style>@font-face {
+  font-family: "Manrope";
+  src: url("../../fonts/Manrope-Bold-Cyrillic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Manrope";
+  src: url("../../fonts/Manrope-Bold-Latin.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --stone-950: #131312;
+  --stone-900: #1c1c1a;
+  --stone-850: #252522;
+  --stone-800: #302f2b;
+  --stone-700: #3e3c37;
+  --cream-100: #f3efe6;
+  --stone-300: #b7b1a5;
+  --stone-400: #8a8479;
+  --amber-500: #e5a23c;
+  --amber-400: #f0b252;
+  --mint-400: #6ee7b7;
+
+  --color-bg-canvas: var(--stone-950);
+  --color-bg-surface: var(--stone-900);
+  --color-bg-elevated: var(--stone-850);
+  --color-bg-active: var(--stone-800);
+  --color-border-subtle: rgba(255, 255, 255, 0.09);
+  --color-border-strong: var(--stone-700);
+  --color-text-primary: var(--cream-100);
+  --color-text-secondary: var(--stone-300);
+  --color-text-muted: var(--stone-400);
+  --color-accent-solid: var(--amber-500);
+  --color-accent-hover: var(--amber-400);
+  --color-accent-ink: #14120e;
+  --color-accent-soft: rgba(229, 162, 60, 0.14);
+  --color-accent-edge: rgba(229, 162, 60, 0.44);
+  --color-ru-text: var(--mint-400);
+  --sticky-offset: 72px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  background: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  scroll-padding-block-start: var(--sticky-offset);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body { margin: 0; overflow-x: clip; }
+body.has-mobile-bar { padding-block-end: 80px; }
+
+h1, h2, h3 {
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-wrap: balance;
+  color: var(--color-text-primary);
+}
+p, li, dd { text-wrap: pretty; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.container {
+  width: min(1240px, 100% - 32px);
+  margin-inline: auto;
+}
+
+/* Compact Masthead */
+.site-nav {
+  border-block-end: 1px solid var(--color-border-subtle);
+}
+.site-nav-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 20px;
+  padding-block: 12px;
+}
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: var(--color-text-primary);
+}
+.brand-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  image-rendering: pixelated;
+  background: #23221f;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  flex-shrink: 0;
+}
+.brand-text {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.brand-name {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+.brand-tag {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+.nav-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 140ms ease-out;
+}
+.nav-link-accent {
+  color: var(--color-accent-solid);
+  font-weight: 600;
+}
+
+/* Buttons & Focus */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-size: 0.84375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 140ms ease-out, background-color 140ms ease-out, color 140ms ease-out, border-color 140ms ease-out;
+}
+.btn-lg {
+  min-height: 44px;
+  padding: 10px 18px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+.btn:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.btn:focus-visible, .chip:focus-visible, .tab-btn:focus-visible, .shot-card:focus-visible,
+.nav-link:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible {
+  outline: 2px solid var(--color-accent-solid);
+  outline-offset: 2px;
+}
+.btn-primary {
+  background: var(--color-accent-solid);
+  color: var(--color-accent-ink);
+}
+.btn-shelf {
+  background: var(--color-bg-elevated);
+  border-color: var(--color-border-subtle);
+  color: var(--color-text-primary);
+}
+.btn-shelf-arrow { color: var(--color-ru-text); }
+.btn-free-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-ru-text);
+  flex-shrink: 0;
+}
+.btn-secondary {
+  background: transparent;
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+/* Sticky Shelf Filter & Search Bar */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(19, 19, 18, 0.94);
+  backdrop-filter: blur(10px);
+  border-block-end: 1px solid var(--color-border-subtle);
+}
+.toolbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 18px;
+  min-height: 54px;
+  padding-block: 6px;
+}
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 8px 2px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 140ms ease-out;
+}
+.chip-count {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}
+.chip.is-active { color: var(--color-text-primary); }
+.chip.is-active::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: -7px;
+  height: 2px;
+  background: var(--color-accent-solid);
+}
+.toolbar-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 320px;
+  justify-content: flex-end;
+}
+.search-wrap {
+  position: relative;
+  flex: 1 1 240px;
+  max-width: 340px;
+  min-width: 0;
+}
+.search-icon {
+  position: absolute;
+  inset-inline-start: 11px;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+.search-wrap input {
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 34px 6px 33px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+}
+.search-wrap input::placeholder { color: var(--color-text-muted); }
+.search-wrap input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+.search-kbd {
+  position: absolute;
+  inset-inline-end: 8px;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  pointer-events: none;
+}
+.search-clear {
+  position: absolute;
+  inset-inline-end: 5px;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+.meta-row select {
+  min-height: 36px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+}
+
+/* Unboxed Game Poster Shelf */
+.main-content { padding-block: 22px 48px; }
+.shelf-note {
+  margin: 0 0 22px;
+  color: var(--color-text-muted);
+  font-size: 0.84375rem;
+  line-height: 1.45;
+}
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 38px 28px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.card-cover-link {
+  display: block;
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #23221f;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.42), inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+}
+.card-cover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 220ms ease-out;
+}
+.ea-badge {
+  position: absolute;
+  inset-block-start: 10px;
+  inset-inline-start: 10px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px;
+  border-radius: 4px;
+  background: rgba(16, 16, 15, 0.9);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45), inset 0 0 0 1px var(--color-accent-edge);
+  color: var(--color-accent-solid);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.74rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.ea-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent-solid);
+  flex-shrink: 0;
+}
+.card-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 6px;
+  padding-block-start: 13px;
+  min-width: 0;
+}
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+.card-title {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.card-title-link {
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+.card-ver {
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+.card-summary {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.48;
+}
+.card-actions {
+  margin-block-start: auto;
+  padding-block-start: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+.card-detail-link, .card-ext-link {
+  font-size: 0.8125rem;
+  text-decoration: none;
+}
+.card-detail-link {
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+.card-ext-link { color: var(--color-text-muted); }
+
+/* Calm Horizontal Order Strip Below Shelf */
+.order-strip {
+  margin-block-start: 52px;
+  padding-block-start: 28px;
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+.order-strip-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px 20px;
+  margin-block-end: 20px;
+}
+.order-strip-title {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.order-strip-sub {
+  margin: 4px 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+.tier-columns {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 28px;
+}
+.tier-col {
+  padding-inline-start: 16px;
+  border-inline-start: 2px solid var(--color-border-strong);
+}
+.tier-col dt {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-accent-solid);
+  font-variant-numeric: tabular-nums;
+  margin-block-end: 4px;
+}
+.tier-col dd {
+  margin: 0;
+  font-size: 0.84375rem;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+}
+
+/* Per-Game Editorial Page (/games/<slug>/) */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding-block: 18px 16px;
+  font-size: 0.84375rem;
+  color: var(--color-text-muted);
+}
+.breadcrumb a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+.game-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+  padding-block-end: 36px;
+}
+.game-cover-frame {
+  border-radius: 6px;
+  overflow: hidden;
+  background: #23221f;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.46), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+.game-cover-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.game-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.game-overline {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-accent-solid);
+}
+.game-overline-ru { color: var(--color-ru-text); }
+.game-info h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.spec-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.game-lead {
+  margin: 2px 0;
+  color: var(--color-text-secondary);
+  font-size: 0.96875rem;
+  line-height: 1.55;
+}
+.ea-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 6px 11px;
+  border-radius: 4px;
+  background: var(--color-accent-soft);
+  box-shadow: inset 0 0 0 1px var(--color-accent-edge);
+  color: var(--color-accent-solid);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.game-cta-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding-block-start: 4px;
+}
+.game-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.ea-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 20px;
+  width: 100%;
+  padding-block-start: 12px;
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+.ea-split-col {
+  padding-inline-start: 12px;
+  border-inline-start: 2px solid var(--color-border-strong);
+}
+.ea-split-col.is-accent { border-inline-start-color: var(--color-accent-solid); }
+.ea-split-col.is-free { border-inline-start-color: var(--color-ru-text); }
+.ea-split-title {
+  margin: 0 0 3px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+.ea-split-text {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+}
+.cta-hint {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+  max-width: 54ch;
+}
+.game-ext-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding-block-start: 12px;
+  border-block-start: 1px solid var(--color-border-subtle);
+  font-size: 0.84rem;
+}
+.game-ext-links a {
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Sections on /games/<slug>/ */
+.game-section {
+  padding-block: 30px;
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+.section-head {
+  margin: 0 0 18px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+.section-head h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.section-sub {
+  margin: 0;
+  font-size: 0.84375rem;
+  color: var(--color-text-muted);
+}
+
+/* Unboxed Screenshots Gallery + Lightbox */
+.shots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.shot-card {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+  text-align: start;
+  cursor: zoom-in;
+}
+.shot-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #23221f;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+}
+.shot-caption {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.lightbox {
+  max-width: min(1120px, 94vw);
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.76), inset 0 0 0 1px var(--color-border-strong);
+}
+.lightbox::backdrop {
+  background: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(4px);
+}
+.lightbox-inner { display: flex; flex-direction: column; }
+.lightbox-img {
+  display: block;
+  width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  background: #090909;
+}
+.lightbox-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+}
+.lightbox-cap {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.lightbox-controls { display: flex; gap: 8px; }
+
+/* Clean 2-Column Details on Hairlines */
+.details-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 32px;
+  align-items: start;
+}
+.detail-col h2 {
+  margin: 0 0 14px;
+  font-size: 1.1875rem;
+  line-height: 1.25;
+}
+.detail-col + .detail-col {
+  padding-inline-start: 32px;
+  border-inline-start: 1px solid var(--color-border-subtle);
+}
+.feature-list, .install-steps {
+  margin: 0;
+  padding-inline-start: 20px;
+  display: grid;
+  gap: 10px;
+  color: var(--color-text-secondary);
+  font-size: 0.9125rem;
+  line-height: 1.52;
+}
+.tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-block-end: 16px;
+  border-block-end: 1px solid var(--color-border-subtle);
+}
+.tab-btn {
+  position: relative;
+  min-height: 34px;
+  padding: 6px 2px 8px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.84375rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tab-btn[aria-selected="true"] { color: var(--color-text-primary); }
+.tab-btn[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: -1px;
+  height: 2px;
+  background: var(--color-accent-solid);
+}
+.tab-panel[hidden] { display: none; }
+
+/* Related Posters */
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  text-decoration: none;
+  color: var(--color-text-primary);
+}
+.related-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #23221f;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+}
+.related-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+.related-title {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.related-meta {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+/* Mobile Sticky Bottom Boosty CTA Bar */
+.mobile-cta-bar { display: none; }
+
+/* Empty State & 404 */
+.empty-state {
+  padding: 40px 0;
+  border-block: 1px solid var(--color-border-subtle);
+}
+.empty-title {
+  margin: 0 0 6px;
+  font-family: "Manrope", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.empty-sub {
+  margin: 0 0 18px;
+  max-width: 54ch;
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+}
+.empty-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.notfound-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 480px;
+  margin-block-end: 18px;
+}
+.notfound-form input {
+  flex: 1 1 220px;
+  min-height: 40px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  font-size: 1rem;
+}
+
+/* Footer */
+.site-footer {
+  border-block-start: 1px solid var(--color-border-subtle);
+  padding-block: 24px 36px;
+  color: var(--color-text-muted);
+  font-size: 0.84375rem;
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px 20px;
+}
+.footer-inner p { margin: 0; }
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-links a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .btn-primary:hover { background: var(--color-accent-hover); }
+  .btn-shelf:hover {
+    background: var(--color-bg-active);
+    border-color: var(--color-border-strong);
+    color: var(--color-text-primary);
+  }
+  .btn-secondary:hover { border-color: var(--color-text-secondary); }
+  .chip:hover, .nav-link:hover, .tab-btn:hover { color: var(--color-text-primary); }
+  .card:hover .card-cover { transform: scale(1.02); }
+  .card-title-link:hover, .card-detail-link:hover, .card-ext-link:hover, .breadcrumb a:hover, .footer-links a:hover, .game-ext-links a:hover, .related-card:hover .related-title {
+    color: var(--color-accent-solid);
+  }
+}
+
+@media (max-width: 980px) {
+  .games-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .game-hero, .details-grid, .tier-columns { grid-template-columns: 1fr; }
+  .detail-col + .detail-col {
+    padding-inline-start: 0;
+    padding-block-start: 24px;
+    border-inline-start: 0;
+    border-block-start: 1px solid var(--color-border-subtle);
+  }
+  .related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .search-kbd { display: none; }
+}
+
+@media (max-width: 767px) {
+  .brand-tag { display: none; }
+  .nav-links { gap: 10px 12px; }
+  .nav-link { font-size: 0.8125rem; }
+  .toolbar-inner { padding-block: 8px; gap: 8px; }
+  .filter-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 100%;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filter-row::-webkit-scrollbar { display: none; }
+  .chip.is-active::after { inset-block-end: 0; }
+  .toolbar-controls { flex-basis: 100%; justify-content: space-between; }
+  .search-wrap { max-width: none; }
+  .search-wrap input { min-height: 40px; font-size: 1rem; }
+
+  .mobile-cta-bar {
+    position: fixed;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(20, 20, 19, 0.96);
+    backdrop-filter: blur(12px);
+    border-block-start: 1px solid var(--color-border-strong);
+    transition: transform 180ms ease-out, opacity 180ms ease-out;
+  }
+  .mobile-cta-bar.is-docked-hidden {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .mobile-cta-info {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+  }
+  .mobile-cta-title {
+    font-family: "Manrope", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mobile-cta-sub {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (max-width: 600px) {
+  .games-grid, .shots-grid, .related-grid, .ea-split { grid-template-columns: 1fr; }
+  .games-grid { gap: 30px; }
+  .game-cta-row { width: 100%; }
+  .game-cta-row .btn { flex: 1 1 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn, .chip, .card-cover, .mobile-cta-bar { transition: none; }
+  .btn:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) { transform: none; }
+}
+</style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Полка neoru-droid", "item": "https://neoru-droid.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Playrooms", "item": "https://neoru-droid.github.io/games/playrooms/"}]}, {"@type": "SoftwareApplication", "name": "Playrooms - русификатор текста, сборка 2-в-1 и таблица .CT", "applicationCategory": "GameApplication", "operatingSystem": "Windows, Steam Deck", "softwareVersion": "1.0", "description": "Система Playrooms95, 177 реплик скрепки Балли, письма, телетекст и 4 шрифта игры плюс выносливость и фонарик.", "image": "https://neoru-droid.github.io/media/playrooms.jpg", "url": "https://neoru-droid.github.io/games/playrooms/", "author": {"@type": "Person", "name": "neoru-droid", "url": "https://neoru-droid.github.io/"}}]}</script>
 </head>
 <body class="has-mobile-bar">
-  <header class="site-nav"><div class="container site-nav-inner"><a class="brand-link" href="../../"><img class="brand-avatar" src="../../media/avatar.png" alt="neoru-droid" width="34" height="34"><span class="brand-text"><span class="brand-name">neoru-droid</span><span class="brand-tag">игры на русском, шрифты и сохранения</span></span></a><nav class="nav-links" aria-label="Навигация сайта"><a class="nav-link" href="../../">Полка игр</a><a class="nav-link" href="../../?type=translation">Русификаторы</a><a class="nav-link" href="#order-game">Заказать игру</a><a class="nav-link nav-link-accent" href="https://boosty.to/cd_tixo?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=hub" target="_blank" rel="noopener">Boosty ↗</a></nav></div></header>
+  <header class="site-nav"><div class="container site-nav-inner"><a class="brand-link" href="../../"><img class="brand-avatar" src="https://images.boosty.to/image/143f3aac-acd2-4964-abe8-508c11c3589f" data-fallback="../../media/avatar.png" referrerpolicy="no-referrer" alt="neoru-droid" width="34" height="34"><span class="brand-text"><span class="brand-name">neoru-droid</span><span class="brand-tag">игры на русском, шрифты и сохранения</span></span></a><nav class="nav-links" aria-label="Навигация сайта"><a class="nav-link" href="../../">Полка игр</a><a class="nav-link" href="../../?type=translation">Русификаторы</a><a class="nav-link" href="#order-game">Заказать игру</a><a class="nav-link nav-link-accent" href="https://boosty.to/cd_tixo?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=hub" target="_blank" rel="noopener">Boosty ↗</a></nav></div></header>
   <main class="container">
     <nav class="breadcrumb" aria-label="Хлебные крошки">
       <a href="../../">← Полка игр</a>
@@ -28,8 +1037,8 @@
     </nav>
 
     <section class="game-hero">
-      <div class="game-cover-frame">
-        <img class="game-cover-img" src="../../media/playrooms.jpg" alt="Playrooms" width="800" height="450" fetchpriority="high">
+      <div class="game-cover-frame" style="background:#323e35">
+        <img class="game-cover-img" src="https://images.boosty.to/image/68b74efd-f3a5-4069-9727-9db9bfeaba26" data-fallback="../../media/playrooms.webp" referrerpolicy="no-referrer" alt="Playrooms" width="680" height="382" fetchpriority="high">
       </div>
       <div class="game-info">
         <span class="game-overline game-overline-ru">Сборка 2-в-1 · русификатор со шрифтами + настройки + .CT</span>
@@ -40,12 +1049,12 @@
           <span>Windows, Steam Deck</span>
         </div>
         <p class="game-lead">Система Playrooms95, 177 реплик скрепки Балли, письма, телетекст и 4 шрифта игры плюс выносливость и фонарик.</p>
-        <div class="game-cta-box"><div class="game-cta-row"><a id="hero-boosty-cta" class="btn btn-primary btn-lg" href="https://boosty.to/cd_tixo/posts/0008f686-0666-4398-a5c7-c8a5b6d26d69?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=playrooms" target="_blank" rel="noopener">Скачать бесплатно на Boosty ↗</a><a class="btn btn-secondary btn-lg" href="https://github.com/neoru-droid/playrooms-ru/releases/latest" target="_blank" rel="noopener">Релизы на GitHub ↗</a></div><p class="cta-hint">Пост на Boosty полностью открыт - архивы скачиваются внизу поста без оплаты, там же выходят обновления под патчи.</p></div>
-        <div class="game-ext-links"><a href="https://github.com/neoru-droid/playrooms-ru" target="_blank" rel="noopener">Исходники и релизы на GitHub</a><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3844623165" target="_blank" rel="noopener">Руководство в Steam</a><a href="https://forum.zoneofgames.ru/topic/84635-playrooms/" target="_blank" rel="noopener">Тема на Zone of Games</a><a href="https://www.playground.ru/playrooms/cheat/playrooms_chit_mod_na_beskonechnuyu_vynoslivost_skorost_fonarik_i_besplatnye_navyki-1893135" target="_blank" rel="noopener">PlayGround (мод)</a><a href="https://www.playground.ru/playrooms/cheat/playrooms_tablitsa_dlya_cheat_engine_vynoslivost_fonarik_skorost_shary_i_dengi-1893464" target="_blank" rel="noopener">PlayGround (.CT)</a></div>
+        <div class="game-cta-box"><div class="game-cta-row"><a id="hero-boosty-cta" class="btn btn-primary btn-lg" href="https://boosty.to/cd_tixo/posts/0008f686-0666-4398-a5c7-c8a5b6d26d69?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=playrooms" target="_blank" rel="noopener">Скачать бесплатно на Boosty ↗</a><a class="btn btn-shelf btn-lg" href="https://github.com/neoru-droid/playrooms-ru/releases/latest" target="_blank" rel="noopener">Релизы на GitHub ↗</a><button id="copy-page-link" class="btn btn-secondary btn-lg" type="button" data-copy-url="https://neoru-droid.github.io/games/playrooms/">Скопировать ссылку</button></div><p class="cta-hint">Пост на Boosty полностью открыт - архивы скачиваются внизу поста без оплаты, там же выходят обновления под патчи.</p></div>
+        <div class="game-ext-links"><a href="https://github.com/neoru-droid/playrooms-ru" target="_blank" rel="noopener">Исходный код на GitHub</a><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3844623165" target="_blank" rel="noopener">Руководство в Steam</a><a href="https://forum.zoneofgames.ru/topic/84635-playrooms/" target="_blank" rel="noopener">Тема на Zone of Games</a><a href="https://www.playground.ru/playrooms/cheat/playrooms_chit_mod_na_beskonechnuyu_vynoslivost_skorost_fonarik_i_besplatnye_navyki-1893135" target="_blank" rel="noopener">PlayGround (мод)</a><a href="https://www.playground.ru/playrooms/cheat/playrooms_tablitsa_dlya_cheat_engine_vynoslivost_fonarik_skorost_shary_i_dengi-1893464" target="_blank" rel="noopener">PlayGround (.CT)</a></div>
       </div>
     </section>
 
-    <section class="game-section" aria-labelledby="shots-heading"><div class="section-head"><h2 id="shots-heading">Живые кадры из игры</h2><p class="section-sub">Нажмите на кадр, чтобы открыть в полном размере</p></div><div class="shots-grid"><button class="shot-card" type="button" data-shot-src="../../media/shots/playrooms-1.jpg" data-shot-cap="Система Playrooms95 на русском"><img src="../../media/shots/playrooms-1.jpg" alt="Playrooms - Система Playrooms95 на русском" width="1280" height="720" loading="lazy"><span class="shot-caption">Система Playrooms95 на русском</span></button><button class="shot-card" type="button" data-shot-src="../../media/shots/playrooms-2.jpg" data-shot-cap="Реплики Балли и подсказки"><img src="../../media/shots/playrooms-2.jpg" alt="Playrooms - Реплики Балли и подсказки" width="1280" height="720" loading="lazy"><span class="shot-caption">Реплики Балли и подсказки</span></button><button class="shot-card" type="button" data-shot-src="../../media/shots/playrooms-3.jpg" data-shot-cap="Панель мод-меню поверх игры"><img src="../../media/shots/playrooms-3.jpg" alt="Playrooms - Панель мод-меню поверх игры" width="1280" height="720" loading="lazy"><span class="shot-caption">Панель мод-меню поверх игры</span></button><button class="shot-card" type="button" data-shot-src="../../media/shots/playrooms-4.jpg" data-shot-cap="Таблица Cheat Engine на русском"><img src="../../media/shots/playrooms-4.jpg" alt="Playrooms - Таблица Cheat Engine на русском" width="1280" height="720" loading="lazy"><span class="shot-caption">Таблица Cheat Engine на русском</span></button></div><dialog id="shot-lightbox" class="lightbox" aria-label="Просмотр скриншота"><div class="lightbox-inner"><img id="lightbox-img" class="lightbox-img" alt=""><div class="lightbox-bar"><p id="lightbox-cap" class="lightbox-cap"></p><div class="lightbox-controls"><button id="lightbox-prev" class="btn btn-secondary" type="button">← Назад</button><button id="lightbox-next" class="btn btn-secondary" type="button">Вперёд →</button><button id="lightbox-close" class="btn btn-primary" type="button">Закрыть</button></div></div></div></dialog></section>
+    <section class="game-section" aria-labelledby="shots-heading"><div class="section-head"><h2 id="shots-heading">Живые кадры из игры</h2><p class="section-sub">Нажмите на кадр, чтобы открыть в полном размере</p></div><div class="shots-grid"><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/05f24431-44e7-4ad7-a10a-d9be6b896de5" data-shot-fallback="../../media/shots/playrooms-1.webp" data-shot-cap="Система Playrooms95 на русском"><img src="https://images.boosty.to/image/05f24431-44e7-4ad7-a10a-d9be6b896de5" data-fallback="../../media/shots/playrooms-1.webp" referrerpolicy="no-referrer" alt="Playrooms - Система Playrooms95 на русском" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Система Playrooms95 на русском</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/c842b9b3-69ce-4ded-bbf1-49c3e48a9db4" data-shot-fallback="../../media/shots/playrooms-2.webp" data-shot-cap="Реплики Балли и подсказки"><img src="https://images.boosty.to/image/c842b9b3-69ce-4ded-bbf1-49c3e48a9db4" data-fallback="../../media/shots/playrooms-2.webp" referrerpolicy="no-referrer" alt="Playrooms - Реплики Балли и подсказки" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Реплики Балли и подсказки</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/39ce0f34-442c-4a86-b1c7-67b901203e0c" data-shot-fallback="../../media/shots/playrooms-3.webp" data-shot-cap="Панель мод-меню поверх игры"><img src="https://images.boosty.to/image/39ce0f34-442c-4a86-b1c7-67b901203e0c" data-fallback="../../media/shots/playrooms-3.webp" referrerpolicy="no-referrer" alt="Playrooms - Панель мод-меню поверх игры" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Панель мод-меню поверх игры</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/ca2d1815-0e0c-4ff1-88d5-89826cf01112" data-shot-fallback="../../media/shots/playrooms-4.webp" data-shot-cap="Таблица Cheat Engine на русском"><img src="https://images.boosty.to/image/ca2d1815-0e0c-4ff1-88d5-89826cf01112" data-fallback="../../media/shots/playrooms-4.webp" referrerpolicy="no-referrer" alt="Playrooms - Таблица Cheat Engine на русском" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Таблица Cheat Engine на русском</span></button></div><dialog id="shot-lightbox" class="lightbox" aria-label="Просмотр скриншота"><div class="lightbox-inner"><img id="lightbox-img" class="lightbox-img" alt=""><div class="lightbox-bar"><p id="lightbox-cap" class="lightbox-cap"></p><div class="lightbox-controls"><button id="lightbox-prev" class="btn btn-secondary" type="button">← Назад</button><button id="lightbox-next" class="btn btn-secondary" type="button">Вперёд →</button><button id="lightbox-close" class="btn btn-primary" type="button">Закрыть</button></div></div></div></dialog></section>
 
     <section class="game-section">
       <div class="details-grid">
@@ -61,7 +1070,7 @@
     </section>
 
     <section id="order-game" class="order-strip" aria-label="Ранний доступ и заказ своей игры"><div class="order-strip-head"><div><h2 class="order-strip-title">Предложить или заказать свою игру</h2><p class="order-strip-sub">Готовые сборки открываются всем; первые 48 часов новинки и свежие патчи выходят на Boosty.</p></div><a class="btn btn-secondary" href="https://boosty.to/cd_tixo?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=order_game" target="_blank" rel="noopener">Выбрать уровень на Boosty ↗</a></div><dl class="tier-columns"><div class="tier-col"><dt>120 ₽</dt><dd>ранний доступ (-20% на первый месяц вместо 150 ₽ или разово за пост)</dd></div><div class="tier-col"><dt>350 ₽</dt><dd>предложить свою игру в приоритетную очередь разбора</dd></div><div class="tier-col"><dt>750 ₽</dt><dd>разбор подходящей одиночной игры вне очереди и свои настройки</dd></div></dl></section>
-    <section class="game-section" aria-labelledby="related-heading"><div class="section-head"><h2 id="related-heading">Другие сборки в каталоге</h2><a class="card-detail-link" href="../../">Все игры на полке →</a></div><div class="related-grid"><a class="related-card" href="../deleted-wiki/"><img src="../../media/deleted-wiki.jpg" alt="Deleted Wiki: Clean Up the Lost Files" width="800" height="450" loading="lazy"><span class="related-body"><span class="related-title">Deleted Wiki: Clean Up the Lost Files</span><span class="related-meta">v1.0 · Win, Deck, macOS</span></span></a><a class="related-card" href="../frontier-tale/"><img src="../../media/frontier-tale.jpg" alt="Frontier Tale" width="800" height="450" loading="lazy"><span class="related-body"><span class="related-title">Frontier Tale</span><span class="related-meta">v1.3 · Win, Deck</span></span></a><a class="related-card" href="../zombies-arent-real/"><img src="../../media/zombies-arent-real.jpg" alt="Zombies Aren&#x27;t Real" width="800" height="450" loading="lazy"><span class="related-body"><span class="related-title">Zombies Aren&#x27;t Real</span><span class="related-meta">v1.3 · Win, Deck</span></span></a></div></section>
+    <section class="game-section" aria-labelledby="related-heading"><div class="section-head"><h2 id="related-heading">Другие сборки в каталоге</h2><a class="card-detail-link" href="../../">Все игры на полке →</a></div><div class="related-grid"><a class="related-card" href="../deleted-wiki/"><img src="https://images.boosty.to/image/46c534f1-7eab-45e3-9935-647c40087eae" data-fallback="../../media/deleted-wiki.webp" referrerpolicy="no-referrer" style="background:#23272d" alt="Deleted Wiki: Clean Up the Lost Files" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Deleted Wiki: Clean Up the Lost Files</span><span class="related-meta">v1.0 · Win, Deck, macOS</span></span></a><a class="related-card" href="../frontier-tale/"><img src="https://images.boosty.to/image/40d36f38-eff9-40b6-ba76-6949f1da924b" data-fallback="../../media/frontier-tale.webp" referrerpolicy="no-referrer" style="background:#443e35" alt="Frontier Tale" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Frontier Tale</span><span class="related-meta">v1.3 · Win, Deck</span></span></a><a class="related-card" href="../zombies-arent-real/"><img src="https://images.boosty.to/image/bed6f4da-3d74-4217-911d-5f6a36eecd07" data-fallback="../../media/zombies-arent-real.webp" referrerpolicy="no-referrer" style="background:#39362f" alt="Zombies Aren&#x27;t Real" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Zombies Aren&#x27;t Real</span><span class="related-meta">v1.3 · Win, Deck</span></span></a></div></section>
   </main>
 
   <div id="mobile-cta-bar" class="mobile-cta-bar is-docked-hidden">
@@ -73,6 +1082,342 @@
   </div>
 
   <footer class="site-footer"><div class="container footer-inner"><p>neoru-droid · переводы, шрифты и сборки для одиночных игр</p><div class="footer-links"><a href="https://boosty.to/cd_tixo?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=hub" target="_blank" rel="noopener">Страница на Boosty</a><a href="https://boosty.to/cd_tixo/posts/2a55d7e9-0f53-4d93-9f66-280981158dec?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=hub" target="_blank" rel="noopener">Закреп на Boosty</a><a href="https://steamcommunity.com/id/cd-_-TiXo/myworkshopfiles/?section=guides" target="_blank" rel="noopener">Руководства Steam</a><a href="https://github.com/neoru-droid" target="_blank" rel="noopener">GitHub</a></div></div></footer>
-  <script src="../../app.js" defer></script>
+  <script>(function () {
+  function escapeHtml(text) {
+    return String(text)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
+  }
+
+  function withUtm(rawUrl, slug) {
+    const base = String(rawUrl || "").split("?")[0];
+    const campaign = String(slug || "hub").replaceAll("-", "_");
+    return `${base}?utm_source=catalog_site&utm_medium=web&utm_campaign=${encodeURIComponent(campaign)}`;
+  }
+
+  function formatCountdown(msLeft) {
+    const totalSec = Math.max(0, Math.floor(msLeft / 1000));
+    const hrs = String(Math.floor(totalSec / 3600)).padStart(2, "0");
+    const mins = String(Math.floor((totalSec % 3600) / 60)).padStart(2, "0");
+    const secs = String(totalSec % 60).padStart(2, "0");
+    return `${hrs}:${mins}:${secs}`;
+  }
+
+  function tickEarlyAccessTimers() {
+    const timers = document.querySelectorAll("[data-ea-until]");
+    if (!timers.length) return;
+    const now = Date.now();
+    timers.forEach((node) => {
+      const unlockMs = Number(node.getAttribute("data-ea-until"));
+      const diff = unlockMs - now;
+      if (diff <= 0) {
+        const card = node.closest(".card");
+        if (card) {
+          const freeAlt = card.querySelector("[data-ea-free-btn]");
+          if (freeAlt) freeAlt.remove();
+          const btn = card.querySelector(".btn-primary");
+          if (btn) {
+            btn.className = "btn btn-shelf";
+            btn.innerHTML = '<span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span>';
+          }
+        }
+        const heroBox = node.closest(".game-cta-box");
+        if (heroBox) {
+          const heroBtn = heroBox.querySelector(".btn-primary");
+          if (heroBtn) heroBtn.textContent = "Скачать бесплатно на Boosty ↗";
+          const split = heroBox.querySelector(".ea-split");
+          if (split) split.remove();
+        }
+        node.remove();
+        return;
+      }
+      const clock = node.querySelector(".ea-clock");
+      if (clock) {
+        clock.textContent = node.classList.contains("ea-inline")
+          ? `Ранний доступ · откроется бесплатно всем через ${formatCountdown(diff)}`
+          : `Ранний доступ · ${formatCountdown(diff)}`;
+      }
+    });
+  }
+
+  tickEarlyAccessTimers();
+  setInterval(tickEarlyAccessTimers, 1000);
+
+  // Copy page link button for Telegram / Discord sharing
+  const copyBtn = document.getElementById("copy-page-link");
+  if (copyBtn && navigator.clipboard) {
+    copyBtn.addEventListener("click", () => {
+      const url = copyBtn.getAttribute("data-copy-url") || window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        const orig = copyBtn.textContent;
+        copyBtn.textContent = "Ссылка скопирована ✓";
+        setTimeout(() => { copyBtn.textContent = orig; }, 1800);
+      }).catch(() => {});
+    });
+  }
+
+  // Per-game page interactions: platform tabs, screenshot lightbox, mobile sticky CTA
+  const tabList = document.querySelector("[role='tablist']");
+  if (tabList) {
+    const tabs = Array.from(tabList.querySelectorAll("[role='tab']"));
+    const panels = Array.from(document.querySelectorAll("[role='tabpanel']"));
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const targetId = tab.getAttribute("aria-controls");
+        tabs.forEach((t) => t.setAttribute("aria-selected", String(t === tab)));
+        panels.forEach((p) => { p.hidden = p.id !== targetId; });
+      });
+    });
+  }
+
+  const shotBtns = Array.from(document.querySelectorAll(".shot-card[data-shot-src]"));
+  const lightbox = document.getElementById("shot-lightbox");
+  if (shotBtns.length && lightbox && typeof lightbox.showModal === "function") {
+    const lbImg = document.getElementById("lightbox-img");
+    const lbCap = document.getElementById("lightbox-cap");
+    const lbPrev = document.getElementById("lightbox-prev");
+    const lbNext = document.getElementById("lightbox-next");
+    const lbClose = document.getElementById("lightbox-close");
+    let activeIdx = 0;
+
+    function showShot(idx) {
+      activeIdx = (idx + shotBtns.length) % shotBtns.length;
+      const item = shotBtns[activeIdx];
+      const fb = item.getAttribute("data-shot-fallback") || "";
+      if (fb) lbImg.setAttribute("data-fallback", fb);
+      lbImg.setAttribute("referrerpolicy", "no-referrer");
+      lbImg.src = item.getAttribute("data-shot-src") || "";
+      lbImg.alt = item.getAttribute("data-shot-cap") || "";
+      lbCap.textContent = item.getAttribute("data-shot-cap") || "";
+    }
+
+    shotBtns.forEach((btn, idx) => {
+      btn.addEventListener("click", () => {
+        showShot(idx);
+        lightbox.showModal();
+      });
+    });
+    if (lbPrev) lbPrev.addEventListener("click", () => showShot(activeIdx - 1));
+    if (lbNext) lbNext.addEventListener("click", () => showShot(activeIdx + 1));
+    if (lbClose) lbClose.addEventListener("click", () => lightbox.close());
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) lightbox.close();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.open) return;
+      if (e.key === "ArrowLeft") showShot(activeIdx - 1);
+      if (e.key === "ArrowRight") showShot(activeIdx + 1);
+    });
+  }
+
+  const heroCta = document.getElementById("hero-boosty-cta");
+  const mobileBar = document.getElementById("mobile-cta-bar");
+  if (heroCta && mobileBar && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        mobileBar.classList.toggle("is-docked-hidden", entry.isIntersecting);
+      });
+    }, { threshold: 0.15 });
+    io.observe(heroCta);
+  }
+
+  // Home shelf search, filters, URL sync & keyboard shortcut
+  const grid = document.getElementById("games-grid");
+  const searchInput = document.getElementById("search-input");
+  if (!grid || !searchInput) return;
+
+  const clearBtn = document.getElementById("search-clear");
+  const kbdHint = document.getElementById("search-kbd");
+  const countNode = document.getElementById("results-count");
+  const sortSelect = document.getElementById("sort-select");
+  const emptyState = document.getElementById("empty-state");
+  const resetBtn = document.getElementById("reset-filters");
+  const typeBtns = Array.from(document.querySelectorAll("[data-type]"));
+  const platformBtns = Array.from(document.querySelectorAll("[data-platform]"));
+
+  const state = { query: "", type: "all", platform: "", sort: "newest", games: [] };
+
+  function readUrlState() {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("q") || "";
+    const t = params.get("type") || "all";
+    const p = params.get("platform") || "";
+    const s = params.get("sort") || "newest";
+    state.query = q;
+    state.type = ["all", "translation", "mod"].includes(t) ? t : "all";
+    state.platform = p === "macos" ? "macos" : "";
+    state.sort = s === "alpha" ? "alpha" : "newest";
+    searchInput.value = state.query;
+    sortSelect.value = state.sort;
+    syncFilterButtons();
+    return Boolean(q.trim() || state.type !== "all" || state.platform || state.sort !== "newest");
+  }
+
+  function writeUrlState() {
+    const params = new URLSearchParams();
+    if (state.query.trim()) params.set("q", state.query.trim());
+    if (state.type !== "all") params.set("type", state.type);
+    if (state.platform) params.set("platform", state.platform);
+    if (state.sort !== "newest") params.set("sort", state.sort);
+    const qs = params.toString();
+    const nextUrl = window.location.pathname + (qs ? `?${qs}` : "") + window.location.hash;
+    window.history.replaceState(null, "", nextUrl);
+  }
+
+  function syncFilterButtons() {
+    typeBtns.forEach((b) => b.classList.toggle("is-active", (b.dataset.type || "all") === state.type));
+    platformBtns.forEach((b) => b.classList.toggle("is-active", (b.dataset.platform || "") === state.platform));
+    const hasQuery = state.query.length > 0;
+    if (clearBtn) clearBtn.hidden = !hasQuery;
+    if (kbdHint) kbdHint.hidden = hasQuery;
+  }
+
+  function formatPlatforms(game) {
+    const plat = ["Win"];
+    if (game.platforms && game.platforms.steamdeck) plat.push("Deck");
+    if (game.platforms && game.platforms.macos) plat.push("macOS");
+    return plat.join(", ");
+  }
+
+  function renderCard(game, idx) {
+    const unlockMs = game.early_access_until ? Date.parse(game.early_access_until) : NaN;
+    const isEarly = Number.isFinite(unlockMs) && unlockMs > Date.now();
+    const eaBadge = isEarly
+      ? `<div class="ea-badge" data-ea-until="${escapeHtml(String(unlockMs))}"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · ${formatCountdown(unlockMs - Date.now())}</span></div>`
+      : "";
+    const boostyHref = withUtm(game.boosty_url, game.slug);
+    const ghReleases = `${escapeHtml(String(game.github_url || "").replace(/\/$/, ""))}/releases/latest`;
+    const ctaBtns = isEarly
+      ? `<a class="btn btn-primary" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a>` +
+        `<a class="btn btn-shelf" data-ea-free-btn="1" href="${ghReleases}" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a>`
+      : `<a class="btn btn-shelf" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a>`;
+    const pageHref = `games/${encodeURIComponent(game.slug)}/`;
+    const ghLink = isEarly
+      ? ""
+      : `<a class="card-ext-link" href="${escapeHtml(game.github_url)}" target="_blank" rel="noopener">GitHub</a>`;
+    const steamLink = game.steam_guide_url
+      ? `<a class="card-ext-link" href="${escapeHtml(game.steam_guide_url)}" target="_blank" rel="noopener">Steam</a>`
+      : "";
+    const localWebp = `media/${escapeHtml(game.slug)}.webp`;
+    const imgSrc = game.cover_cdn_url ? escapeHtml(game.cover_cdn_url) : localWebp;
+    const fbAttr = game.cover_cdn_url ? ` data-fallback="${localWebp}"` : "";
+    const loadAttr = idx < 3 ? ' fetchpriority="high"' : (idx >= 6 ? ' loading="lazy" decoding="async"' : "");
+    const bgStyle = game.cover_color ? ` style="background:${escapeHtml(game.cover_color)}"` : "";
+
+    return '<' + 'article class="card">' +
+      `<a class="card-cover-link" href="${pageHref}"${bgStyle}>${eaBadge}` +
+      `<img class="card-cover" src="${imgSrc}"${fbAttr} referrerpolicy="no-referrer" alt="${escapeHtml(game.title)}" width="680" height="382"${loadAttr}>` +
+      `</a>` +
+      `<div class="card-body">` +
+      `<div class="card-head"><h2 class="card-title"><a class="card-title-link" href="${pageHref}">${escapeHtml(game.title)}</a></h2>` +
+      `<span class="card-ver">v${escapeHtml(game.version)} · ${escapeHtml(formatPlatforms(game))}</span></div>` +
+      `<p class="card-summary">${escapeHtml(game.summary)}</p>` +
+      `<div class="card-actions">${ctaBtns}` +
+      `<a class="card-detail-link" href="${pageHref}">Кадры и детали</a>${ghLink}${steamLink}` +
+      `</div></div></article>`;
+  }
+
+  function applyFilters() {
+    syncFilterButtons();
+    writeUrlState();
+    const q = state.query.trim().toLowerCase();
+    const filtered = state.games.filter((g) => {
+      if (state.type === "translation" && !g.has_translation) return false;
+      if (state.type === "mod" && !(g.has_mod_menu || g.has_ct)) return false;
+      if (state.platform === "macos" && !(g.platforms && g.platforms.macos)) return false;
+      if (!q) return true;
+      const implicit = [];
+      if (g.has_translation) implicit.push("русификатор перевод шрифт локализация");
+      if (g.has_mod_menu || g.has_ct) implicit.push("мод меню трейнер чит таблица сохранение");
+      const hay = [g.title, g.summary, ...(g.features || []), ...(g.keywords || []), ...implicit].join(" ").toLowerCase();
+      return hay.includes(q);
+    });
+
+    if (state.sort === "alpha") {
+      filtered.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+    } else {
+      filtered.reverse();
+    }
+
+    grid.innerHTML = filtered.map((g, i) => renderCard(g, i)).join("");
+    countNode.textContent = "Показано: " + filtered.length;
+    emptyState.hidden = filtered.length > 0;
+  }
+
+  typeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      state.type = btn.dataset.type || "all";
+      applyFilters();
+    });
+  });
+
+  platformBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.platform || "";
+      state.platform = state.platform === target ? "" : target;
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener("input", () => {
+    state.query = searchInput.value;
+    applyFilters();
+  });
+
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      state.query = "";
+      searchInput.value = "";
+      searchInput.focus();
+      applyFilters();
+    });
+  }
+
+  document.addEventListener("keydown", (e) => {
+    const activeTag = document.activeElement ? document.activeElement.tagName : "";
+    if (e.key === "/" && activeTag !== "INPUT" && activeTag !== "TEXTAREA" && activeTag !== "SELECT") {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
+
+  sortSelect.addEventListener("change", () => {
+    state.sort = sortSelect.value;
+    applyFilters();
+  });
+
+  resetBtn.addEventListener("click", () => {
+    state.query = "";
+    state.type = "all";
+    state.platform = "";
+    state.sort = "newest";
+    searchInput.value = "";
+    sortSelect.value = "newest";
+    applyFilters();
+  });
+
+  const hasInitialFilters = readUrlState();
+  const embedded = document.getElementById("catalog-data");
+  if (embedded && embedded.textContent) {
+    try {
+      state.games = JSON.parse(embedded.textContent);
+      if (hasInitialFilters) applyFilters();
+      return;
+    } catch (_) {}
+  }
+
+  fetch("data/catalog.json")
+    .then((r) => r.json())
+    .then((items) => {
+      state.games = Array.isArray(items) ? items : [];
+      if (hasInitialFilters) applyFilters();
+    })
+    .catch(() => {
+      countNode.textContent = "Ошибка загрузки каталога";
+    });
+})();
+</script>
 </body>
 </html>

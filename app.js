@@ -61,6 +61,19 @@
   tickEarlyAccessTimers();
   setInterval(tickEarlyAccessTimers, 1000);
 
+  // Copy page link button for Telegram / Discord sharing
+  const copyBtn = document.getElementById("copy-page-link");
+  if (copyBtn && navigator.clipboard) {
+    copyBtn.addEventListener("click", () => {
+      const url = copyBtn.getAttribute("data-copy-url") || window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        const orig = copyBtn.textContent;
+        copyBtn.textContent = "Ссылка скопирована ✓";
+        setTimeout(() => { copyBtn.textContent = orig; }, 1800);
+      }).catch(() => {});
+    });
+  }
+
   // Per-game page interactions: platform tabs, screenshot lightbox, mobile sticky CTA
   const tabList = document.querySelector("[role='tablist']");
   if (tabList) {
@@ -88,6 +101,9 @@
     function showShot(idx) {
       activeIdx = (idx + shotBtns.length) % shotBtns.length;
       const item = shotBtns[activeIdx];
+      const fb = item.getAttribute("data-shot-fallback") || "";
+      if (fb) lbImg.setAttribute("data-fallback", fb);
+      lbImg.setAttribute("referrerpolicy", "no-referrer");
       lbImg.src = item.getAttribute("data-shot-src") || "";
       lbImg.alt = item.getAttribute("data-shot-cap") || "";
       lbCap.textContent = item.getAttribute("data-shot-cap") || "";
@@ -152,6 +168,7 @@
     searchInput.value = state.query;
     sortSelect.value = state.sort;
     syncFilterButtons();
+    return Boolean(q.trim() || state.type !== "all" || state.platform || state.sort !== "newest");
   }
 
   function writeUrlState() {
@@ -180,7 +197,7 @@
     return plat.join(", ");
   }
 
-  function renderCard(game) {
+  function renderCard(game, idx) {
     const unlockMs = game.early_access_until ? Date.parse(game.early_access_until) : NaN;
     const isEarly = Number.isFinite(unlockMs) && unlockMs > Date.now();
     const eaBadge = isEarly
@@ -199,10 +216,15 @@
     const steamLink = game.steam_guide_url
       ? `<a class="card-ext-link" href="${escapeHtml(game.steam_guide_url)}" target="_blank" rel="noopener">Steam</a>`
       : "";
+    const localWebp = `media/${escapeHtml(game.slug)}.webp`;
+    const imgSrc = game.cover_cdn_url ? escapeHtml(game.cover_cdn_url) : localWebp;
+    const fbAttr = game.cover_cdn_url ? ` data-fallback="${localWebp}"` : "";
+    const loadAttr = idx < 3 ? ' fetchpriority="high"' : (idx >= 6 ? ' loading="lazy" decoding="async"' : "");
+    const bgStyle = game.cover_color ? ` style="background:${escapeHtml(game.cover_color)}"` : "";
 
-    return `<article class="card">` +
-      `<a class="card-cover-link" href="${pageHref}">${eaBadge}` +
-      `<img class="card-cover" src="media/${escapeHtml(game.slug)}.jpg" alt="${escapeHtml(game.title)}" width="800" height="450" loading="lazy">` +
+    return '<' + 'article class="card">' +
+      `<a class="card-cover-link" href="${pageHref}"${bgStyle}>${eaBadge}` +
+      `<img class="card-cover" src="${imgSrc}"${fbAttr} referrerpolicy="no-referrer" alt="${escapeHtml(game.title)}" width="680" height="382"${loadAttr}>` +
       `</a>` +
       `<div class="card-body">` +
       `<div class="card-head"><h2 class="card-title"><a class="card-title-link" href="${pageHref}">${escapeHtml(game.title)}</a></h2>` +
@@ -235,7 +257,7 @@
       filtered.reverse();
     }
 
-    grid.innerHTML = filtered.map(renderCard).join("");
+    grid.innerHTML = filtered.map((g, i) => renderCard(g, i)).join("");
     countNode.textContent = "Показано: " + filtered.length;
     emptyState.hidden = filtered.length > 0;
   }
@@ -292,13 +314,21 @@
     applyFilters();
   });
 
-  readUrlState();
+  const hasInitialFilters = readUrlState();
+  const embedded = document.getElementById("catalog-data");
+  if (embedded && embedded.textContent) {
+    try {
+      state.games = JSON.parse(embedded.textContent);
+      if (hasInitialFilters) applyFilters();
+      return;
+    } catch (_) {}
+  }
 
   fetch("data/catalog.json")
     .then((r) => r.json())
     .then((items) => {
       state.games = Array.isArray(items) ? items : [];
-      applyFilters();
+      if (hasInitialFilters) applyFilters();
     })
     .catch(() => {
       countNode.textContent = "Ошибка загрузки каталога";

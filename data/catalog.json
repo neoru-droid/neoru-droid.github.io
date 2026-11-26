@@ -40,7 +40,9 @@
       "марш",
       "стратегия",
       "уровни"
-    ]
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/4a954841-3356-4376-b3c4-9f7bf3c3455f",
+    "cover_color": "#474d52"
   },
   {
     "slug": "zombies-arent-real",
@@ -88,7 +90,9 @@
       "зомби",
       "кооп",
       "пиксельный"
-    ]
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/bed6f4da-3d74-4217-911d-5f6a36eecd07",
+    "cover_color": "#39362f"
   },
   {
     "slug": "frontier-tale",
@@ -126,7 +130,9 @@
       "фронтир",
       "рпг",
       "приключение"
-    ]
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/40d36f38-eff9-40b6-ba76-6949f1da924b",
+    "cover_color": "#443e35"
   },
   {
     "slug": "deleted-wiki",
@@ -170,7 +176,9 @@
       "удаленная вики",
       "удалённая вики",
       "корвид"
-    ]
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/46c534f1-7eab-45e3-9935-647c40087eae",
+    "cover_color": "#23272d"
   },
   {
     "slug": "playrooms",
@@ -214,7 +222,9 @@
       "скрепка",
       "балли",
       "русификатор"
-    ]
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/68b74efd-f3a5-4069-9727-9db9bfeaba26",
+    "cover_color": "#323e35"
   },
   {
     "slug": "here-comes-the-horde",
@@ -258,7 +268,9 @@
       "орды",
       "стена",
       "души"
-    ]
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/fb78f8b2-c2d2-43a7-959e-4a308df0d6cf",
+    "cover_color": "#262828"
   },
   {
     "slug": "booster-pack-heroes",
@@ -302,7 +314,9 @@
       "карты",
       "герои",
       "фольга"
-    ]
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/1cc69f12-3eb7-4916-a165-19fbc2b57056",
+    "cover_color": "#202846"
   },
   {
     "slug": "how-they-built-the-pyramids",
@@ -346,7 +360,9 @@
       "пирамид",
       "египет",
       "стройка"
-    ]
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/a455e175-7be3-4e12-a684-04a67e0f0487",
+    "cover_color": "#554b33"
   },
   {
     "slug": "one-more-lawn",
@@ -389,7 +405,9 @@
       "газон",
       "косилка",
       "трава"
-    ]
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/5a893431-56d5-442a-b726-4d56d460f2df",
+    "cover_color": "#313628"
   },
   {
     "slug": "shred-a-billion",
@@ -435,7 +453,9 @@
       "баксы",
       "слитки"
     ],
-    "early_access_until": "2026-11-27T20:00:00+10:00"
+    "early_access_until": "2026-11-27T20:00:00+10:00",
+    "cover_cdn_url": "https://images.boosty.to/image/aefdb84a-6da9-4c19-830c-0800ae17c89e",
+    "cover_color": "#3e3f31"
   },
   {
     "slug": "dice-hoarder",
@@ -481,7 +501,9 @@
       "настолка",
       "магазин",
       "сортировка"
-    ]
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/e8697702-fd9d-4690-8020-926620e9e0bc",
+    "cover_color": "#503c32"
   },
   {
     "slug": "ski-e-o",
@@ -528,6 +550,8 @@
       "тайкун",
       "снег",
       "подъёмник"
-    ]
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/f277435c-6fd4-4c30-8046-071a18813b98",
+    "cover_color": "#3d3a42"
   }
 ]
