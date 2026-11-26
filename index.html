@@ -840,12 +840,12 @@ p, li, dd { text-wrap: pretty; }
 .detail-head-row {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 8px 16px;
   min-height: 36px;
   margin: 0 0 16px;
-  padding-block-end: 8px;
+  padding-block-end: 10px;
   border-block-end: 1px solid var(--color-border-subtle);
 }
 .detail-head-row h2 {
@@ -871,13 +871,14 @@ p, li, dd { text-wrap: pretty; }
 }
 .tab-btn {
   position: relative;
-  min-height: 28px;
-  padding: 2px 2px 8px;
+  min-height: 24px;
+  padding: 0 2px;
   border: 0;
   background: transparent;
   color: var(--color-text-muted);
   font-size: 0.84375rem;
   font-weight: 600;
+  line-height: 1.25;
   cursor: pointer;
 }
 .tab-btn[aria-selected="true"] { color: var(--color-text-primary); }
@@ -885,7 +886,7 @@ p, li, dd { text-wrap: pretty; }
   content: "";
   position: absolute;
   inset-inline: 0;
-  inset-block-end: -9px;
+  inset-block-end: -11px;
   height: 2px;
   background: var(--color-accent-solid);
 }
