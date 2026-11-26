@@ -663,7 +663,7 @@
     "owned_on_steam": false,
     "has_translation": false,
     "has_mod_menu": true,
-    "has_ct": false,
+    "has_ct": true,
     "version": "1.0",
     "steam_build": "1.0.3-9c69d08d2",
     "early_access_until": "2026-11-28T23:00:00+10:00",
@@ -672,17 +672,22 @@
       "steamdeck": true,
       "macos": true
     },
-    "summary": "Бортовой терминал SX-19 на 13 функций (кислород, джетпак, бур 5x, арсенал, кредиты, таймер дней) и стартовое сохранение на 1 100 000 ₵.",
+    "summary": "Бортовой терминал SX-19 на 13 функций, таблица .CT на 10 скриптов (автопоиск процесса) и стартовое сохранение на 1 100 000 ₵.",
     "features": [
       "Кислород O2, джетпак H2O2, безлимитный трюм, заряды и спецсредства, скорость 1x-3x и телепорт к челноку",
       "Мощность бура 1x-5x, все 8 инструментов, 6 слотов орудий, тяговый луч и полные навыки скафандра",
-      "+100 000 и +1 000 000 кредитов, +10 дней до удара, заморозка таймера дней и сохранение на 1 100 000 ₵"
+      "Таблица .CT v1.0 (10 скриптов с автопоиском процесса) и стартовое сохранение на 1 100 000 ₵"
     ],
     "boosty_url": "https://boosty.to/cd_tixo/posts/e3df6474-7865-4719-8a58-c84be12d93ea",
     "github_url": "https://github.com/neoru-droid/no-asteroids-mod-ru",
     "steam_guide_url": "",
     "zog_url": "",
     "pg_cards": [
+      {
+        "id": "1894088",
+        "kind": "ct",
+        "url": "https://www.playground.ru/no_asteroids/cheat/no_asteroids_tablitsa_dlya_cheat_engine_kredity_kislorod_dzhetpak_tryum_skorost_zaryady_i_sloty-1894088"
+      },
       {
         "id": "1894072",
         "kind": "save",
