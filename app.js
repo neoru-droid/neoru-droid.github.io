@@ -32,7 +32,15 @@
         const card = node.closest(".card");
         if (card) {
           const freeAlt = card.querySelector("[data-ea-free-btn]");
-          if (freeAlt) freeAlt.remove();
+          const coverLink = card.querySelector(".card-cover-link");
+          if (freeAlt && coverLink) {
+            freeAlt.removeAttribute("data-ea-free-btn");
+            freeAlt.removeAttribute("target");
+            freeAlt.removeAttribute("rel");
+            freeAlt.className = "btn btn-secondary";
+            freeAlt.href = coverLink.getAttribute("href") || "#";
+            freeAlt.textContent = "Кадры и детали";
+          }
           const btn = card.querySelector(".btn-primary");
           if (btn) {
             btn.className = "btn btn-shelf";
@@ -204,18 +212,18 @@
       ? `<div class="ea-badge" data-ea-until="${escapeHtml(String(unlockMs))}"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · ${formatCountdown(unlockMs - Date.now())}</span></div>`
       : "";
     const boostyHref = withUtm(game.boosty_url, game.slug);
-    const ghReleases = `${escapeHtml(String(game.github_url || "").replace(/\/$/, ""))}/releases/latest`;
+    const pageHref = `games/${encodeURIComponent(game.slug)}/`;
+    const cleanGh = escapeHtml(String(game.github_url || "").replace(/\/$/, ""));
+    const ghReleases = `${cleanGh}/releases/latest`;
     const ctaBtns = isEarly
       ? `<a class="btn btn-primary" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a>` +
         `<a class="btn btn-shelf" data-ea-free-btn="1" href="${ghReleases}" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a>`
-      : `<a class="btn btn-shelf" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a>`;
-    const pageHref = `games/${encodeURIComponent(game.slug)}/`;
-    const ghLink = isEarly
-      ? ""
-      : `<a class="card-ext-link" href="${escapeHtml(game.github_url)}" target="_blank" rel="noopener">GitHub</a>`;
-    const steamLink = game.steam_guide_url
-      ? `<a class="card-ext-link" href="${escapeHtml(game.steam_guide_url)}" target="_blank" rel="noopener">Steam</a>`
-      : "";
+      : `<a class="btn btn-shelf" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a>` +
+        `<a class="btn btn-secondary" href="${pageHref}">Кадры и детали</a>`;
+    const linksItems = isEarly
+      ? `<a class="card-detail-link" href="${pageHref}">Кадры и детали</a><a class="card-ext-link" href="${cleanGh}" target="_blank" rel="noopener">GitHub</a>`
+      : `<a class="card-ext-link" href="${cleanGh}" target="_blank" rel="noopener">GitHub</a>` +
+        (game.steam_guide_url ? `<a class="card-ext-link" href="${escapeHtml(game.steam_guide_url)}" target="_blank" rel="noopener">Steam</a>` : "");
     const localWebp = `media/${escapeHtml(game.slug)}.webp`;
     const imgSrc = game.cover_cdn_url ? escapeHtml(game.cover_cdn_url) : localWebp;
     const fbAttr = game.cover_cdn_url ? ` data-fallback="${localWebp}"` : "";
@@ -226,13 +234,12 @@
       `<a class="card-cover-link" href="${pageHref}"${bgStyle}>${eaBadge}` +
       `<img class="card-cover" src="${imgSrc}"${fbAttr} referrerpolicy="no-referrer" alt="${escapeHtml(game.title)}" width="680" height="382"${loadAttr}>` +
       `</a>` +
-      `<div class="card-body">` +
       `<div class="card-head"><h2 class="card-title"><a class="card-title-link" href="${pageHref}">${escapeHtml(game.title)}</a></h2>` +
       `<span class="card-ver">v${escapeHtml(game.version)} · ${escapeHtml(formatPlatforms(game))}</span></div>` +
       `<p class="card-summary">${escapeHtml(game.summary)}</p>` +
-      `<div class="card-actions">${ctaBtns}` +
-      `<a class="card-detail-link" href="${pageHref}">Кадры и детали</a>${ghLink}${steamLink}` +
-      `</div></div></article>`;
+      `<div class="card-cta-bar">${ctaBtns}</div>` +
+      `<div class="card-links">${linksItems}</div>` +
+      `</article>`;
   }
 
   function applyFilters() {

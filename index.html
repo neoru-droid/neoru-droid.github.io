@@ -362,7 +362,7 @@ p, li, dd { text-wrap: pretty; }
 }
 
 /* Unboxed Game Poster Shelf */
-.main-content { padding-block: 22px 48px; }
+.main-content { padding-block: 22px 20px; }
 .shelf-note {
   margin: 0 0 22px;
   color: var(--color-text-muted);
@@ -372,16 +372,20 @@ p, li, dd { text-wrap: pretty; }
 .games-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 38px 28px;
+  column-gap: 28px;
+  row-gap: 0;
 }
 .card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-row: span 5;
+  grid-template-rows: subgrid;
+  row-gap: 0;
   min-width: 0;
 }
 .card-cover-link {
   display: block;
   position: relative;
+  margin-block-end: 13px;
   border-radius: 6px;
   overflow: hidden;
   background: #23221f;
@@ -422,19 +426,13 @@ p, li, dd { text-wrap: pretty; }
   background: var(--color-accent-solid);
   flex-shrink: 0;
 }
-.card-body {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  gap: 6px;
-  padding-block-start: 13px;
-  min-width: 0;
-}
 .card-head {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: first baseline;
   gap: 10px;
+  margin-block-end: 6px;
+  min-width: 0;
 }
 .card-title {
   margin: 0;
@@ -454,21 +452,42 @@ p, li, dd { text-wrap: pretty; }
   font-variant-numeric: tabular-nums;
 }
 .card-summary {
-  margin: 0;
+  margin: 0 0 14px;
   color: var(--color-text-secondary);
   font-size: 0.875rem;
   line-height: 1.48;
 }
-.card-actions {
-  margin-block-start: auto;
-  padding-block-start: 8px;
+.card-cta-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-block-end: 9px;
+}
+.card-cta-bar > .btn {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 7px 11px;
+  font-size: 0.8125rem;
+}
+.card-links {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 12px;
+  gap: 4px 8px;
+  padding-block-end: 36px;
+  font-size: 0.78125rem;
+  line-height: 1.35;
+}
+.card-links a + a::before {
+  content: "·";
+  margin-inline-end: 8px;
+  color: var(--color-border-strong);
+  text-decoration: none;
+  display: inline-block;
 }
 .card-detail-link, .card-ext-link {
-  font-size: 0.8125rem;
+  font-size: 0.78125rem;
   text-decoration: none;
 }
 .card-detail-link {
@@ -479,7 +498,7 @@ p, li, dd { text-wrap: pretty; }
 
 /* Calm Horizontal Order Strip Below Shelf */
 .order-strip {
-  margin-block-start: 52px;
+  margin-block-start: 20px;
   padding-block-start: 28px;
   border-block-start: 1px solid var(--color-border-subtle);
 }
@@ -506,6 +525,7 @@ p, li, dd { text-wrap: pretty; }
   margin: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
   gap: 20px 28px;
 }
 .tier-col {
@@ -528,18 +548,31 @@ p, li, dd { text-wrap: pretty; }
 }
 
 /* Per-Game Editorial Page (/games/<slug>/) */
+.breadcrumb-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  padding-block: 16px 14px;
+}
 .breadcrumb {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  padding-block: 18px 16px;
   font-size: 0.84375rem;
   color: var(--color-text-muted);
 }
 .breadcrumb a {
   color: var(--color-text-secondary);
   text-decoration: none;
+}
+.btn-copy-top {
+  min-height: 32px;
+  padding: 5px 11px;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 .game-hero {
   display: grid;
@@ -585,11 +618,17 @@ p, li, dd { text-wrap: pretty; }
 .spec-strip {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 16px;
+  align-items: center;
+  gap: 4px 10px;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.8rem;
   color: var(--color-text-muted);
   font-variant-numeric: tabular-nums;
+}
+.spec-strip span + span::before {
+  content: "·";
+  margin-inline-end: 10px;
+  color: var(--color-border-strong);
 }
 .game-lead {
   margin: 2px 0;
@@ -623,10 +662,15 @@ p, li, dd { text-wrap: pretty; }
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  width: 100%;
+}
+.game-cta-row > .btn {
+  flex: 1 1 auto;
 }
 .ea-split {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   gap: 14px 20px;
   width: 100%;
   padding-block-start: 12px;
@@ -660,10 +704,18 @@ p, li, dd { text-wrap: pretty; }
 .game-ext-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 16px;
+  align-items: center;
+  gap: 6px 10px;
   padding-block-start: 12px;
   border-block-start: 1px solid var(--color-border-subtle);
   font-size: 0.84rem;
+}
+.game-ext-links a + a::before {
+  content: "·";
+  margin-inline-end: 10px;
+  color: var(--color-border-strong);
+  display: inline-block;
+  text-decoration: none;
 }
 .game-ext-links a {
   color: var(--color-text-secondary);
@@ -845,7 +897,7 @@ p, li, dd { text-wrap: pretty; }
 .related-body {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: first baseline;
   gap: 8px;
 }
 .related-title {
@@ -943,8 +995,11 @@ p, li, dd { text-wrap: pretty; }
   }
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1120px) {
   .games-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 980px) {
   .game-hero, .details-grid, .tier-columns { grid-template-columns: 1fr; }
   .detail-col + .detail-col {
     padding-inline-start: 0;
@@ -1016,9 +1071,16 @@ p, li, dd { text-wrap: pretty; }
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .games-grid, .shots-grid, .related-grid, .ea-split { grid-template-columns: 1fr; }
-  .games-grid { gap: 30px; }
+  .games-grid { gap: 28px; }
+  .card {
+    display: flex;
+    flex-direction: column;
+    grid-row: auto;
+  }
+  .card-links { padding-block-end: 0; }
+  .card-cta-bar { flex-wrap: wrap; }
   .game-cta-row { width: 100%; }
   .game-cta-row .btn { flex: 1 1 auto; }
 }
@@ -1062,18 +1124,18 @@ p, li, dd { text-wrap: pretty; }
   <main class="container main-content">
     <h1 class="sr-only">Каталог русификаторов, шрифтов и игровых сборок neoru-droid</h1>
     <p class="shelf-note">Переводы, таблицы .CT и сохранения бесплатны сразу · новые мод-меню открываются всем через 48 часов.</p>
-    <div id="games-grid" class="games-grid"><article class="card"><a class="card-cover-link" href="games/ski-e-o/" style="background:#3d3a42"><div class="ea-badge" data-ea-until="1795827600000"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · скоро откроется</span></div><img class="card-cover" src="https://images.boosty.to/image/f277435c-6fd4-4c30-8046-071a18813b98" data-fallback="media/ski-e-o.webp" referrerpolicy="no-referrer" alt="Ski-E-O! Ski Resort Tycoon" width="680" height="382" fetchpriority="high"></a><div class="card-body"><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/ski-e-o/">Ski-E-O! Ski Resort Tycoon</a></h2><span class="card-ver">v1.0 · Win, Deck</span></div><p class="card-summary">Старт с бюджетом 5 000 000 $, заморозка счёта, репутация курорта, бесплатные снегопушки и быстрая камера.</p><div class="card-actions"><a class="btn btn-primary" href="https://boosty.to/cd_tixo/posts/4f0cee8e-4c79-4c4c-826f-5caef2db29e9?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=ski_e_o" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a><a class="btn btn-shelf" data-ea-free-btn="1" href="https://github.com/neoru-droid/ski-e-o-mod-ru/releases/latest" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a><a class="card-detail-link" href="games/ski-e-o/">Кадры и детали</a></div></div></article>
-<article class="card"><a class="card-cover-link" href="games/dice-hoarder/" style="background:#503c32"><div class="ea-badge" data-ea-until="1795827600000"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · скоро откроется</span></div><img class="card-cover" src="https://images.boosty.to/image/e8697702-fd9d-4690-8020-926620e9e0bc" data-fallback="media/dice-hoarder.webp" referrerpolicy="no-referrer" alt="Dice Hoarder" width="680" height="382" fetchpriority="high"></a><div class="card-body"><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/dice-hoarder/">Dice Hoarder</a></h2><span class="card-ver">v1.0 · Win, Deck</span></div><p class="card-summary">Сохранение на 4 уровень, прокачка всех 8 навыков, бесконечная выносливость, дальний захват x3 и автосортировка.</p><div class="card-actions"><a class="btn btn-primary" href="https://boosty.to/cd_tixo/posts/0585ec01-e32d-46a6-87fe-edee2045a9fc?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=dice_hoarder" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a><a class="btn btn-shelf" data-ea-free-btn="1" href="https://github.com/neoru-droid/dice-hoarder-mod-ru/releases/latest" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a><a class="card-detail-link" href="games/dice-hoarder/">Кадры и детали</a></div></div></article>
-<article class="card"><a class="card-cover-link" href="games/shred-a-billion/" style="background:#3e3f31"><div class="ea-badge" data-ea-until="1795773600000"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · скоро откроется</span></div><img class="card-cover" src="https://images.boosty.to/image/aefdb84a-6da9-4c19-830c-0800ae17c89e" data-fallback="media/shred-a-billion.webp" referrerpolicy="no-referrer" alt="SHRED A BILLION" width="680" height="382" fetchpriority="high"></a><div class="card-body"><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/shred-a-billion/">SHRED A BILLION</a></h2><span class="card-ver">v1.0 · Win, Deck</span></div><p class="card-summary">10 000 000 $ на счету со старта, золотые слитки, очки навыков, все инструменты, магнит купюр и ускорение работы.</p><div class="card-actions"><a class="btn btn-primary" href="https://boosty.to/cd_tixo/posts/91615b98-617b-4e4e-8056-baf6eca9ae71?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=shred_a_billion" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a><a class="btn btn-shelf" data-ea-free-btn="1" href="https://github.com/neoru-droid/shred-a-billion-mod-ru/releases/latest" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a><a class="card-detail-link" href="games/shred-a-billion/">Кадры и детали</a></div></div></article>
-<article class="card"><a class="card-cover-link" href="games/one-more-lawn/" style="background:#313628"><img class="card-cover" src="https://images.boosty.to/image/5a893431-56d5-442a-b726-4d56d460f2df" data-fallback="media/one-more-lawn.webp" referrerpolicy="no-referrer" alt="One More Lawn" width="680" height="382"></a><div class="card-body"><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/one-more-lawn/">One More Lawn</a></h2><span class="card-ver">v1.0 · Win, Deck</span></div><p class="card-summary">Скорость косилки x2.5, широкая дека 4.4 м, бесконечное топливо, покос участка 18x18 м, деньги и смена погоды.</p><div class="card-actions"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/67ce4af5-4975-4f8e-9f0c-e64ab7899433?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=one_more_lawn" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="card-detail-link" href="games/one-more-lawn/">Кадры и детали</a><a class="card-ext-link" href="https://github.com/neoru-droid/one-more-lawn-mod-ru" target="_blank" rel="noopener">GitHub</a></div></div></article>
-<article class="card"><a class="card-cover-link" href="games/how-they-built-the-pyramids/" style="background:#554b33"><img class="card-cover" src="https://images.boosty.to/image/a455e175-7be3-4e12-a684-04a67e0f0487" data-fallback="media/how-they-built-the-pyramids.webp" referrerpolicy="no-referrer" alt="How They Built the Pyramids" width="680" height="382"></a><div class="card-body"><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/how-they-built-the-pyramids/">How They Built the Pyramids</a></h2><span class="card-ver">v1.0 · Win, Deck</span></div><p class="card-summary">Лагерь 10 уровня со старта, запас монет, кирпичей и глины, быстрый бег, лёгкая переноска блоков и защита от жары.</p><div class="card-actions"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/41ca289e-3e82-4c0f-af84-9cad91e1b84a?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=how_they_built_the_pyramids" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="card-detail-link" href="games/how-they-built-the-pyramids/">Кадры и детали</a><a class="card-ext-link" href="https://github.com/neoru-droid/how-they-built-the-pyramids-mod-ru" target="_blank" rel="noopener">GitHub</a></div></div></article>
-<article class="card"><a class="card-cover-link" href="games/booster-pack-heroes/" style="background:#202846"><img class="card-cover" src="https://images.boosty.to/image/1cc69f12-3eb7-4916-a165-19fbc2b57056" data-fallback="media/booster-pack-heroes.webp" referrerpolicy="no-referrer" alt="Booster Pack Heroes" width="680" height="382"></a><div class="card-body"><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/booster-pack-heroes/">Booster Pack Heroes</a></h2><span class="card-ver">v1.0 · Win, Deck, macOS</span></div><p class="card-summary">Стартовый запас всех валют, неуязвимая башня, урон курсора, 100% фольгированные и гигантские карты в бустерах.</p><div class="card-actions"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/955a2671-c452-4955-b234-15400619ae78?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=booster_pack_heroes" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="card-detail-link" href="games/booster-pack-heroes/">Кадры и детали</a><a class="card-ext-link" href="https://github.com/neoru-droid/booster-pack-heroes-mod-ru" target="_blank" rel="noopener">GitHub</a></div></div></article>
-<article class="card"><a class="card-cover-link" href="games/here-comes-the-horde/" style="background:#262828"><img class="card-cover" src="https://images.boosty.to/image/fb78f8b2-c2d2-43a7-959e-4a308df0d6cf" data-fallback="media/here-comes-the-horde.webp" referrerpolicy="no-referrer" alt="Here Comes the Horde" width="680" height="382" loading="lazy" decoding="async"></a><div class="card-body"><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/here-comes-the-horde/">Here Comes the Horde</a></h2><span class="card-ver">v1.1 · Win, Deck</span></div><p class="card-summary">Стена на 500 000 HP, быстрый призыв отрядов, бесплатная стройка, множители золота и душ и таланты за 1 душу.</p><div class="card-actions"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/b3cdcac4-e365-460f-9d19-4536f8c2df0c?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=here_comes_the_horde" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="card-detail-link" href="games/here-comes-the-horde/">Кадры и детали</a><a class="card-ext-link" href="https://github.com/neoru-droid/here-comes-the-horde-mod-ru" target="_blank" rel="noopener">GitHub</a></div></div></article>
-<article class="card"><a class="card-cover-link" href="games/playrooms/" style="background:#323e35"><img class="card-cover" src="https://images.boosty.to/image/68b74efd-f3a5-4069-9727-9db9bfeaba26" data-fallback="media/playrooms.webp" referrerpolicy="no-referrer" alt="Playrooms" width="680" height="382" loading="lazy" decoding="async"></a><div class="card-body"><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/playrooms/">Playrooms</a></h2><span class="card-ver">v1.0 · Win, Deck</span></div><p class="card-summary">Система Playrooms95, 177 реплик скрепки Балли, письма, телетекст и 4 шрифта игры плюс выносливость и фонарик.</p><div class="card-actions"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/0008f686-0666-4398-a5c7-c8a5b6d26d69?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=playrooms" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="card-detail-link" href="games/playrooms/">Кадры и детали</a><a class="card-ext-link" href="https://github.com/neoru-droid/playrooms-ru" target="_blank" rel="noopener">GitHub</a><a class="card-ext-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3844623165" target="_blank" rel="noopener">Steam</a></div></div></article>
-<article class="card"><a class="card-cover-link" href="games/deleted-wiki/" style="background:#23272d"><img class="card-cover" src="https://images.boosty.to/image/46c534f1-7eab-45e3-9935-647c40087eae" data-fallback="media/deleted-wiki.webp" referrerpolicy="no-referrer" alt="Deleted Wiki: Clean Up the Lost Files" width="680" height="382" loading="lazy" decoding="async"></a><div class="card-body"><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/deleted-wiki/">Deleted Wiki: Clean Up the Lost Files</a></h2><span class="card-ver">v1.0 · Win, Deck, macOS</span></div><p class="card-summary">631 предмет каталога, 15 скриптов, форум и реплики вИИрона со шрифтом Underdog и умным поиском е/ё.</p><div class="card-actions"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/7446d8dd-7024-4e12-9a7e-9e93afa01ec7?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=deleted_wiki" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="card-detail-link" href="games/deleted-wiki/">Кадры и детали</a><a class="card-ext-link" href="https://github.com/neoru-droid/deleted-wiki-ru" target="_blank" rel="noopener">GitHub</a><a class="card-ext-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3842897222" target="_blank" rel="noopener">Steam</a></div></div></article>
-<article class="card"><a class="card-cover-link" href="games/frontier-tale/" style="background:#443e35"><img class="card-cover" src="https://images.boosty.to/image/40d36f38-eff9-40b6-ba76-6949f1da924b" data-fallback="media/frontier-tale.webp" referrerpolicy="no-referrer" alt="Frontier Tale" width="680" height="382" loading="lazy" decoding="async"></a><div class="card-body"><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/frontier-tale/">Frontier Tale</a></h2><span class="card-ver">v1.3 · Win, Deck</span></div><p class="card-summary">Сюжетные диалоги, предметы, рецепты, задания и подписи мини-карты (7 036 строк) под патч 2.1.7.</p><div class="card-actions"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/486ebb53-422d-4023-9da7-b1fdbc0b2a7f?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=frontier_tale" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="card-detail-link" href="games/frontier-tale/">Кадры и детали</a><a class="card-ext-link" href="https://github.com/neoru-droid/frontier-tale-ru" target="_blank" rel="noopener">GitHub</a><a class="card-ext-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3840837132" target="_blank" rel="noopener">Steam</a></div></div></article>
-<article class="card"><a class="card-cover-link" href="games/zombies-arent-real/" style="background:#39362f"><img class="card-cover" src="https://images.boosty.to/image/bed6f4da-3d74-4217-911d-5f6a36eecd07" data-fallback="media/zombies-arent-real.webp" referrerpolicy="no-referrer" alt="Zombies Aren&#x27;t Real" width="680" height="382" loading="lazy" decoding="async"></a><div class="card-body"><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/zombies-arent-real/">Zombies Aren&#x27;t Real</a></h2><span class="card-ver">v1.3 · Win, Deck</span></div><p class="card-summary">3 009 строк кампании, снаряжения и кооператива с пиксельным шрифтом 8x8, тактическим экраном и запасом бюджета.</p><div class="card-actions"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/0ec0506b-063f-4be2-a788-40ebe320add7?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=zombies_arent_real" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="card-detail-link" href="games/zombies-arent-real/">Кадры и детали</a><a class="card-ext-link" href="https://github.com/neoru-droid/zombies-arent-real-ru" target="_blank" rel="noopener">GitHub</a><a class="card-ext-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3840725363" target="_blank" rel="noopener">Steam</a></div></div></article>
-<article class="card"><a class="card-cover-link" href="games/we-march-as-one/" style="background:#474d52"><img class="card-cover" src="https://images.boosty.to/image/4a954841-3356-4376-b3c4-9f7bf3c3455f" data-fallback="media/we-march-as-one.webp" referrerpolicy="no-referrer" alt="We March as One" width="680" height="382" loading="lazy" decoding="async"></a><div class="card-body"><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/we-march-as-one/">We March as One</a></h2><span class="card-ver">v1.2 · Win, Deck</span></div><p class="card-summary">Кампания на 50 уровней, древо навыков и все 30 достижений на 5 кириллических шрифтах игры плюс опции золота и славы.</p><div class="card-actions"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/73fae114-79d9-4305-99cc-8d8af1d157ce?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=we_march_as_one" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="card-detail-link" href="games/we-march-as-one/">Кадры и детали</a><a class="card-ext-link" href="https://github.com/neoru-droid/we-march-as-one-ru" target="_blank" rel="noopener">GitHub</a><a class="card-ext-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3840161059" target="_blank" rel="noopener">Steam</a></div></div></article></div>
+    <div id="games-grid" class="games-grid"><article class="card"><a class="card-cover-link" href="games/ski-e-o/" style="background:#3d3a42"><div class="ea-badge" data-ea-until="1795827600000"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · скоро откроется</span></div><img class="card-cover" src="https://images.boosty.to/image/f277435c-6fd4-4c30-8046-071a18813b98" data-fallback="media/ski-e-o.webp" referrerpolicy="no-referrer" alt="Ski-E-O! Ski Resort Tycoon" width="680" height="382" fetchpriority="high"></a><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/ski-e-o/">Ski-E-O! Ski Resort Tycoon</a></h2><span class="card-ver">v1.0 · Win, Deck</span></div><p class="card-summary">Старт с бюджетом 5 000 000 $, заморозка счёта, репутация курорта, бесплатные снегопушки и быстрая камера.</p><div class="card-cta-bar"><a class="btn btn-primary" href="https://boosty.to/cd_tixo/posts/4f0cee8e-4c79-4c4c-826f-5caef2db29e9?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=ski_e_o" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a><a class="btn btn-shelf" data-ea-free-btn="1" href="https://github.com/neoru-droid/ski-e-o-mod-ru/releases/latest" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a></div><div class="card-links"><a class="card-detail-link" href="games/ski-e-o/">Кадры и детали</a><a class="card-ext-link" href="https://github.com/neoru-droid/ski-e-o-mod-ru" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card"><a class="card-cover-link" href="games/dice-hoarder/" style="background:#503c32"><div class="ea-badge" data-ea-until="1795827600000"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · скоро откроется</span></div><img class="card-cover" src="https://images.boosty.to/image/e8697702-fd9d-4690-8020-926620e9e0bc" data-fallback="media/dice-hoarder.webp" referrerpolicy="no-referrer" alt="Dice Hoarder" width="680" height="382" fetchpriority="high"></a><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/dice-hoarder/">Dice Hoarder</a></h2><span class="card-ver">v1.0 · Win, Deck</span></div><p class="card-summary">Сохранение на 4 уровень, прокачка всех 8 навыков, бесконечная выносливость, дальний захват x3 и автосортировка.</p><div class="card-cta-bar"><a class="btn btn-primary" href="https://boosty.to/cd_tixo/posts/0585ec01-e32d-46a6-87fe-edee2045a9fc?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=dice_hoarder" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a><a class="btn btn-shelf" data-ea-free-btn="1" href="https://github.com/neoru-droid/dice-hoarder-mod-ru/releases/latest" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a></div><div class="card-links"><a class="card-detail-link" href="games/dice-hoarder/">Кадры и детали</a><a class="card-ext-link" href="https://github.com/neoru-droid/dice-hoarder-mod-ru" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card"><a class="card-cover-link" href="games/shred-a-billion/" style="background:#3e3f31"><div class="ea-badge" data-ea-until="1795773600000"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · скоро откроется</span></div><img class="card-cover" src="https://images.boosty.to/image/aefdb84a-6da9-4c19-830c-0800ae17c89e" data-fallback="media/shred-a-billion.webp" referrerpolicy="no-referrer" alt="SHRED A BILLION" width="680" height="382" fetchpriority="high"></a><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/shred-a-billion/">SHRED A BILLION</a></h2><span class="card-ver">v1.0 · Win, Deck</span></div><p class="card-summary">10 000 000 $ на счету со старта, золотые слитки, очки навыков, все инструменты, магнит купюр и ускорение работы.</p><div class="card-cta-bar"><a class="btn btn-primary" href="https://boosty.to/cd_tixo/posts/91615b98-617b-4e4e-8056-baf6eca9ae71?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=shred_a_billion" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a><a class="btn btn-shelf" data-ea-free-btn="1" href="https://github.com/neoru-droid/shred-a-billion-mod-ru/releases/latest" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a></div><div class="card-links"><a class="card-detail-link" href="games/shred-a-billion/">Кадры и детали</a><a class="card-ext-link" href="https://github.com/neoru-droid/shred-a-billion-mod-ru" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card"><a class="card-cover-link" href="games/one-more-lawn/" style="background:#313628"><img class="card-cover" src="https://images.boosty.to/image/5a893431-56d5-442a-b726-4d56d460f2df" data-fallback="media/one-more-lawn.webp" referrerpolicy="no-referrer" alt="One More Lawn" width="680" height="382"></a><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/one-more-lawn/">One More Lawn</a></h2><span class="card-ver">v1.0 · Win, Deck</span></div><p class="card-summary">Скорость косилки x2.5, широкая дека 4.4 м, бесконечное топливо, покос участка 18x18 м, деньги и смена погоды.</p><div class="card-cta-bar"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/67ce4af5-4975-4f8e-9f0c-e64ab7899433?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=one_more_lawn" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="games/one-more-lawn/">Кадры и детали</a></div><div class="card-links"><a class="card-ext-link" href="https://github.com/neoru-droid/one-more-lawn-mod-ru" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card"><a class="card-cover-link" href="games/how-they-built-the-pyramids/" style="background:#554b33"><img class="card-cover" src="https://images.boosty.to/image/a455e175-7be3-4e12-a684-04a67e0f0487" data-fallback="media/how-they-built-the-pyramids.webp" referrerpolicy="no-referrer" alt="How They Built the Pyramids" width="680" height="382"></a><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/how-they-built-the-pyramids/">How They Built the Pyramids</a></h2><span class="card-ver">v1.0 · Win, Deck</span></div><p class="card-summary">Лагерь 10 уровня со старта, запас монет, кирпичей и глины, быстрый бег, лёгкая переноска блоков и защита от жары.</p><div class="card-cta-bar"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/41ca289e-3e82-4c0f-af84-9cad91e1b84a?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=how_they_built_the_pyramids" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="games/how-they-built-the-pyramids/">Кадры и детали</a></div><div class="card-links"><a class="card-ext-link" href="https://github.com/neoru-droid/how-they-built-the-pyramids-mod-ru" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card"><a class="card-cover-link" href="games/booster-pack-heroes/" style="background:#202846"><img class="card-cover" src="https://images.boosty.to/image/1cc69f12-3eb7-4916-a165-19fbc2b57056" data-fallback="media/booster-pack-heroes.webp" referrerpolicy="no-referrer" alt="Booster Pack Heroes" width="680" height="382"></a><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/booster-pack-heroes/">Booster Pack Heroes</a></h2><span class="card-ver">v1.0 · Win, Deck, macOS</span></div><p class="card-summary">Стартовый запас всех валют, неуязвимая башня, урон курсора, 100% фольгированные и гигантские карты в бустерах.</p><div class="card-cta-bar"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/955a2671-c452-4955-b234-15400619ae78?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=booster_pack_heroes" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="games/booster-pack-heroes/">Кадры и детали</a></div><div class="card-links"><a class="card-ext-link" href="https://github.com/neoru-droid/booster-pack-heroes-mod-ru" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card"><a class="card-cover-link" href="games/here-comes-the-horde/" style="background:#262828"><img class="card-cover" src="https://images.boosty.to/image/fb78f8b2-c2d2-43a7-959e-4a308df0d6cf" data-fallback="media/here-comes-the-horde.webp" referrerpolicy="no-referrer" alt="Here Comes the Horde" width="680" height="382" loading="lazy" decoding="async"></a><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/here-comes-the-horde/">Here Comes the Horde</a></h2><span class="card-ver">v1.1 · Win, Deck</span></div><p class="card-summary">Стена на 500 000 HP, быстрый призыв отрядов, бесплатная стройка, множители золота и душ и таланты за 1 душу.</p><div class="card-cta-bar"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/b3cdcac4-e365-460f-9d19-4536f8c2df0c?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=here_comes_the_horde" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="games/here-comes-the-horde/">Кадры и детали</a></div><div class="card-links"><a class="card-ext-link" href="https://github.com/neoru-droid/here-comes-the-horde-mod-ru" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card"><a class="card-cover-link" href="games/playrooms/" style="background:#323e35"><img class="card-cover" src="https://images.boosty.to/image/68b74efd-f3a5-4069-9727-9db9bfeaba26" data-fallback="media/playrooms.webp" referrerpolicy="no-referrer" alt="Playrooms" width="680" height="382" loading="lazy" decoding="async"></a><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/playrooms/">Playrooms</a></h2><span class="card-ver">v1.0 · Win, Deck</span></div><p class="card-summary">Система Playrooms95, 177 реплик скрепки Балли, письма, телетекст и 4 шрифта игры плюс выносливость и фонарик.</p><div class="card-cta-bar"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/0008f686-0666-4398-a5c7-c8a5b6d26d69?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=playrooms" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="games/playrooms/">Кадры и детали</a></div><div class="card-links"><a class="card-ext-link" href="https://github.com/neoru-droid/playrooms-ru" target="_blank" rel="noopener">GitHub</a><a class="card-ext-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3844623165" target="_blank" rel="noopener">Steam</a></div></article>
+<article class="card"><a class="card-cover-link" href="games/deleted-wiki/" style="background:#23272d"><img class="card-cover" src="https://images.boosty.to/image/46c534f1-7eab-45e3-9935-647c40087eae" data-fallback="media/deleted-wiki.webp" referrerpolicy="no-referrer" alt="Deleted Wiki: Clean Up the Lost Files" width="680" height="382" loading="lazy" decoding="async"></a><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/deleted-wiki/">Deleted Wiki: Clean Up the Lost Files</a></h2><span class="card-ver">v1.0 · Win, Deck, macOS</span></div><p class="card-summary">631 предмет каталога, 15 скриптов, форум и реплики вИИрона со шрифтом Underdog и умным поиском е/ё.</p><div class="card-cta-bar"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/7446d8dd-7024-4e12-9a7e-9e93afa01ec7?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=deleted_wiki" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="games/deleted-wiki/">Кадры и детали</a></div><div class="card-links"><a class="card-ext-link" href="https://github.com/neoru-droid/deleted-wiki-ru" target="_blank" rel="noopener">GitHub</a><a class="card-ext-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3842897222" target="_blank" rel="noopener">Steam</a></div></article>
+<article class="card"><a class="card-cover-link" href="games/frontier-tale/" style="background:#443e35"><img class="card-cover" src="https://images.boosty.to/image/40d36f38-eff9-40b6-ba76-6949f1da924b" data-fallback="media/frontier-tale.webp" referrerpolicy="no-referrer" alt="Frontier Tale" width="680" height="382" loading="lazy" decoding="async"></a><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/frontier-tale/">Frontier Tale</a></h2><span class="card-ver">v1.3 · Win, Deck</span></div><p class="card-summary">Сюжетные диалоги, предметы, рецепты, задания и подписи мини-карты (7 036 строк) под патч 2.1.7.</p><div class="card-cta-bar"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/486ebb53-422d-4023-9da7-b1fdbc0b2a7f?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=frontier_tale" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="games/frontier-tale/">Кадры и детали</a></div><div class="card-links"><a class="card-ext-link" href="https://github.com/neoru-droid/frontier-tale-ru" target="_blank" rel="noopener">GitHub</a><a class="card-ext-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3840837132" target="_blank" rel="noopener">Steam</a></div></article>
+<article class="card"><a class="card-cover-link" href="games/zombies-arent-real/" style="background:#39362f"><img class="card-cover" src="https://images.boosty.to/image/bed6f4da-3d74-4217-911d-5f6a36eecd07" data-fallback="media/zombies-arent-real.webp" referrerpolicy="no-referrer" alt="Zombies Aren&#x27;t Real" width="680" height="382" loading="lazy" decoding="async"></a><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/zombies-arent-real/">Zombies Aren&#x27;t Real</a></h2><span class="card-ver">v1.3 · Win, Deck</span></div><p class="card-summary">3 009 строк кампании, снаряжения и кооператива с пиксельным шрифтом 8x8, тактическим экраном и запасом бюджета.</p><div class="card-cta-bar"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/0ec0506b-063f-4be2-a788-40ebe320add7?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=zombies_arent_real" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="games/zombies-arent-real/">Кадры и детали</a></div><div class="card-links"><a class="card-ext-link" href="https://github.com/neoru-droid/zombies-arent-real-ru" target="_blank" rel="noopener">GitHub</a><a class="card-ext-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3840725363" target="_blank" rel="noopener">Steam</a></div></article>
+<article class="card"><a class="card-cover-link" href="games/we-march-as-one/" style="background:#474d52"><img class="card-cover" src="https://images.boosty.to/image/4a954841-3356-4376-b3c4-9f7bf3c3455f" data-fallback="media/we-march-as-one.webp" referrerpolicy="no-referrer" alt="We March as One" width="680" height="382" loading="lazy" decoding="async"></a><div class="card-head"><h2 class="card-title"><a class="card-title-link" href="games/we-march-as-one/">We March as One</a></h2><span class="card-ver">v1.2 · Win, Deck</span></div><p class="card-summary">Кампания на 50 уровней, древо навыков и все 30 достижений на 5 кириллических шрифтах игры плюс опции золота и славы.</p><div class="card-cta-bar"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo/posts/73fae114-79d9-4305-99cc-8d8af1d157ce?utm_source=catalog_site&amp;utm_medium=web&amp;utm_campaign=we_march_as_one" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="games/we-march-as-one/">Кадры и детали</a></div><div class="card-links"><a class="card-ext-link" href="https://github.com/neoru-droid/we-march-as-one-ru" target="_blank" rel="noopener">GitHub</a><a class="card-ext-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3840161059" target="_blank" rel="noopener">Steam</a></div></article></div>
     <div id="empty-state" class="empty-state" hidden>
       <p class="empty-title">Такой игры в каталоге пока нет.</p>
       <p class="empty-sub">Предложите её в очередь разбора или закажите сборку под свою игру на Boosty.</p>
@@ -1121,7 +1183,15 @@ p, li, dd { text-wrap: pretty; }
         const card = node.closest(".card");
         if (card) {
           const freeAlt = card.querySelector("[data-ea-free-btn]");
-          if (freeAlt) freeAlt.remove();
+          const coverLink = card.querySelector(".card-cover-link");
+          if (freeAlt && coverLink) {
+            freeAlt.removeAttribute("data-ea-free-btn");
+            freeAlt.removeAttribute("target");
+            freeAlt.removeAttribute("rel");
+            freeAlt.className = "btn btn-secondary";
+            freeAlt.href = coverLink.getAttribute("href") || "#";
+            freeAlt.textContent = "Кадры и детали";
+          }
           const btn = card.querySelector(".btn-primary");
           if (btn) {
             btn.className = "btn btn-shelf";
@@ -1293,18 +1363,18 @@ p, li, dd { text-wrap: pretty; }
       ? `<div class="ea-badge" data-ea-until="${escapeHtml(String(unlockMs))}"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · ${formatCountdown(unlockMs - Date.now())}</span></div>`
       : "";
     const boostyHref = withUtm(game.boosty_url, game.slug);
-    const ghReleases = `${escapeHtml(String(game.github_url || "").replace(/\/$/, ""))}/releases/latest`;
+    const pageHref = `games/${encodeURIComponent(game.slug)}/`;
+    const cleanGh = escapeHtml(String(game.github_url || "").replace(/\/$/, ""));
+    const ghReleases = `${cleanGh}/releases/latest`;
     const ctaBtns = isEarly
       ? `<a class="btn btn-primary" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a>` +
         `<a class="btn btn-shelf" data-ea-free-btn="1" href="${ghReleases}" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a>`
-      : `<a class="btn btn-shelf" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a>`;
-    const pageHref = `games/${encodeURIComponent(game.slug)}/`;
-    const ghLink = isEarly
-      ? ""
-      : `<a class="card-ext-link" href="${escapeHtml(game.github_url)}" target="_blank" rel="noopener">GitHub</a>`;
-    const steamLink = game.steam_guide_url
-      ? `<a class="card-ext-link" href="${escapeHtml(game.steam_guide_url)}" target="_blank" rel="noopener">Steam</a>`
-      : "";
+      : `<a class="btn btn-shelf" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a>` +
+        `<a class="btn btn-secondary" href="${pageHref}">Кадры и детали</a>`;
+    const linksItems = isEarly
+      ? `<a class="card-detail-link" href="${pageHref}">Кадры и детали</a><a class="card-ext-link" href="${cleanGh}" target="_blank" rel="noopener">GitHub</a>`
+      : `<a class="card-ext-link" href="${cleanGh}" target="_blank" rel="noopener">GitHub</a>` +
+        (game.steam_guide_url ? `<a class="card-ext-link" href="${escapeHtml(game.steam_guide_url)}" target="_blank" rel="noopener">Steam</a>` : "");
     const localWebp = `media/${escapeHtml(game.slug)}.webp`;
     const imgSrc = game.cover_cdn_url ? escapeHtml(game.cover_cdn_url) : localWebp;
     const fbAttr = game.cover_cdn_url ? ` data-fallback="${localWebp}"` : "";
@@ -1315,13 +1385,12 @@ p, li, dd { text-wrap: pretty; }
       `<a class="card-cover-link" href="${pageHref}"${bgStyle}>${eaBadge}` +
       `<img class="card-cover" src="${imgSrc}"${fbAttr} referrerpolicy="no-referrer" alt="${escapeHtml(game.title)}" width="680" height="382"${loadAttr}>` +
       `</a>` +
-      `<div class="card-body">` +
       `<div class="card-head"><h2 class="card-title"><a class="card-title-link" href="${pageHref}">${escapeHtml(game.title)}</a></h2>` +
       `<span class="card-ver">v${escapeHtml(game.version)} · ${escapeHtml(formatPlatforms(game))}</span></div>` +
       `<p class="card-summary">${escapeHtml(game.summary)}</p>` +
-      `<div class="card-actions">${ctaBtns}` +
-      `<a class="card-detail-link" href="${pageHref}">Кадры и детали</a>${ghLink}${steamLink}` +
-      `</div></div></article>`;
+      `<div class="card-cta-bar">${ctaBtns}</div>` +
+      `<div class="card-links">${linksItems}</div>` +
+      `</article>`;
   }
 
   function applyFilters() {
