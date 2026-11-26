@@ -414,6 +414,20 @@ p, li, dd { text-wrap: pretty; }
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
+.ea-badge--top-right {
+  inset-inline-start: auto;
+  inset-inline-end: 10px;
+}
+.ea-badge--bottom-left {
+  inset-block-start: auto;
+  inset-block-end: 10px;
+}
+.ea-badge--bottom-right {
+  inset-block-start: auto;
+  inset-block-end: 10px;
+  inset-inline-start: auto;
+  inset-inline-end: 10px;
+}
 .ea-dot {
   width: 6px;
   height: 6px;
@@ -508,10 +522,16 @@ p, li, dd { text-wrap: pretty; }
 .order-strip-head {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 12px 20px;
   margin-block-end: 20px;
+}
+.order-strip-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
 .order-strip-title {
   margin: 0;
@@ -1158,7 +1178,7 @@ p, li, dd { text-wrap: pretty; }
       </div>
     </section>
 
-    <section id="order-game" class="game-section order-compact" aria-labelledby="order-heading"><div class="order-compact-copy"><h2 id="order-heading" class="order-strip-title">Нужен перевод или мод-меню под другую игру?</h2><p class="order-strip-sub">Приоритетная очередь разбора - от 350 ₽/мес, разбор вне очереди - 750 ₽/мес на Boosty.</p></div><a class="btn btn-shelf" href="https://boosty.to/cd_tixo?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=order_game" target="_blank" rel="noopener">Заказать на Boosty ↗</a></section>
+    <section id="order-game" class="game-section order-compact" aria-labelledby="order-heading"><div class="order-compact-copy"><h2 id="order-heading" class="order-strip-title">Уведомления о патчах и заказ своей игры</h2><p class="order-strip-sub">Нажмите «Отслеживать» на Boosty (бесплатно), чтобы не пропустить фикс под патч Steam. Своя игра в очередь - от 350 ₽/мес, вне очереди - 750 ₽/мес.</p></div><div class="order-strip-actions"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo?utm_source=catalog_game_page&amp;utm_medium=follow&amp;utm_campaign=we_march_as_one" target="_blank" rel="noopener">Отслеживать бесплатно ↗</a><a class="btn btn-secondary" href="https://boosty.to/cd_tixo?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=order_game" target="_blank" rel="noopener">Заказать на Boosty ↗</a></div></section>
     <section class="game-section" aria-labelledby="related-heading"><div class="section-head"><h2 id="related-heading">Другие сборки в каталоге</h2><a class="card-detail-link" href="../../">Все игры на полке →</a></div><div class="related-grid"><a class="related-card" href="../the-magus-circle/"><img src="https://images.boosty.to/image/711fa663-835d-4712-8ec5-850c502a8469" data-fallback="../../media/the-magus-circle.webp" referrerpolicy="no-referrer" style="background:#1c2238" alt="The Magus Circle" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">The Magus Circle</span><span class="related-meta">v1.0 · Win, Deck, macOS</span></span></a><a class="related-card" href="../playrooms/"><img src="https://images.boosty.to/image/68b74efd-f3a5-4069-9727-9db9bfeaba26" data-fallback="../../media/playrooms.webp" referrerpolicy="no-referrer" style="background:#323e35" alt="Playrooms" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Playrooms</span><span class="related-meta">v1.0 · Win, Deck</span></span></a><a class="related-card" href="../deleted-wiki/"><img src="https://images.boosty.to/image/46c534f1-7eab-45e3-9935-647c40087eae" data-fallback="../../media/deleted-wiki.webp" referrerpolicy="no-referrer" style="background:#23272d" alt="Deleted Wiki: Clean Up the Lost Files" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Deleted Wiki: Clean Up the Lost Files</span><span class="related-meta">v1.0 · Win, Deck, macOS</span></span></a></div></section>
   </main>
 
@@ -1382,8 +1402,10 @@ p, li, dd { text-wrap: pretty; }
   function renderCard(game, idx) {
     const unlockMs = game.early_access_until ? Date.parse(game.early_access_until) : NaN;
     const isEarly = Number.isFinite(unlockMs) && unlockMs > Date.now();
+    const pos = game.ea_badge_pos;
+    const posCls = pos === "top-right" || pos === "bottom-left" || pos === "bottom-right" ? ` ea-badge--${pos}` : "";
     const eaBadge = isEarly
-      ? `<div class="ea-badge" data-ea-until="${escapeHtml(String(unlockMs))}"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · ${formatCountdown(unlockMs - Date.now())}</span></div>`
+      ? `<div class="ea-badge${posCls}" data-ea-until="${escapeHtml(String(unlockMs))}"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · ${formatCountdown(unlockMs - Date.now())}</span></div>`
       : "";
     const boostyHref = withUtm(game.boosty_url, game.slug);
     const pageHref = `games/${encodeURIComponent(game.slug)}/`;
