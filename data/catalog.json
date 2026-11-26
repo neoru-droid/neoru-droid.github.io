@@ -652,6 +652,7 @@
       "симулятор"
     ],
     "cover_cdn_url": "https://images.boosty.to/image/72dae576-3aa0-4afe-b257-581da5f7b886",
-    "cover_color": "#232933"
+    "cover_color": "#232933",
+    "ea_badge_pos": "bottom-left"
   }
 ]

@@ -209,8 +209,10 @@
   function renderCard(game, idx) {
     const unlockMs = game.early_access_until ? Date.parse(game.early_access_until) : NaN;
     const isEarly = Number.isFinite(unlockMs) && unlockMs > Date.now();
+    const pos = game.ea_badge_pos;
+    const posCls = pos === "top-right" || pos === "bottom-left" || pos === "bottom-right" ? ` ea-badge--${pos}` : "";
     const eaBadge = isEarly
-      ? `<div class="ea-badge" data-ea-until="${escapeHtml(String(unlockMs))}"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · ${formatCountdown(unlockMs - Date.now())}</span></div>`
+      ? `<div class="ea-badge${posCls}" data-ea-until="${escapeHtml(String(unlockMs))}"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · ${formatCountdown(unlockMs - Date.now())}</span></div>`
       : "";
     const boostyHref = withUtm(game.boosty_url, game.slug);
     const pageHref = `games/${encodeURIComponent(game.slug)}/`;

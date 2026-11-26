@@ -395,6 +395,20 @@ p, li, dd { text-wrap: pretty; }
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
+.ea-badge--top-right {
+  inset-inline-start: auto;
+  inset-inline-end: 10px;
+}
+.ea-badge--bottom-left {
+  inset-block-start: auto;
+  inset-block-end: 10px;
+}
+.ea-badge--bottom-right {
+  inset-block-start: auto;
+  inset-block-end: 10px;
+  inset-inline-start: auto;
+  inset-inline-end: 10px;
+}
 .ea-dot {
   width: 6px;
   height: 6px;
