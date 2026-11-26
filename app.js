@@ -22,21 +22,39 @@
   }
 
   function tickEarlyAccessTimers() {
-    const banners = document.querySelectorAll(".ea-banner[data-ea-until]");
-    if (!banners.length) return;
+    const timers = document.querySelectorAll("[data-ea-until]");
+    if (!timers.length) return;
     const now = Date.now();
-    banners.forEach((banner) => {
-      const unlockMs = Number(banner.getAttribute("data-ea-until"));
+    timers.forEach((node) => {
+      const unlockMs = Number(node.getAttribute("data-ea-until"));
       const diff = unlockMs - now;
       if (diff <= 0) {
-        const scope = banner.closest(".card-actions, .game-cta-box");
-        const btn = scope ? scope.querySelector(".btn-primary") : null;
-        if (btn) btn.textContent = btn.classList.contains("btn-lg") ? "Скачать сборку на Boosty" : "Скачать на Boosty";
-        banner.remove();
+        const card = node.closest(".card");
+        if (card) {
+          const freeAlt = card.querySelector("[data-ea-free-btn]");
+          if (freeAlt) freeAlt.remove();
+          const btn = card.querySelector(".btn-primary");
+          if (btn) {
+            btn.className = "btn btn-shelf";
+            btn.innerHTML = '<span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span>';
+          }
+        }
+        const heroBox = node.closest(".game-cta-box");
+        if (heroBox) {
+          const heroBtn = heroBox.querySelector(".btn-primary");
+          if (heroBtn) heroBtn.textContent = "Скачать бесплатно на Boosty ↗";
+          const split = heroBox.querySelector(".ea-split");
+          if (split) split.remove();
+        }
+        node.remove();
         return;
       }
-      const clock = banner.querySelector(".ea-clock");
-      if (clock) clock.textContent = "Бесплатно всем через " + formatCountdown(diff);
+      const clock = node.querySelector(".ea-clock");
+      if (clock) {
+        clock.textContent = node.classList.contains("ea-inline")
+          ? `Ранний доступ · откроется бесплатно всем через ${formatCountdown(diff)}`
+          : `Ранний доступ · ${formatCountdown(diff)}`;
+      }
     });
   }
 
@@ -105,7 +123,7 @@
     io.observe(heroCta);
   }
 
-  // Home catalog search, filters, URL sync & keyboard shortcut
+  // Home shelf search, filters, URL sync & keyboard shortcut
   const grid = document.getElementById("games-grid");
   const searchInput = document.getElementById("search-input");
   if (!grid || !searchInput) return;
@@ -129,7 +147,7 @@
     const s = params.get("sort") || "newest";
     state.query = q;
     state.type = ["all", "translation", "mod"].includes(t) ? t : "all";
-    state.platform = ["steamdeck", "macos"].includes(p) ? p : "";
+    state.platform = p === "macos" ? "macos" : "";
     state.sort = s === "alpha" ? "alpha" : "newest";
     searchInput.value = state.query;
     sortSelect.value = state.sort;
@@ -155,48 +173,43 @@
     if (kbdHint) kbdHint.hidden = hasQuery;
   }
 
-  function formatMetaParts(game) {
-    const tag = game.has_translation
-      ? '<span class="tag-ru">Русификатор</span>'
-      : '<span class="tag-mod">Мод-меню</span>';
-    const items = [];
-    if (game.has_translation && game.has_mod_menu) items.push("Мод-меню");
-    if (game.has_ct) items.push(".CT");
+  function formatPlatforms(game) {
     const plat = ["Win"];
     if (game.platforms && game.platforms.steamdeck) plat.push("Deck");
     if (game.platforms && game.platforms.macos) plat.push("macOS");
-    items.push(plat.join(" / "));
-    return `${tag}<span>${escapeHtml(items.join(" · "))}</span>`;
+    return plat.join(", ");
   }
 
   function renderCard(game) {
-    const secLinks = [
-      `<a href="${escapeHtml(game.github_url)}" target="_blank" rel="noopener">GitHub</a>`
-    ];
-    if (game.steam_guide_url) {
-      secLinks.push(`<a href="${escapeHtml(game.steam_guide_url)}" target="_blank" rel="noopener">Steam</a>`);
-    }
-
     const unlockMs = game.early_access_until ? Date.parse(game.early_access_until) : NaN;
     const isEarly = Number.isFinite(unlockMs) && unlockMs > Date.now();
-    const eaBlock = isEarly
-      ? `<div class="ea-banner" data-ea-until="${escapeHtml(String(unlockMs))}"><span>Ранний доступ на Boosty</span><span class="ea-clock">Бесплатно всем через ${formatCountdown(unlockMs - Date.now())}</span></div>`
+    const eaBadge = isEarly
+      ? `<div class="ea-badge" data-ea-until="${escapeHtml(String(unlockMs))}"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · ${formatCountdown(unlockMs - Date.now())}</span></div>`
       : "";
-    const ctaText = isEarly ? "Ранний доступ на Boosty (от 120 ₽)" : "Скачать на Boosty";
     const boostyHref = withUtm(game.boosty_url, game.slug);
+    const ghReleases = `${escapeHtml(String(game.github_url || "").replace(/\/$/, ""))}/releases/latest`;
+    const ctaBtns = isEarly
+      ? `<a class="btn btn-primary" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a>` +
+        `<a class="btn btn-shelf" data-ea-free-btn="1" href="${ghReleases}" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a>`
+      : `<a class="btn btn-shelf" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a>`;
     const pageHref = `games/${encodeURIComponent(game.slug)}/`;
+    const ghLink = isEarly
+      ? ""
+      : `<a class="card-ext-link" href="${escapeHtml(game.github_url)}" target="_blank" rel="noopener">GitHub</a>`;
+    const steamLink = game.steam_guide_url
+      ? `<a class="card-ext-link" href="${escapeHtml(game.steam_guide_url)}" target="_blank" rel="noopener">Steam</a>`
+      : "";
 
     return `<article class="card">` +
-      `<a class="card-cover-link" href="${pageHref}">` +
+      `<a class="card-cover-link" href="${pageHref}">${eaBadge}` +
       `<img class="card-cover" src="media/${escapeHtml(game.slug)}.jpg" alt="${escapeHtml(game.title)}" width="800" height="450" loading="lazy">` +
       `</a>` +
       `<div class="card-body">` +
-      `<div class="card-head"><h2 class="card-title"><a class="card-title-link" href="${pageHref}">${escapeHtml(game.title)}</a></h2><span class="card-ver">v${escapeHtml(game.version)}</span></div>` +
-      `<div class="card-meta">${formatMetaParts(game)}</div>` +
+      `<div class="card-head"><h2 class="card-title"><a class="card-title-link" href="${pageHref}">${escapeHtml(game.title)}</a></h2>` +
+      `<span class="card-ver">v${escapeHtml(game.version)} · ${escapeHtml(formatPlatforms(game))}</span></div>` +
       `<p class="card-summary">${escapeHtml(game.summary)}</p>` +
-      `<div class="card-actions">${eaBlock}` +
-      `<a class="btn btn-primary" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener">${ctaText}</a>` +
-      `<div class="card-foot"><a class="card-detail-link" href="${pageHref}">Скриншоты и установка →</a><div class="card-links">${secLinks.join("")}</div></div>` +
+      `<div class="card-actions">${ctaBtns}` +
+      `<a class="card-detail-link" href="${pageHref}">Кадры и детали</a>${ghLink}${steamLink}` +
       `</div></div></article>`;
   }
 
@@ -207,10 +220,12 @@
     const filtered = state.games.filter((g) => {
       if (state.type === "translation" && !g.has_translation) return false;
       if (state.type === "mod" && !(g.has_mod_menu || g.has_ct)) return false;
-      if (state.platform === "steamdeck" && !(g.platforms && g.platforms.steamdeck)) return false;
       if (state.platform === "macos" && !(g.platforms && g.platforms.macos)) return false;
       if (!q) return true;
-      const hay = [g.title, g.summary, ...(g.features || []), ...(g.keywords || [])].join(" ").toLowerCase();
+      const implicit = [];
+      if (g.has_translation) implicit.push("русификатор перевод шрифт локализация");
+      if (g.has_mod_menu || g.has_ct) implicit.push("мод меню трейнер чит таблица сохранение");
+      const hay = [g.title, g.summary, ...(g.features || []), ...(g.keywords || []), ...implicit].join(" ").toLowerCase();
       return hay.includes(q);
     });
 
