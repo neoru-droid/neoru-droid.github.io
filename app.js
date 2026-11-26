@@ -1,15 +1,4 @@
 (function () {
-  const grid = document.getElementById("games-grid");
-  const searchInput = document.getElementById("search-input");
-  const countNode = document.getElementById("results-count");
-  const sortSelect = document.getElementById("sort-select");
-  const emptyState = document.getElementById("empty-state");
-  const resetBtn = document.getElementById("reset-filters");
-  const typeBtns = Array.from(document.querySelectorAll("[data-type]"));
-  const platformBtn = document.querySelector("[data-platform='macos']");
-
-  const state = { query: "", type: "all", macosOnly: false, sort: "newest", games: [] };
-
   function escapeHtml(text) {
     return String(text)
       .replaceAll("&", "&amp;")
@@ -32,22 +21,160 @@
     return `${hrs}:${mins}:${secs}`;
   }
 
-  function renderCard(game) {
-    const badges = [];
-    if (game.has_translation) badges.push('<span class="badge badge-ru">Русификатор</span>');
-    if (game.has_mod_menu) badges.push('<span class="badge badge-mod">Мод-меню</span>');
-    if (game.has_ct) badges.push('<span class="badge badge-mod">Таблица .CT</span>');
-    if (game.platforms && game.platforms.steamdeck) badges.push('<span class="badge">Steam Deck</span>');
-    if (game.platforms && game.platforms.macos) badges.push('<span class="badge">macOS</span>');
+  function tickEarlyAccessTimers() {
+    const banners = document.querySelectorAll(".ea-banner[data-ea-until]");
+    if (!banners.length) return;
+    const now = Date.now();
+    banners.forEach((banner) => {
+      const unlockMs = Number(banner.getAttribute("data-ea-until"));
+      const diff = unlockMs - now;
+      if (diff <= 0) {
+        const scope = banner.closest(".card-actions, .game-cta-box");
+        const btn = scope ? scope.querySelector(".btn-primary") : null;
+        if (btn) btn.textContent = btn.classList.contains("btn-lg") ? "Скачать сборку на Boosty" : "Скачать на Boosty";
+        banner.remove();
+        return;
+      }
+      const clock = banner.querySelector(".ea-clock");
+      if (clock) clock.textContent = "Бесплатно всем через " + formatCountdown(diff);
+    });
+  }
 
+  tickEarlyAccessTimers();
+  setInterval(tickEarlyAccessTimers, 1000);
+
+  // Per-game page interactions: platform tabs, screenshot lightbox, mobile sticky CTA
+  const tabList = document.querySelector("[role='tablist']");
+  if (tabList) {
+    const tabs = Array.from(tabList.querySelectorAll("[role='tab']"));
+    const panels = Array.from(document.querySelectorAll("[role='tabpanel']"));
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const targetId = tab.getAttribute("aria-controls");
+        tabs.forEach((t) => t.setAttribute("aria-selected", String(t === tab)));
+        panels.forEach((p) => { p.hidden = p.id !== targetId; });
+      });
+    });
+  }
+
+  const shotBtns = Array.from(document.querySelectorAll(".shot-card[data-shot-src]"));
+  const lightbox = document.getElementById("shot-lightbox");
+  if (shotBtns.length && lightbox && typeof lightbox.showModal === "function") {
+    const lbImg = document.getElementById("lightbox-img");
+    const lbCap = document.getElementById("lightbox-cap");
+    const lbPrev = document.getElementById("lightbox-prev");
+    const lbNext = document.getElementById("lightbox-next");
+    const lbClose = document.getElementById("lightbox-close");
+    let activeIdx = 0;
+
+    function showShot(idx) {
+      activeIdx = (idx + shotBtns.length) % shotBtns.length;
+      const item = shotBtns[activeIdx];
+      lbImg.src = item.getAttribute("data-shot-src") || "";
+      lbImg.alt = item.getAttribute("data-shot-cap") || "";
+      lbCap.textContent = item.getAttribute("data-shot-cap") || "";
+    }
+
+    shotBtns.forEach((btn, idx) => {
+      btn.addEventListener("click", () => {
+        showShot(idx);
+        lightbox.showModal();
+      });
+    });
+    if (lbPrev) lbPrev.addEventListener("click", () => showShot(activeIdx - 1));
+    if (lbNext) lbNext.addEventListener("click", () => showShot(activeIdx + 1));
+    if (lbClose) lbClose.addEventListener("click", () => lightbox.close());
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) lightbox.close();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.open) return;
+      if (e.key === "ArrowLeft") showShot(activeIdx - 1);
+      if (e.key === "ArrowRight") showShot(activeIdx + 1);
+    });
+  }
+
+  const heroCta = document.getElementById("hero-boosty-cta");
+  const mobileBar = document.getElementById("mobile-cta-bar");
+  if (heroCta && mobileBar && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        mobileBar.classList.toggle("is-docked-hidden", entry.isIntersecting);
+      });
+    }, { threshold: 0.15 });
+    io.observe(heroCta);
+  }
+
+  // Home catalog search, filters, URL sync & keyboard shortcut
+  const grid = document.getElementById("games-grid");
+  const searchInput = document.getElementById("search-input");
+  if (!grid || !searchInput) return;
+
+  const clearBtn = document.getElementById("search-clear");
+  const kbdHint = document.getElementById("search-kbd");
+  const countNode = document.getElementById("results-count");
+  const sortSelect = document.getElementById("sort-select");
+  const emptyState = document.getElementById("empty-state");
+  const resetBtn = document.getElementById("reset-filters");
+  const typeBtns = Array.from(document.querySelectorAll("[data-type]"));
+  const platformBtns = Array.from(document.querySelectorAll("[data-platform]"));
+
+  const state = { query: "", type: "all", platform: "", sort: "newest", games: [] };
+
+  function readUrlState() {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("q") || "";
+    const t = params.get("type") || "all";
+    const p = params.get("platform") || "";
+    const s = params.get("sort") || "newest";
+    state.query = q;
+    state.type = ["all", "translation", "mod"].includes(t) ? t : "all";
+    state.platform = ["steamdeck", "macos"].includes(p) ? p : "";
+    state.sort = s === "alpha" ? "alpha" : "newest";
+    searchInput.value = state.query;
+    sortSelect.value = state.sort;
+    syncFilterButtons();
+  }
+
+  function writeUrlState() {
+    const params = new URLSearchParams();
+    if (state.query.trim()) params.set("q", state.query.trim());
+    if (state.type !== "all") params.set("type", state.type);
+    if (state.platform) params.set("platform", state.platform);
+    if (state.sort !== "newest") params.set("sort", state.sort);
+    const qs = params.toString();
+    const nextUrl = window.location.pathname + (qs ? `?${qs}` : "") + window.location.hash;
+    window.history.replaceState(null, "", nextUrl);
+  }
+
+  function syncFilterButtons() {
+    typeBtns.forEach((b) => b.classList.toggle("is-active", (b.dataset.type || "all") === state.type));
+    platformBtns.forEach((b) => b.classList.toggle("is-active", (b.dataset.platform || "") === state.platform));
+    const hasQuery = state.query.length > 0;
+    if (clearBtn) clearBtn.hidden = !hasQuery;
+    if (kbdHint) kbdHint.hidden = hasQuery;
+  }
+
+  function formatMetaParts(game) {
+    const tag = game.has_translation
+      ? '<span class="tag-ru">Русификатор</span>'
+      : '<span class="tag-mod">Мод-меню</span>';
+    const items = [];
+    if (game.has_translation && game.has_mod_menu) items.push("Мод-меню");
+    if (game.has_ct) items.push(".CT");
+    const plat = ["Win"];
+    if (game.platforms && game.platforms.steamdeck) plat.push("Deck");
+    if (game.platforms && game.platforms.macos) plat.push("macOS");
+    items.push(plat.join(" / "));
+    return `${tag}<span>${escapeHtml(items.join(" · "))}</span>`;
+  }
+
+  function renderCard(game) {
     const secLinks = [
       `<a href="${escapeHtml(game.github_url)}" target="_blank" rel="noopener">GitHub</a>`
     ];
     if (game.steam_guide_url) {
-      secLinks.push(`<a href="${escapeHtml(game.steam_guide_url)}" target="_blank" rel="noopener">Руководство Steam</a>`);
-    }
-    if (game.zog_url) {
-      secLinks.push(`<a href="${escapeHtml(game.zog_url)}" target="_blank" rel="noopener">Zone of Games</a>`);
+      secLinks.push(`<a href="${escapeHtml(game.steam_guide_url)}" target="_blank" rel="noopener">Steam</a>`);
     }
 
     const unlockMs = game.early_access_until ? Date.parse(game.early_access_until) : NaN;
@@ -57,53 +184,31 @@
       : "";
     const ctaText = isEarly ? "Ранний доступ на Boosty (от 120 ₽)" : "Скачать на Boosty";
     const boostyHref = withUtm(game.boosty_url, game.slug);
+    const pageHref = `games/${encodeURIComponent(game.slug)}/`;
 
-    return `
-      <article class="card">
-        <img class="card-cover" src="media/${escapeHtml(game.slug)}.jpg" alt="${escapeHtml(game.title)}" width="800" height="450" loading="lazy">
-        <div class="card-body">
-          <div class="card-head">
-            <h2 class="card-title">${escapeHtml(game.title)}</h2>
-            <span class="card-ver">v${escapeHtml(game.version)}</span>
-          </div>
-          <div class="badges">${badges.join("")}</div>
-          <p class="card-summary">${escapeHtml(game.summary)}</p>
-          <div class="card-actions">
-            ${eaBlock}
-            <a class="btn btn-primary" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener">${ctaText}</a>
-            <div class="card-links">${secLinks.join("")}</div>
-          </div>
-        </div>
-      </article>`;
+    return `<article class="card">` +
+      `<a class="card-cover-link" href="${pageHref}">` +
+      `<img class="card-cover" src="media/${escapeHtml(game.slug)}.jpg" alt="${escapeHtml(game.title)}" width="800" height="450" loading="lazy">` +
+      `</a>` +
+      `<div class="card-body">` +
+      `<div class="card-head"><h2 class="card-title"><a class="card-title-link" href="${pageHref}">${escapeHtml(game.title)}</a></h2><span class="card-ver">v${escapeHtml(game.version)}</span></div>` +
+      `<div class="card-meta">${formatMetaParts(game)}</div>` +
+      `<p class="card-summary">${escapeHtml(game.summary)}</p>` +
+      `<div class="card-actions">${eaBlock}` +
+      `<a class="btn btn-primary" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener">${ctaText}</a>` +
+      `<div class="card-foot"><a class="card-detail-link" href="${pageHref}">Скриншоты и установка →</a><div class="card-links">${secLinks.join("")}</div></div>` +
+      `</div></div></article>`;
   }
-
-  function tickEarlyAccessTimers() {
-    const banners = document.querySelectorAll(".ea-banner[data-ea-until]");
-    if (!banners.length) return;
-    const now = Date.now();
-    banners.forEach((banner) => {
-      const unlockMs = Number(banner.getAttribute("data-ea-until"));
-      const diff = unlockMs - now;
-      if (diff <= 0) {
-        const actions = banner.closest(".card-actions");
-        const btn = actions ? actions.querySelector(".btn-primary") : null;
-        if (btn) btn.textContent = "Скачать на Boosty";
-        banner.remove();
-        return;
-      }
-      const clock = banner.querySelector(".ea-clock");
-      if (clock) clock.textContent = "Бесплатно всем через " + formatCountdown(diff);
-    });
-  }
-
-  setInterval(tickEarlyAccessTimers, 1000);
 
   function applyFilters() {
+    syncFilterButtons();
+    writeUrlState();
     const q = state.query.trim().toLowerCase();
     const filtered = state.games.filter((g) => {
       if (state.type === "translation" && !g.has_translation) return false;
       if (state.type === "mod" && !(g.has_mod_menu || g.has_ct)) return false;
-      if (state.macosOnly && !(g.platforms && g.platforms.macos)) return false;
+      if (state.platform === "steamdeck" && !(g.platforms && g.platforms.steamdeck)) return false;
+      if (state.platform === "macos" && !(g.platforms && g.platforms.macos)) return false;
       if (!q) return true;
       const hay = [g.title, g.summary, ...(g.features || []), ...(g.keywords || [])].join(" ").toLowerCase();
       return hay.includes(q);
@@ -123,22 +228,38 @@
   typeBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       state.type = btn.dataset.type || "all";
-      typeBtns.forEach((b) => b.classList.toggle("is-active", b === btn));
       applyFilters();
     });
   });
 
-  if (platformBtn) {
-    platformBtn.addEventListener("click", () => {
-      state.macosOnly = !state.macosOnly;
-      platformBtn.classList.toggle("is-active", state.macosOnly);
+  platformBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.platform || "";
+      state.platform = state.platform === target ? "" : target;
       applyFilters();
     });
-  }
+  });
 
   searchInput.addEventListener("input", () => {
     state.query = searchInput.value;
     applyFilters();
+  });
+
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      state.query = "";
+      searchInput.value = "";
+      searchInput.focus();
+      applyFilters();
+    });
+  }
+
+  document.addEventListener("keydown", (e) => {
+    const activeTag = document.activeElement ? document.activeElement.tagName : "";
+    if (e.key === "/" && activeTag !== "INPUT" && activeTag !== "TEXTAREA" && activeTag !== "SELECT") {
+      e.preventDefault();
+      searchInput.focus();
+    }
   });
 
   sortSelect.addEventListener("change", () => {
@@ -149,14 +270,14 @@
   resetBtn.addEventListener("click", () => {
     state.query = "";
     state.type = "all";
-    state.macosOnly = false;
+    state.platform = "";
     state.sort = "newest";
     searchInput.value = "";
     sortSelect.value = "newest";
-    typeBtns.forEach((b) => b.classList.toggle("is-active", b.dataset.type === "all"));
-    if (platformBtn) platformBtn.classList.remove("is-active");
     applyFilters();
   });
+
+  readUrlState();
 
   fetch("data/catalog.json")
     .then((r) => r.json())
