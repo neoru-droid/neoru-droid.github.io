@@ -53,9 +53,9 @@
     const unlockMs = game.early_access_until ? Date.parse(game.early_access_until) : NaN;
     const isEarly = Number.isFinite(unlockMs) && unlockMs > Date.now();
     const eaBlock = isEarly
-      ? `<div class="ea-banner" data-ea-until="${escapeHtml(String(unlockMs))}"><span>Ранний доступ бустерам</span><span class="ea-clock">Бесплатно всем через ${formatCountdown(unlockMs - Date.now())}</span></div>`
+      ? `<div class="ea-banner" data-ea-until="${escapeHtml(String(unlockMs))}"><span>Ранний доступ на Boosty</span><span class="ea-clock">Бесплатно всем через ${formatCountdown(unlockMs - Date.now())}</span></div>`
       : "";
-    const ctaText = isEarly ? "Ранний доступ на Boosty (150 ₽)" : "Скачать на Boosty";
+    const ctaText = isEarly ? "Ранний доступ на Boosty (от 120 ₽)" : "Скачать на Boosty";
     const boostyHref = withUtm(game.boosty_url, game.slug);
 
     return `
