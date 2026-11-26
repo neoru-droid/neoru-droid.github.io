@@ -218,7 +218,9 @@
     const pageHref = `games/${encodeURIComponent(game.slug)}/`;
     const cleanGh = escapeHtml(String(game.github_url || "").replace(/\/$/, ""));
     const ghReleases = `${cleanGh}/releases/latest`;
-    const freeLabel = game.has_translation ? "Русификатор · бесплатно ↗" : ".CT и сейв · бесплатно ↗";
+    const freeLabel = game.has_translation
+      ? "Русификатор · бесплатно ↗"
+      : (game.has_ct ? ".CT и сейв · бесплатно ↗" : "Сохранение · бесплатно ↗");
     const ctaBtns = isEarly
       ? `<a class="btn btn-primary" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a>` +
         `<a class="btn btn-shelf" data-ea-free-btn="1" href="${ghReleases}" target="_blank" rel="noopener">${freeLabel}</a>`
