@@ -436,5 +436,98 @@
       "баксы",
       "слитки"
     ]
+  },
+  {
+    "slug": "dice-hoarder",
+    "title": "Dice Hoarder",
+    "appid": "3687090",
+    "track": "track2",
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.0",
+    "steam_build": "1.0",
+    "early_access_until": "2026-11-28T11:00:00+10:00",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "Мод-меню на русском в стиле HUD игры, стартовое сохранение сюжетного режима на 4 уровень и таблица Cheat Engine на очки навыков, уровни, 8 навыков, выносливость, скорость и дальний захват.",
+    "features": [
+      "+5 очков навыков, +1 уровень персонажа и прокачка всех 8 навыков до 5 уровня",
+      "Бесконечная выносливость, без перезарядки, 100% крит сортировки и дальний захват x3",
+      "Яркий фонарик x3, смена времени суток, защита от поимки, авто-крафт и автосортировка"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/0585ec01-e32d-46a6-87fe-edee2045a9fc",
+    "github_url": "https://github.com/neoru-droid/dice-hoarder-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1893957",
+        "kind": "ct",
+        "url": "https://www.playground.ru/misc/cheat/dice_hoarder_tablitsa_dlya_cheat_engine_ochki_navykov_urovni_8_navykov_vynoslivost_beg_i_zahvat-1893957"
+      },
+      {
+        "id": "1893959",
+        "kind": "save",
+        "url": "https://www.playground.ru/misc/cheat/dice_hoarder_startovoe_sohranenie_syuzhetnogo_rezhima_na_4_uroven_i_zapas_ochkov_navykov-1893959"
+      }
+    ],
+    "keywords": [
+      "кубики",
+      "кости",
+      "настолка",
+      "магазин",
+      "сортировка"
+    ]
+  },
+  {
+    "slug": "ski-e-o",
+    "title": "Ski-E-O! Ski Resort Tycoon",
+    "appid": "4493130",
+    "track": "track2",
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.0",
+    "steam_build": "CL7848",
+    "early_access_until": "2026-11-28T11:00:00+10:00",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "Мод-меню на русском в стиле интерфейса курорта, стартовое сохранение на 5 000 000 $ и таблица Cheat Engine на деньги, заморозку счёта, репутацию, бесплатные снегопушки и быструю камеру.",
+    "features": [
+      "+100 000 $ и +1 000 000 $, баланс 50 000 000 $, заморозка счёта и погашение кредитов",
+      "Репутация +1 000 опыта, повышение уровня курорта и бесплатные снегопушки x3",
+      "Быстрая камера x3.5, ускорение симуляции x4.0, открытие сезона и лимит гостей 30 000"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/4f0cee8e-4c79-4c4c-826f-5caef2db29e9",
+    "github_url": "https://github.com/neoru-droid/ski-e-o-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1893960",
+        "kind": "ct",
+        "url": "https://www.playground.ru/ski_e_o_ski_resort_tycoon/cheat/ski_e_o_ski_resort_tycoon_tablitsa_dlya_cheat_engine_dengi_zamorozka_snegopushki_i_bystraya_kamera-1893960"
+      },
+      {
+        "id": "1893961",
+        "kind": "save",
+        "url": "https://www.playground.ru/ski_e_o_ski_resort_tycoon/cheat/ski_e_o_ski_resort_tycoon_startovoe_sohranenie_kurorta_s_byudzhetom_5_000_000_i_2_urovnem_reputatsii-1893961"
+      }
+    ],
+    "keywords": [
+      "лыжи",
+      "курорт",
+      "горы",
+      "тайкун",
+      "снег",
+      "подъёмник"
+    ]
   }
 ]
