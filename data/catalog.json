@@ -654,5 +654,51 @@
     "cover_cdn_url": "https://images.boosty.to/image/72dae576-3aa0-4afe-b257-581da5f7b886",
     "cover_color": "#232933",
     "ea_badge_pos": "bottom-left"
+  },
+  {
+    "slug": "no-asteroids",
+    "title": "No Asteroids",
+    "appid": "5527800",
+    "track": "track2",
+    "owned_on_steam": false,
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": false,
+    "version": "1.0",
+    "steam_build": "1.0.3-9c69d08d2",
+    "early_access_until": "2026-11-28T23:00:00+10:00",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": true
+    },
+    "summary": "Бортовой терминал SX-19 на 13 функций (кислород, джетпак, бур 5x, арсенал, кредиты, таймер дней) и стартовое сохранение на 1 100 000 ₵.",
+    "features": [
+      "Кислород O2, джетпак H2O2, безлимитный трюм, заряды и спецсредства, скорость 1x-3x и телепорт к челноку",
+      "Мощность бура 1x-5x, все 8 инструментов, 6 слотов орудий, тяговый луч и полные навыки скафандра",
+      "+100 000 и +1 000 000 кредитов, +10 дней до удара, заморозка таймера дней и сохранение на 1 100 000 ₵"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/e3df6474-7865-4719-8a58-c84be12d93ea",
+    "github_url": "https://github.com/neoru-droid/no-asteroids-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1894072",
+        "kind": "save",
+        "url": "https://www.playground.ru/no_asteroids/cheat/no_asteroids_startovoe_sohranenie_s_byudzhetom_1_100_000_kreditov_i_polnym_arsenalom-1894072"
+      }
+    ],
+    "keywords": [
+      "астероид",
+      "космос",
+      "бур",
+      "добыча",
+      "скафандр",
+      "корабль"
+    ],
+    "ea_badge_pos": "top-right",
+    "cover_cdn_url": "https://images.boosty.to/image/911fb3d3-730a-4744-975e-86c780917690",
+    "cover_color": "#1e1f23"
   }
 ]
