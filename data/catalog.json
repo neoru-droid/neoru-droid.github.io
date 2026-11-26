@@ -705,5 +705,56 @@
     "ea_badge_pos": "top-right",
     "cover_cdn_url": "https://images.boosty.to/image/911fb3d3-730a-4744-975e-86c780917690",
     "cover_color": "#1e1f23"
+  },
+  {
+    "slug": "slotbound",
+    "title": "Slotbound",
+    "appid": "4459590",
+    "track": "track2",
+    "owned_on_steam": false,
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.0",
+    "steam_build": "1.0.0 (9)",
+    "early_access_until": "2026-11-29T09:00:00+10:00",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "Панель «Механизм слота» на 15 функций, русская таблица .CT (12 скриптов) и стартовое сохранение на 10 000 оригинита и все 113 улучшений кузни.",
+    "features": [
+      "Казна и слот: +1 000 золота, +50 эссенции, бесплатные спины, гарантия выигрыша, редкость юнитов до Призмы, рероллы ядер и Джокер",
+      "Легион и бой: бессмертная база и армия, урон 1x-10x и с 1 удара, скорость 2x-5x, лимит отряда +5/+10 и автоблок лидерборда",
+      "Кузня и мета: +1 000 оригинита, все 113 улучшений кузни, этапы, русская таблица .CT v1.0 и стартовое сохранение"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/d014d4a8-d162-4abb-9a5d-ee4614fb1b8e",
+    "github_url": "https://github.com/neoru-droid/slotbound-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1894209",
+        "kind": "ct",
+        "url": "https://www.playground.ru/slotbound/cheat/slotbound_tablitsa_dlya_cheat_engine_zoloto_essentsiya_spiny_vyigrysh_slota_baza_armiya_uron_skorost_i_kuznya-1894209"
+      },
+      {
+        "id": "1894210",
+        "kind": "save",
+        "url": "https://www.playground.ru/slotbound/cheat/slotbound_startovoe_sohranenie_10_000_originita_i_vse_113_uluchshenij_kuzni-1894210"
+      }
+    ],
+    "keywords": [
+      "слот",
+      "рогалик",
+      "автобаттлер",
+      "башня",
+      "кузня",
+      "оригинит"
+    ],
+    "ea_badge_pos": "top-right",
+    "cover_color": "#312831",
+    "cover_cdn_url": "https://images.boosty.to/image/ee7b5a86-1bdf-4bb5-9174-b807df5235e5"
   }
 ]
