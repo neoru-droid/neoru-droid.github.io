@@ -866,5 +866,64 @@
     ],
     "cover_cdn_url": "https://images.boosty.to/image/0592dc6a-cc43-4074-8dc7-be3cb6fb177d",
     "cover_color": "#372921"
+  },
+  {
+    "slug": "harma",
+    "title": "HARMA",
+    "appid": "2483700",
+    "track": "track1",
+    "owned_on_steam": true,
+    "has_translation": true,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.0",
+    "steam_build": "26966361",
+    "ea_badge_pos": "top-right",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "7 825 строк перевода, шрифт Alegreya HL и 52 спрайта кнопок, «Кодекс Хармы» (12 функций), таблица .CT и сохранение.",
+    "features": [
+      "7 825 строк перевода (карты, артефакты, события, диалоги, 147 достижений), шрифт Alegreya HL и 52 спрайта кнопок меню",
+      "«Кодекс Хармы» на 12 функций: бессмертие, безлимит Маны/Фокуса/Рун, Щит +100, ослабление врагов, золото, SP, скорость и живой HUD",
+      "Таблица HARMA_RU_v1.0.CT (8 скриптов без оффсетов) и готовое сохранение (Хабена Белуа, Разлом измерений и 500 Камней мира)"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/41207992-821b-4d2f-a998-b11eff1c922a",
+    "github_url": "https://github.com/neoru-droid/harma-ru",
+    "mod_github_url": "https://github.com/neoru-droid/harma-mod-ru",
+    "steam_guide_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3846639642",
+    "steam_discussion_url": "https://steamcommunity.com/app/2483700/discussions/0/567052214089250831/",
+    "zog_url": "https://forum.zoneofgames.ru/topic/84702-harma/",
+    "cover_cdn_url": "https://images.boosty.to/image/56b68e36-d502-45b1-a70e-0ea729df427b",
+    "cover_color": "#1f1419",
+    "pg_cards": [
+      {
+        "id": "1894305",
+        "kind": "localization",
+        "url": "https://www.playground.ru/harma/file/harma_rusifikator_teksta_shriftov_i_knopok_menyu-1894305"
+      },
+      {
+        "id": "1894317",
+        "kind": "ct",
+        "url": "https://www.playground.ru/harma/cheat/harma_tablitsa_dlya_cheat_engine_bessmertie_resursy_boya_zoloto_schit_opyt_sp_i_kamni_mira-1894317"
+      },
+      {
+        "id": "1894319",
+        "kind": "save",
+        "url": "https://www.playground.ru/harma/cheat/harma_sohranenie_otkryty_habena_belua_razlom_izmerenij_i_500_kamnej_mira-1894319"
+      }
+    ],
+    "keywords": [
+      "харма",
+      "harma",
+      "карточный рогалик",
+      "колодострой",
+      "кодекс хармы",
+      "хабена белуа",
+      "камни мира"
+    ],
+    "early_access_until": "2026-12-04T20:00:00+10:00"
   }
 ]
