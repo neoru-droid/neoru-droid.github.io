@@ -756,5 +756,50 @@
     "ea_badge_pos": "top-right",
     "cover_color": "#312831",
     "cover_cdn_url": "https://images.boosty.to/image/ee7b5a86-1bdf-4bb5-9174-b807df5235e5"
+  },
+  {
+    "slug": "rekindled",
+    "title": "Rekindled: Cozy Tavern Life",
+    "appid": "4156500",
+    "track": "track1",
+    "owned_on_steam": false,
+    "has_translation": true,
+    "has_mod_menu": false,
+    "has_ct": false,
+    "version": "1.0",
+    "steam_build": "1.0 (26897379)",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "Меню, настройки, реплики Драко, обучение, грамоты, рецепты, блюда, растения и декор (1 630 строк) с 4 кириллическими шрифтами.",
+    "features": [
+      "1 630 переведённых строк под версию 1.0 (сборка Steam 26897379)",
+      "Четыре кириллических шрифта (Alice, Lora, Balsamiq Sans, Bellota Text)",
+      "Установщик для Windows и скрипт для Steam Deck с откатом оригинала"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/be1a3886-76d1-4d95-b90d-56ecaff4d976",
+    "github_url": "https://github.com/neoru-droid/rekindled-ru",
+    "steam_guide_url": "",
+    "steam_discussion_url": "https://steamcommunity.com/app/4156500/discussions/0/574933513436076459/",
+    "zog_url": "https://forum.zoneofgames.ru/topic/84700-rekindled-cozy-tavern-life/",
+    "cover_cdn_url": "https://images.boosty.to/image/ae49d10b-629d-4f36-94a0-81e49ac633b8",
+    "cover_color": "#2e1f14",
+    "pg_cards": [
+      {
+        "id": "1894222",
+        "kind": "localization",
+        "url": "https://www.playground.ru/misc/file/rekindled_cozy_tavern_life_rusifikator_teksta_i_shriftov-1894222"
+      }
+    ],
+    "keywords": [
+      "рекиндлд",
+      "таверна",
+      "драко",
+      "уютная таверна",
+      "симулятор таверны",
+      "cozy tavern"
+    ]
   }
 ]
