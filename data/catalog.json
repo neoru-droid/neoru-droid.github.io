@@ -978,5 +978,59 @@
     ],
     "cover_cdn_url": "https://images.boosty.to/image/0ae7b8b6-0959-4a84-af99-d6d3ce9c7faf",
     "cover_color": "#41423d"
+  },
+  {
+    "slug": "find-the-needle",
+    "title": "Find The Needle",
+    "appid": "5160800",
+    "track": "track2",
+    "owned_on_steam": true,
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "has_save": true,
+    "version": "1.0",
+    "steam_build": "EA V18.6 (26825799)",
+    "early_access_until": "2026-12-05T08:30:00+10:00",
+    "ea_badge_pos": "top-right",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "«Пульт ангара» (3D-сканер игл, телепорт, раскопка воронки, все 178 технологий, полёт, 3 пресета), таблица .CT (5 строк) и сохранение.",
+    "features": [
+      "«Пульт ангара»: 3D-сканер всех 24 игл сквозь стог с дистанцией, телепорт и раскопка воронки, деньги, все 178 технологий, 5 инструментов, запчасти, бесконечные силы и джетпак, полёт",
+      "3 пресета (Комфорт, Максимум, Сброс), сохранение настроек, поддержка геймпада (L3 + R3), Windows и Steam Deck / Linux",
+      "Таблица FindTheNeedle_RU_v1.0.CT (5 базовых строк) и стартовое сохранение ($250 000 без долга, 5 инструментов, 42 технологии / 66 уровней)"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/352a2330-0c2f-471b-aaa6-1936fe0dc091",
+    "github_url": "https://github.com/neoru-droid/find-the-needle-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1894469",
+        "kind": "ct",
+        "url": "https://www.playground.ru/misc/cheat/find_the_needle_tablitsa_dlya_cheat_engine_dengi_dolg_toplivo_dzhetpaka_i_radar-1894469"
+      },
+      {
+        "id": "1894470",
+        "kind": "save",
+        "url": "https://www.playground.ru/misc/cheat/find_the_needle_sohranenie_250_000_bez_dolga_5_instrumentov_i_42_tehnologii-1894470"
+      }
+    ],
+    "keywords": [
+      "файнд зе нидл",
+      "игла в стоге сена",
+      "стог",
+      "сено",
+      "пульт ангара",
+      "сканер игл",
+      "автоматизация",
+      "симулятор"
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/84fbfa5d-b1c5-4c5a-bb73-85e0c7424794",
+    "cover_color": "#52402b"
   }
 ]
