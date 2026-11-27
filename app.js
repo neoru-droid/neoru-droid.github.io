@@ -49,6 +49,7 @@
         if (heroBox) {
           const heroBtn = heroBox.querySelector(".btn-primary");
           if (heroBtn) heroBtn.textContent = "Скачать бесплатно на Boosty ↗";
+          heroBox.querySelectorAll("[data-ea-tg-remind]").forEach((el) => el.remove());
         }
         node.remove();
         return;

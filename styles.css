@@ -743,6 +743,27 @@ p, li, dd { text-wrap: pretty; }
   line-height: 1.45;
   color: var(--color-text-muted);
 }
+.ea-tg-remind {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  min-height: 36px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+  font-size: 0.84375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 150ms ease-out, background-color 140ms ease-out, color 140ms ease-out, border-color 140ms ease-out;
+}
+.ea-tg-remind:active:not(:disabled) {
+  transform: scale(0.96);
+}
 .game-ext-links {
   display: flex;
   flex-wrap: wrap;
@@ -807,8 +828,10 @@ p, li, dd { text-wrap: pretty; }
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  background: #141413;
+  background: #0d0d0c;
   aspect-ratio: 16 / 9;
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
 }
 .demo-video, .demo-img {
   display: block;
@@ -818,7 +841,7 @@ p, li, dd { text-wrap: pretty; }
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: 6px;
-  background: #141413;
+  background: #0d0d0c;
   outline: 1px solid rgba(255, 255, 255, 0.1);
   outline-offset: -1px;
 }
@@ -1307,6 +1330,11 @@ p, li, dd { text-wrap: pretty; }
     color: var(--color-text-primary);
   }
   .btn-secondary:hover { border-color: var(--color-text-secondary); }
+  .ea-tg-remind:hover {
+    background: var(--color-bg-elevated);
+    border-color: var(--color-border-strong);
+    color: var(--color-text-primary);
+  }
   .chip:hover, .nav-link:hover, .tab-btn:hover { color: var(--color-text-primary); }
   .card:hover .card-cover { transform: scale(1.02); }
   .faq-item:hover { border-color: var(--color-border-strong); }
@@ -1422,6 +1450,6 @@ p, li, dd { text-wrap: pretty; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link, .demo-showcase, .demo-video, .demo-img { transition: none; }
-  .btn:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) { transform: none; }
+  .btn, .ea-tg-remind, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link, .demo-showcase, .demo-video, .demo-img { transition: none; }
+  .btn:active:not(:disabled), .ea-tg-remind:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) { transform: none; }
 }

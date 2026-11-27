@@ -763,6 +763,27 @@ p, li, dd { text-wrap: pretty; }
   line-height: 1.45;
   color: var(--color-text-muted);
 }
+.ea-tg-remind {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  min-height: 36px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+  font-size: 0.84375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 150ms ease-out, background-color 140ms ease-out, color 140ms ease-out, border-color 140ms ease-out;
+}
+.ea-tg-remind:active:not(:disabled) {
+  transform: scale(0.96);
+}
 .game-ext-links {
   display: flex;
   flex-wrap: wrap;
@@ -827,8 +848,10 @@ p, li, dd { text-wrap: pretty; }
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  background: #141413;
+  background: #0d0d0c;
   aspect-ratio: 16 / 9;
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
 }
 .demo-video, .demo-img {
   display: block;
@@ -838,7 +861,7 @@ p, li, dd { text-wrap: pretty; }
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: 6px;
-  background: #141413;
+  background: #0d0d0c;
   outline: 1px solid rgba(255, 255, 255, 0.1);
   outline-offset: -1px;
 }
@@ -1327,6 +1350,11 @@ p, li, dd { text-wrap: pretty; }
     color: var(--color-text-primary);
   }
   .btn-secondary:hover { border-color: var(--color-text-secondary); }
+  .ea-tg-remind:hover {
+    background: var(--color-bg-elevated);
+    border-color: var(--color-border-strong);
+    color: var(--color-text-primary);
+  }
   .chip:hover, .nav-link:hover, .tab-btn:hover { color: var(--color-text-primary); }
   .card:hover .card-cover { transform: scale(1.02); }
   .faq-item:hover { border-color: var(--color-border-strong); }
@@ -1442,8 +1470,8 @@ p, li, dd { text-wrap: pretty; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link, .demo-showcase, .demo-video, .demo-img { transition: none; }
-  .btn:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) { transform: none; }
+  .btn, .ea-tg-remind, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link, .demo-showcase, .demo-video, .demo-img { transition: none; }
+  .btn:active:not(:disabled), .ea-tg-remind:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) { transform: none; }
 }
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Полка neoru-droid", "item": "https://neoru-droid.github.io/"}, {"@type": "ListItem", "position": 2, "name": "The Magus Circle", "item": "https://neoru-droid.github.io/games/the-magus-circle/"}]}, {"@type": "SoftwareApplication", "name": "The Magus Circle - русификатор, трейнер (мод-меню), таблица .CT скачать", "applicationCategory": "GameApplication", "operatingSystem": "Windows, Steam Deck, macOS", "softwareVersion": "1.0", "description": "6 706 строк диалогов, заклинаний, 111 реликвий и 68 достижений с пиксельными шрифтами плюс гримуар настроек и .CT.", "image": "https://neoru-droid.github.io/media/the-magus-circle.jpg", "url": "https://neoru-droid.github.io/games/the-magus-circle/", "author": {"@type": "Person", "name": "neoru-droid", "url": "https://neoru-droid.github.io/"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Как установить русификатор и трейнер (мод-меню) для The Magus Circle?", "acceptedAnswer": {"@type": "Answer", "text": "Скачайте архив со страницы игры на Boosty, распакуйте его и запустите установщик на Windows - он сам определит папку игры в Steam. На Steam Deck и Linux запустите скрипт install-steamdeck.sh из архива. На macOS откройте локальные файлы игры в Steam и запустите скрипт установки из архива. Таблицу .CT откройте в Cheat Engine 7.5+ и подключите к процессу игры."}}, {"@type": "Question", "name": "Сохранится ли прогресс в The Magus Circle?", "acceptedAnswer": {"@type": "Answer", "text": "Да, игровой прогресс остаётся на месте, а опции можно включать и выключать в любой момент. Проверено на сборке Steam 26344172 (Windows, Steam Deck, macOS)."}}, {"@type": "Question", "name": "Как удалить русификатор и трейнер (мод-меню) для The Magus Circle и вернуть оригинальные файлы?", "acceptedAnswer": {"@type": "Answer", "text": "Запустите тот же установщик (или скрипт удаления для Steam Deck и macOS) и выберите возврат резервной копии, либо выполните проверку целостности файлов игры в Steam."}}]}]}</script>
@@ -1473,7 +1501,7 @@ p, li, dd { text-wrap: pretty; }
           <span>Windows, Steam Deck, macOS</span>
         </div>
         <p class="game-lead">6 706 строк диалогов, заклинаний, 111 реликвий и 68 достижений с пиксельными шрифтами плюс гримуар настроек и .CT.</p>
-        <div class="game-cta-box"><div class="ea-inline" data-ea-until="1795852800000"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · скоро откроется</span></div><div class="game-cta-row"><a id="hero-boosty-cta" class="btn btn-primary btn-lg" data-track-goal="click_boosty" data-track-slug="the-magus-circle" href="https://boosty.to/cd_tixo/posts/1156f6fc-0f95-4945-845f-a1da765de3fe" target="_blank" rel="noopener">Мод-меню · 120 ₽ на Boosty ↗</a><a class="btn btn-shelf btn-lg" data-ea-free-btn="1" data-track-goal="click_github" data-track-slug="the-magus-circle" href="https://github.com/neoru-droid/the-magus-circle-ru/releases/latest" target="_blank" rel="noopener">Русификатор · бесплатно ↗</a></div><p class="cta-hint">Дата открытия не переносится · Подписка 120 ₽ дешевле 1 поста (150 ₽) и открывает все новинки · <a class="inline-jump-link" href="#ct-vs-mod">Чем мод-меню лучше .CT ↓</a></p></div>
+        <div class="game-cta-box"><div class="ea-inline" data-ea-until="1795852800000"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · скоро откроется</span></div><div class="game-cta-row"><a id="hero-boosty-cta" class="btn btn-primary btn-lg" data-track-goal="click_boosty" data-track-slug="the-magus-circle" href="https://boosty.to/cd_tixo/posts/1156f6fc-0f95-4945-845f-a1da765de3fe" target="_blank" rel="noopener">Мод-меню · 120 ₽ на Boosty ↗</a><a class="btn btn-shelf btn-lg" data-ea-free-btn="1" data-track-goal="click_github" data-track-slug="the-magus-circle" href="https://github.com/neoru-droid/the-magus-circle-ru/releases/latest" target="_blank" rel="noopener">Русификатор · бесплатно ↗</a></div><a class="ea-tg-remind" data-ea-tg-remind="1" data-track-goal="click_telegram" data-track-slug="the-magus-circle" href="https://t.me/neoru_droid" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Напомнить в Telegram, когда откроется&nbsp;↗</a><p class="cta-hint">Дата открытия не переносится · Подписка 120 ₽ дешевле 1 поста (150 ₽) и открывает все новинки · <a class="inline-jump-link" href="#ct-vs-mod">Чем мод-меню лучше .CT ↓</a></p></div>
         <div class="game-ext-links"><a data-track-goal="click_github" data-track-slug="the-magus-circle" href="https://github.com/neoru-droid/the-magus-circle-ru" target="_blank" rel="noopener">Исходный код на GitHub</a><a data-track-goal="click_github" data-track-slug="the-magus-circle" href="https://github.com/neoru-droid/the-magus-circle-mod-ru" target="_blank" rel="noopener">Таблица .CT на GitHub</a><a href="https://steamcommunity.com/app/2796640/discussions/0/563674514368708651/" target="_blank" rel="noopener">Тема в Steam</a><a href="https://forum.zoneofgames.ru/topic/84691-the-magus-circle/" target="_blank" rel="noopener">Тема на Zone of Games</a><a href="https://www.playground.ru/misc/file/the_magus_circle_rusifikator_teksta_dostizhenij_i_pikselnyh_shriftov-1894015" target="_blank" rel="noopener">PlayGround (русификатор)</a><a href="https://www.playground.ru/misc/cheat/the_magus_circle_tablitsa_dlya_cheat_engine_neuyazvimost_beskonechnaya_mana_uron_s_1_udara_urovni_anima_i_magnit-1894020" target="_blank" rel="noopener">PlayGround (.CT)</a><a data-track-goal="click_telegram" data-track-slug="the-magus-circle" href="https://t.me/neoru_droid" target="_blank" rel="noopener">Анонсы открытия в Telegram</a></div>
       </div>
     </section>
@@ -1494,7 +1522,7 @@ p, li, dd { text-wrap: pretty; }
     </section>
 
     <section id="ct-vs-mod" class="game-section cmp-section cmp-section--inline" aria-labelledby="cmp-heading"><h2 id="cmp-heading" class="order-strip-title">Таблица .CT или мод-меню</h2><div class="cmp-grid cmp-grid--inline"><article class="cmp-card cmp-card--ct"><div class="cmp-card-head"><h3 class="cmp-card-title">Таблица .CT</h3><span class="cmp-badge cmp-badge--free">Бесплатно сразу</span></div><ul class="cmp-list"><li>Работает через Cheat Engine с переключением по <kbd class="cmp-kbd">Alt+Tab</kbd>.</li><li>Удобно на ПК с мышкой, без установки в папку игры.</li><li>Базовые числа: деньги, здоровье, ресурсы и множители.</li><li>Открыта сразу, фиксы под патчи Steam выходят бесплатно.</li></ul></article><article class="cmp-card cmp-card--mod"><div class="cmp-card-head"><h3 class="cmp-card-title">Мод-меню</h3><span class="cmp-badge cmp-badge--accent">Сначала на Boosty, через 7 дней всем</span></div><ul class="cmp-list"><li>Открывается поверх игры по <kbd class="cmp-kbd">F1</kbd> - без Cheat Engine и <kbd class="cmp-kbd">Alt+Tab</kbd>.</li><li>Управление с геймпада и на Steam Deck (вызов по <kbd class="cmp-kbd">L3 + R3</kbd>).</li><li>Свой интерфейс под игру и функции сверх .CT: автосбор, редактор, пресеты.</li><li>Новинки на 7 дней раньше на Boosty (от 120 ₽), фиксы под патчи бесплатны.</li></ul></article></div><div class="cmp-actions"><a class="btn btn-primary" data-track-goal="click_boosty" data-track-slug="the-magus-circle" href="https://boosty.to/cd_tixo/posts/1156f6fc-0f95-4945-845f-a1da765de3fe" target="_blank" rel="noopener">Мод-меню · от 120 ₽ на Boosty ↗</a></div></section>
-    <section id="order-game" class="game-section order-compact" aria-labelledby="order-heading"><div class="order-compact-copy"><h2 id="order-heading" class="order-strip-title">Уведомления о патчах и заказ своей игры</h2><p class="order-strip-sub">Нажмите «Отслеживать» на Boosty (бесплатно), чтобы не пропустить фикс под патч Steam. Своя игра в очередь - от 350 ₽/мес, вне очереди - 750 ₽/мес.</p></div><div class="order-strip-actions"><a class="btn btn-shelf" data-track-goal="click_boosty" data-track-slug="the-magus-circle" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Отслеживать бесплатно ↗</a><a class="btn btn-secondary" data-track-goal="click_boosty" data-track-slug="the-magus-circle" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Заказать на Boosty ↗</a></div></section>
+    <section id="order-game" class="game-section order-compact" aria-labelledby="order-heading"><div class="order-compact-copy"><h2 id="order-heading" class="order-strip-title">Уведомления о патчах и заказ своей игры</h2><p class="order-strip-sub">Нажмите «Отслеживать» на Boosty (бесплатно), чтобы не пропустить фикс под патч Steam. Своя игра в очередь - от 350 ₽/мес, вне очереди - 750 ₽/мес.</p></div><div class="order-strip-actions"><a class="btn btn-shelf" data-track-goal="click_boosty" data-track-slug="the-magus-circle" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Отслеживать бесплатно ↗</a><a class="btn btn-secondary" data-track-goal="click_telegram" data-track-slug="the-magus-circle" href="https://t.me/neoru_droid" target="_blank" rel="noopener">Telegram с анонсами ↗</a><a class="btn btn-secondary" data-track-goal="click_boosty" data-track-slug="the-magus-circle" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Заказать на Boosty ↗</a></div></section>
     <section class="game-section" aria-labelledby="related-heading"><div class="section-head"><h2 id="related-heading">Другие сборки в каталоге</h2><a class="card-detail-link" href="../../">Все игры на полке →</a></div><div class="related-grid"><a class="related-card" href="../harma/"><img src="https://images.boosty.to/image/56b68e36-d502-45b1-a70e-0ea729df427b" data-fallback="../../media/harma.webp" referrerpolicy="no-referrer" style="background:#1f1419" alt="HARMA" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">HARMA</span><span class="related-meta">v1.0 · Win, Deck</span></span></a><a class="related-card" href="../rekindled/"><img src="https://images.boosty.to/image/ae49d10b-629d-4f36-94a0-81e49ac633b8" data-fallback="../../media/rekindled.webp" referrerpolicy="no-referrer" style="background:#2e1f14" alt="Rekindled: Cozy Tavern Life" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Rekindled: Cozy Tavern Life</span><span class="related-meta">v1.0 · Win, Deck</span></span></a><a class="related-card" href="../playrooms/"><img src="https://images.boosty.to/image/68b74efd-f3a5-4069-9727-9db9bfeaba26" data-fallback="../../media/playrooms.webp" referrerpolicy="no-referrer" style="background:#323e35" alt="Playrooms" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Playrooms</span><span class="related-meta">v1.0 · Win, Deck</span></span></a></div></section>
   </main>
 
@@ -1558,6 +1586,7 @@ p, li, dd { text-wrap: pretty; }
         if (heroBox) {
           const heroBtn = heroBox.querySelector(".btn-primary");
           if (heroBtn) heroBtn.textContent = "Скачать бесплатно на Boosty ↗";
+          heroBox.querySelectorAll("[data-ea-tg-remind]").forEach((el) => el.remove());
         }
         node.remove();
         return;

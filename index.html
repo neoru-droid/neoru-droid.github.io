@@ -767,6 +767,27 @@ p, li, dd { text-wrap: pretty; }
   line-height: 1.45;
   color: var(--color-text-muted);
 }
+.ea-tg-remind {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  min-height: 36px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+  font-size: 0.84375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 150ms ease-out, background-color 140ms ease-out, color 140ms ease-out, border-color 140ms ease-out;
+}
+.ea-tg-remind:active:not(:disabled) {
+  transform: scale(0.96);
+}
 .game-ext-links {
   display: flex;
   flex-wrap: wrap;
@@ -831,8 +852,10 @@ p, li, dd { text-wrap: pretty; }
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  background: #141413;
+  background: #0d0d0c;
   aspect-ratio: 16 / 9;
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
 }
 .demo-video, .demo-img {
   display: block;
@@ -842,7 +865,7 @@ p, li, dd { text-wrap: pretty; }
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: 6px;
-  background: #141413;
+  background: #0d0d0c;
   outline: 1px solid rgba(255, 255, 255, 0.1);
   outline-offset: -1px;
 }
@@ -1331,6 +1354,11 @@ p, li, dd { text-wrap: pretty; }
     color: var(--color-text-primary);
   }
   .btn-secondary:hover { border-color: var(--color-text-secondary); }
+  .ea-tg-remind:hover {
+    background: var(--color-bg-elevated);
+    border-color: var(--color-border-strong);
+    color: var(--color-text-primary);
+  }
   .chip:hover, .nav-link:hover, .tab-btn:hover { color: var(--color-text-primary); }
   .card:hover .card-cover { transform: scale(1.02); }
   .faq-item:hover { border-color: var(--color-border-strong); }
@@ -1446,8 +1474,8 @@ p, li, dd { text-wrap: pretty; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link, .demo-showcase, .demo-video, .demo-img { transition: none; }
-  .btn:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) { transform: none; }
+  .btn, .ea-tg-remind, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link, .demo-showcase, .demo-video, .demo-img { transition: none; }
+  .btn:active:not(:disabled), .ea-tg-remind:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) { transform: none; }
 }
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "CollectionPage", "name": "Полка русификаторов и сборок neoru-droid", "url": "https://neoru-droid.github.io/", "mainEntity": {"@id": "https://neoru-droid.github.io/#catalog"}}, {"@type": "ItemList", "@id": "https://neoru-droid.github.io/#catalog", "name": "Каталог игр neoru-droid", "numberOfItems": 20, "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Sandustry", "description": "«Пульт фабрики» (17 функций: бесплатные технологии, 27 построек, всё снаряжение, 3 пресета), таблица .CT (5 строк) и сохранение.", "url": "https://neoru-droid.github.io/games/sandustry/"}, {"@type": "ListItem", "position": 2, "name": "HARMA", "description": "7 825 строк перевода, шрифт Alegreya HL и 52 спрайта кнопок, «Кодекс Хармы» (12 функций), таблица .CT и сохранение.", "url": "https://neoru-droid.github.io/games/harma/"}, {"@type": "ListItem", "position": 3, "name": "Reshine", "description": "«Картотека реставратора» на 16 функций, таблица .CT (7 скриптов) и сохранение с открытым каталогом «Винтажная классика».", "url": "https://neoru-droid.github.io/games/reshine/"}, {"@type": "ListItem", "position": 4, "name": "Rekindled: Cozy Tavern Life", "description": "1 630 ключей текста, 4 кириллических шрифта, «Книга трактирщика» на 16 функций, таблица .CT и сохранение 1-го дня.", "url": "https://neoru-droid.github.io/games/rekindled/"}, {"@type": "ListItem", "position": 5, "name": "Slotbound", "description": "Панель «Механизм слота» на 15 функций, русская таблица .CT (12 скриптов) и стартовое сохранение на 10 000 оригинита и все 113 улучшений кузни.", "url": "https://neoru-droid.github.io/games/slotbound/"}, {"@type": "ListItem", "position": 6, "name": "No Asteroids", "description": "Бортовой терминал SX-19 на 13 функций, таблица .CT на 10 скриптов (автопоиск процесса) и стартовое сохранение на 1 100 000 ₵.", "url": "https://neoru-droid.github.io/games/no-asteroids/"}, {"@type": "ListItem", "position": 7, "name": "PC Store Together", "description": "Старт магазина с бюджетом 250 000 $ и 28 уровнем репутации, все навыки ремонта, очистка ПК от пыли и вирусов и 30 C.", "url": "https://neoru-droid.github.io/games/pc-store-together/"}, {"@type": "ListItem", "position": 8, "name": "The Magus Circle", "description": "6 706 строк диалогов, заклинаний, 111 реликвий и 68 достижений с пиксельными шрифтами плюс гримуар настроек и .CT.", "url": "https://neoru-droid.github.io/games/the-magus-circle/"}, {"@type": "ListItem", "position": 9, "name": "Ski-E-O! Ski Resort Tycoon", "description": "Старт с бюджетом 5 000 000 $, заморозка счёта, репутация курорта, бесплатные снегопушки и быстрая камера.", "url": "https://neoru-droid.github.io/games/ski-e-o/"}, {"@type": "ListItem", "position": 10, "name": "Dice Hoarder", "description": "Сохранение на 4 уровень, прокачка всех 8 навыков, бесконечная выносливость, дальний захват x3 и автосортировка.", "url": "https://neoru-droid.github.io/games/dice-hoarder/"}, {"@type": "ListItem", "position": 11, "name": "SHRED A BILLION", "description": "10 000 000 $ на счету со старта, золотые слитки, очки навыков, все инструменты, магнит купюр и ускорение работы.", "url": "https://neoru-droid.github.io/games/shred-a-billion/"}, {"@type": "ListItem", "position": 12, "name": "One More Lawn", "description": "Скорость косилки x2.5, широкая дека 4.4 м, бесконечное топливо, покос участка 18x18 м, деньги и смена погоды.", "url": "https://neoru-droid.github.io/games/one-more-lawn/"}, {"@type": "ListItem", "position": 13, "name": "How They Built the Pyramids", "description": "Лагерь 10 уровня со старта, запас монет, кирпичей и глины, быстрый бег, лёгкая переноска блоков и защита от жары.", "url": "https://neoru-droid.github.io/games/how-they-built-the-pyramids/"}, {"@type": "ListItem", "position": 14, "name": "Booster Pack Heroes", "description": "Стартовый запас всех валют, неуязвимая башня, урон курсора, 100% фольгированные и гигантские карты в бустерах.", "url": "https://neoru-droid.github.io/games/booster-pack-heroes/"}, {"@type": "ListItem", "position": 15, "name": "Here Comes the Horde", "description": "Стена на 500 000 HP, быстрый призыв отрядов, бесплатная стройка, множители золота и душ и таланты за 1 душу.", "url": "https://neoru-droid.github.io/games/here-comes-the-horde/"}, {"@type": "ListItem", "position": 16, "name": "Playrooms", "description": "Система Playrooms95, 177 реплик скрепки Балли, письма, телетекст и 4 шрифта игры плюс выносливость и фонарик.", "url": "https://neoru-droid.github.io/games/playrooms/"}, {"@type": "ListItem", "position": 17, "name": "Deleted Wiki: Clean Up the Lost Files", "description": "631 предмет каталога, 15 скриптов, форум и реплики вИИрона со шрифтом Underdog и умным поиском е/ё.", "url": "https://neoru-droid.github.io/games/deleted-wiki/"}, {"@type": "ListItem", "position": 18, "name": "Frontier Tale", "description": "Сюжетные диалоги, предметы, рецепты, задания и подписи мини-карты (7 040 строк) под патч 2.2.0.", "url": "https://neoru-droid.github.io/games/frontier-tale/"}, {"@type": "ListItem", "position": 19, "name": "Zombies Aren't Real", "description": "3 009 строк кампании, снаряжения и кооператива с пиксельным шрифтом 8x8, тактическим экраном и запасом бюджета.", "url": "https://neoru-droid.github.io/games/zombies-arent-real/"}, {"@type": "ListItem", "position": 20, "name": "We March as One", "description": "Кампания на 50 уровней, древо навыков и все 30 достижений на 5 кириллических шрифтах игры плюс опции золота и славы.", "url": "https://neoru-droid.github.io/games/we-march-as-one/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Как установить русификатор или мод-меню на Windows и Steam Deck?", "acceptedAnswer": {"@type": "Answer", "text": "Скачайте архив со страницы игры, распакуйте его и запустите установщик на Windows - он сам найдёт папку игры в Steam. На Steam Deck и Linux запустите скрипт install-steamdeck.sh из архива. Вернуть оригинальные файлы можно тем же установщиком или через проверку файлов в Steam."}}, {"@type": "Question", "name": "Как работают 7 дней раннего доступа на Boosty?", "acceptedAnswer": {"@type": "Answer", "text": "Русификаторы, таблицы .CT и стартовые сохранения выходят открыто сразу. Новые мод-меню и сборки 2-в-1 первые 7 дней доступны подписчикам на Boosty (дата открытия фиксируется сразу и не переносится при фиксах; подписка от 120 ₽ открывает все новинки сразу - дешевле одного поста 150 ₽), а после таймера автоматически открываются всем. Фиксы под патчи Steam для открытых игр выходят бесплатно сразу, подписчикам - приоритет починки."}}, {"@type": "Question", "name": "Что делать, если игра обновилась в Steam и мод перестал работать?", "acceptedAnswer": {"@type": "Answer", "text": "Проверьте страницу игры на сайте или на Boosty: после патча Steam я обновляю сборку и меняю номер версии. Нажмите «Отслеживать» на Boosty, чтобы получать уведомления о фиксах, или напишите комментарий под постом игры."}}, {"@type": "Question", "name": "Как предложить свою игру на перевод или мод-меню?", "acceptedAnswer": {"@type": "Answer", "text": "Оставьте название игры в комментариях на Boosty или выберите уровень подписки с приоритетной очередью: от 350 ₽/мес для общей очереди и 750 ₽/мес для разбора подходящей одиночной игры вне очереди."}}]}]}</script>

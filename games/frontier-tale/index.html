@@ -763,6 +763,27 @@ p, li, dd { text-wrap: pretty; }
   line-height: 1.45;
   color: var(--color-text-muted);
 }
+.ea-tg-remind {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  min-height: 36px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+  font-size: 0.84375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 150ms ease-out, background-color 140ms ease-out, color 140ms ease-out, border-color 140ms ease-out;
+}
+.ea-tg-remind:active:not(:disabled) {
+  transform: scale(0.96);
+}
 .game-ext-links {
   display: flex;
   flex-wrap: wrap;
@@ -827,8 +848,10 @@ p, li, dd { text-wrap: pretty; }
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  background: #141413;
+  background: #0d0d0c;
   aspect-ratio: 16 / 9;
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
 }
 .demo-video, .demo-img {
   display: block;
@@ -838,7 +861,7 @@ p, li, dd { text-wrap: pretty; }
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: 6px;
-  background: #141413;
+  background: #0d0d0c;
   outline: 1px solid rgba(255, 255, 255, 0.1);
   outline-offset: -1px;
 }
@@ -1327,6 +1350,11 @@ p, li, dd { text-wrap: pretty; }
     color: var(--color-text-primary);
   }
   .btn-secondary:hover { border-color: var(--color-text-secondary); }
+  .ea-tg-remind:hover {
+    background: var(--color-bg-elevated);
+    border-color: var(--color-border-strong);
+    color: var(--color-text-primary);
+  }
   .chip:hover, .nav-link:hover, .tab-btn:hover { color: var(--color-text-primary); }
   .card:hover .card-cover { transform: scale(1.02); }
   .faq-item:hover { border-color: var(--color-border-strong); }
@@ -1442,8 +1470,8 @@ p, li, dd { text-wrap: pretty; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link, .demo-showcase, .demo-video, .demo-img { transition: none; }
-  .btn:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) { transform: none; }
+  .btn, .ea-tg-remind, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link, .demo-showcase, .demo-video, .demo-img { transition: none; }
+  .btn:active:not(:disabled), .ea-tg-remind:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) { transform: none; }
 }
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Полка neoru-droid", "item": "https://neoru-droid.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Frontier Tale", "item": "https://neoru-droid.github.io/games/frontier-tale/"}]}, {"@type": "SoftwareApplication", "name": "Frontier Tale - русификатор текста и шрифтов скачать", "applicationCategory": "GameApplication", "operatingSystem": "Windows, Steam Deck", "softwareVersion": "1.4", "description": "Сюжетные диалоги, предметы, рецепты, задания и подписи мини-карты (7 040 строк) под патч 2.2.0.", "image": "https://neoru-droid.github.io/media/frontier-tale.jpg", "url": "https://neoru-droid.github.io/games/frontier-tale/", "author": {"@type": "Person", "name": "neoru-droid", "url": "https://neoru-droid.github.io/"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Как установить русификатор для Frontier Tale?", "acceptedAnswer": {"@type": "Answer", "text": "Скачайте архив со страницы игры на Boosty, распакуйте его и запустите установщик на Windows - он сам определит папку игры в Steam. На Steam Deck и Linux запустите скрипт install-steamdeck.sh из архива."}}, {"@type": "Question", "name": "Сохранится ли прогресс в Frontier Tale?", "acceptedAnswer": {"@type": "Answer", "text": "Да, перевод меняет только файлы текста и шрифтов, игровой прогресс остаётся на месте. Проверено на сборке Steam 2.2.0 (26889260) (Windows, Steam Deck)."}}, {"@type": "Question", "name": "Как удалить русификатор для Frontier Tale и вернуть оригинальные файлы?", "acceptedAnswer": {"@type": "Answer", "text": "Запустите тот же установщик (или скрипт удаления для Steam Deck) и выберите возврат резервной копии, либо выполните проверку целостности файлов игры в Steam."}}]}]}</script>
@@ -1494,7 +1522,7 @@ p, li, dd { text-wrap: pretty; }
     </section>
 
     
-    <section id="order-game" class="game-section order-compact" aria-labelledby="order-heading"><div class="order-compact-copy"><h2 id="order-heading" class="order-strip-title">Уведомления о патчах и заказ своей игры</h2><p class="order-strip-sub">Нажмите «Отслеживать» на Boosty (бесплатно), чтобы не пропустить фикс под патч Steam. Своя игра в очередь - от 350 ₽/мес, вне очереди - 750 ₽/мес.</p></div><div class="order-strip-actions"><a class="btn btn-shelf" data-track-goal="click_boosty" data-track-slug="frontier-tale" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Отслеживать бесплатно ↗</a><a class="btn btn-secondary" data-track-goal="click_boosty" data-track-slug="frontier-tale" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Заказать на Boosty ↗</a></div></section>
+    <section id="order-game" class="game-section order-compact" aria-labelledby="order-heading"><div class="order-compact-copy"><h2 id="order-heading" class="order-strip-title">Уведомления о патчах и заказ своей игры</h2><p class="order-strip-sub">Нажмите «Отслеживать» на Boosty (бесплатно), чтобы не пропустить фикс под патч Steam. Своя игра в очередь - от 350 ₽/мес, вне очереди - 750 ₽/мес.</p></div><div class="order-strip-actions"><a class="btn btn-shelf" data-track-goal="click_boosty" data-track-slug="frontier-tale" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Отслеживать бесплатно ↗</a><a class="btn btn-secondary" data-track-goal="click_telegram" data-track-slug="frontier-tale" href="https://t.me/neoru_droid" target="_blank" rel="noopener">Telegram с анонсами ↗</a><a class="btn btn-secondary" data-track-goal="click_boosty" data-track-slug="frontier-tale" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Заказать на Boosty ↗</a></div></section>
     <section class="game-section" aria-labelledby="related-heading"><div class="section-head"><h2 id="related-heading">Другие сборки в каталоге</h2><a class="card-detail-link" href="../../">Все игры на полке →</a></div><div class="related-grid"><a class="related-card" href="../harma/"><img src="https://images.boosty.to/image/56b68e36-d502-45b1-a70e-0ea729df427b" data-fallback="../../media/harma.webp" referrerpolicy="no-referrer" style="background:#1f1419" alt="HARMA" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">HARMA</span><span class="related-meta">v1.0 · Win, Deck</span></span></a><a class="related-card" href="../rekindled/"><img src="https://images.boosty.to/image/ae49d10b-629d-4f36-94a0-81e49ac633b8" data-fallback="../../media/rekindled.webp" referrerpolicy="no-referrer" style="background:#2e1f14" alt="Rekindled: Cozy Tavern Life" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Rekindled: Cozy Tavern Life</span><span class="related-meta">v1.0 · Win, Deck</span></span></a><a class="related-card" href="../the-magus-circle/"><img src="https://images.boosty.to/image/711fa663-835d-4712-8ec5-850c502a8469" data-fallback="../../media/the-magus-circle.webp" referrerpolicy="no-referrer" style="background:#1c2238" alt="The Magus Circle" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">The Magus Circle</span><span class="related-meta">v1.0 · Win, Deck, macOS</span></span></a></div></section>
   </main>
 
@@ -1558,6 +1586,7 @@ p, li, dd { text-wrap: pretty; }
         if (heroBox) {
           const heroBtn = heroBox.querySelector(".btn-primary");
           if (heroBtn) heroBtn.textContent = "Скачать бесплатно на Boosty ↗";
+          heroBox.querySelectorAll("[data-ea-tg-remind]").forEach((el) => el.remove());
         }
         node.remove();
         return;
