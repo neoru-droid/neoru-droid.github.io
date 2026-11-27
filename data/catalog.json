@@ -764,23 +764,24 @@
     "track": "track1",
     "owned_on_steam": false,
     "has_translation": true,
-    "has_mod_menu": false,
-    "has_ct": false,
+    "has_mod_menu": true,
+    "has_ct": true,
     "version": "1.0",
-    "steam_build": "1.0 (26897379)",
+    "steam_build": "26897379",
     "platforms": {
       "windows": true,
       "steamdeck": true,
       "macos": false
     },
-    "summary": "Меню, настройки, реплики Драко, обучение, грамоты, рецепты, блюда, растения и декор (1 630 строк) с 4 кириллическими шрифтами.",
+    "summary": "1 630 ключей текста, 4 кириллических шрифта, «Книга трактирщика» на 16 функций, таблица .CT и сохранение 1-го дня.",
     "features": [
-      "1 630 переведённых строк под версию 1.0 (сборка Steam 26897379)",
-      "Четыре кириллических шрифта (Alice, Lora, Balsamiq Sans, Bellota Text)",
-      "Установщик для Windows и скрипт для Steam Deck с откатом оригинала"
+      "1 630 ключей перевода интерфейса, книги таверны, диалогов Драко и 4 шрифта (Alice, Lora, Balsamiq Sans, Bellota Text)",
+      "«Книга трактирщика» на 16 функций: золото и сердца в HUD игры, уровень таверны, автопополнение, пауза дня, помощники и бег",
+      "Таблица Rekindled_RU_v1.0.CT (8 функций) и стартовое сохранение 1-го дня (50 050 золота, 2 500 сердец, 10-й уровень)"
     ],
     "boosty_url": "https://boosty.to/cd_tixo/posts/be1a3886-76d1-4d95-b90d-56ecaff4d976",
     "github_url": "https://github.com/neoru-droid/rekindled-ru",
+    "mod_github_url": "https://github.com/neoru-droid/rekindled-mod-ru",
     "steam_guide_url": "",
     "steam_discussion_url": "https://steamcommunity.com/app/4156500/discussions/0/574933513436076459/",
     "zog_url": "https://forum.zoneofgames.ru/topic/84700-rekindled-cozy-tavern-life/",
@@ -791,6 +792,16 @@
         "id": "1894222",
         "kind": "localization",
         "url": "https://www.playground.ru/misc/file/rekindled_cozy_tavern_life_rusifikator_teksta_i_shriftov-1894222"
+      },
+      {
+        "id": "1894228",
+        "kind": "ct",
+        "url": "https://www.playground.ru/misc/cheat/rekindled_cozy_tavern_life_tablitsa_dlya_cheat_engine_zoloto_serdtsa_opyt_uroven_avtopopolnenie_pauza_i_beg-1894228"
+      },
+      {
+        "id": "1894229",
+        "kind": "save",
+        "url": "https://www.playground.ru/misc/cheat/rekindled_cozy_tavern_life_sohranenie_50_050_zolota_2_500_serdets_10_j_uroven_i_chistaya_taverna_den_1-1894229"
       }
     ],
     "keywords": [
@@ -799,7 +810,8 @@
       "драко",
       "уютная таверна",
       "симулятор таверны",
-      "cozy tavern"
+      "cozy tavern",
+      "книга трактирщика"
     ]
   }
 ]
