@@ -768,6 +768,8 @@
     "has_ct": true,
     "version": "1.0",
     "steam_build": "26897379",
+    "early_access_until": "2026-12-04T15:00:00+10:00",
+    "ea_badge_pos": "top-right",
     "platforms": {
       "windows": true,
       "steamdeck": true,
