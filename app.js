@@ -7,10 +7,8 @@
       .replaceAll('"', "&quot;");
   }
 
-  function withUtm(rawUrl, slug) {
-    const base = String(rawUrl || "").split("?")[0];
-    const campaign = String(slug || "hub").replaceAll("-", "_");
-    return `${base}?utm_source=catalog_site&utm_medium=web&utm_campaign=${encodeURIComponent(campaign)}`;
+  function cleanUrl(rawUrl) {
+    return String(rawUrl || "").split("?")[0].trim();
   }
 
   function formatCountdown(msLeft) {
@@ -51,8 +49,6 @@
         if (heroBox) {
           const heroBtn = heroBox.querySelector(".btn-primary");
           if (heroBtn) heroBtn.textContent = "Скачать бесплатно на Boosty ↗";
-          const split = heroBox.querySelector(".ea-split");
-          if (split) split.remove();
         }
         node.remove();
         return;
@@ -214,7 +210,7 @@
     const eaBadge = isEarly
       ? `<div class="ea-badge${posCls}" data-ea-until="${escapeHtml(String(unlockMs))}"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · ${formatCountdown(unlockMs - Date.now())}</span></div>`
       : "";
-    const boostyHref = withUtm(game.boosty_url, game.slug);
+    const boostyHref = cleanUrl(game.boosty_url);
     const pageHref = `games/${encodeURIComponent(game.slug)}/`;
     const cleanGh = escapeHtml(String(game.github_url || "").replace(/\/$/, ""));
     const ghReleases = `${cleanGh}/releases/latest`;
@@ -240,7 +236,7 @@
       `<a class="card-cover-link" href="${pageHref}"${bgStyle}>${eaBadge}` +
       `<img class="card-cover" src="${imgSrc}"${fbAttr} referrerpolicy="no-referrer" alt="${escapeHtml(game.title)}" width="680" height="382"${loadAttr}>` +
       `</a>` +
-      `<div class="card-head"><h2 class="card-title"><a class="card-title-link" href="${pageHref}">${escapeHtml(game.title)}</a></h2>` +
+      `<div class="card-head"><h2 class="card-title"><a class="card-title-link" href="${pageHref}" title="${escapeHtml(game.title)}">${escapeHtml(game.title)}</a></h2>` +
       `<span class="card-ver">v${escapeHtml(game.version)} · ${escapeHtml(formatPlatforms(game))}</span></div>` +
       `<p class="card-summary">${escapeHtml(game.summary)}</p>` +
       `<div class="card-cta-bar">${ctaBtns}</div>` +

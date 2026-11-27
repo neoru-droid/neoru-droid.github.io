@@ -43,7 +43,7 @@
   --stone-700: #3e3c37;
   --cream-100: #f3efe6;
   --stone-300: #b7b1a5;
-  --stone-400: #8a8479;
+  --stone-400: #979185;
   --amber-500: #e5a23c;
   --amber-400: #f0b252;
   --mint-400: #6ee7b7;
@@ -181,7 +181,7 @@ p, li, dd { text-wrap: pretty; }
   cursor: pointer;
   white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
-  transition: transform 140ms ease-out, background-color 140ms ease-out, color 140ms ease-out, border-color 140ms ease-out;
+  transition: transform 150ms ease-out, background-color 140ms ease-out, color 140ms ease-out, border-color 140ms ease-out;
 }
 .btn-lg {
   min-height: 44px;
@@ -189,7 +189,10 @@ p, li, dd { text-wrap: pretty; }
   font-size: 0.9375rem;
   font-weight: 700;
 }
-.btn:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) {
+.btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+.chip:active:not(:disabled), .tab-btn:active:not(:disabled) {
   transform: scale(0.98);
 }
 .btn:focus-visible, .chip:focus-visible, .tab-btn:focus-visible, .shot-card:focus-visible,
@@ -264,10 +267,9 @@ p, li, dd { text-wrap: pretty; }
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
-  opacity: 0.75;
 }
-.chip.is-active { color: var(--color-text-primary); }
-.chip.is-active::after {
+.chip.is-active, .chip[aria-pressed="true"] { color: var(--color-text-primary); }
+.chip.is-active::after, .chip[aria-pressed="true"]::after {
   content: "";
   position: absolute;
   inset-inline: 0;
@@ -365,6 +367,13 @@ p, li, dd { text-wrap: pretty; }
   font-size: 0.84375rem;
   line-height: 1.45;
 }
+.shelf-note-link, .inline-jump-link {
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+  transition: color 140ms ease-out;
+}
 .games-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -378,6 +387,7 @@ p, li, dd { text-wrap: pretty; }
   row-gap: 0;
   min-width: 0;
 }
+.card[hidden] { display: none; }
 .card-cover-link {
   display: block;
   position: relative;
@@ -386,7 +396,7 @@ p, li, dd { text-wrap: pretty; }
   overflow: hidden;
   background: #23221f;
   aspect-ratio: 16 / 9;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.42), inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.42), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 .card-cover {
   display: block;
@@ -394,6 +404,8 @@ p, li, dd { text-wrap: pretty; }
   height: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
   transition: transform 220ms ease-out;
 }
 .ea-badge {
@@ -446,13 +458,26 @@ p, li, dd { text-wrap: pretty; }
 }
 .card-title {
   margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
   font-size: 1.0625rem;
   line-height: 1.25;
   letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .card-title-link {
+  display: block;
   color: var(--color-text-primary);
   text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-title-link:focus-visible {
+  outline-offset: -2px;
+  border-radius: 3px;
 }
 .card-ver {
   flex-shrink: 0;
@@ -466,6 +491,11 @@ p, li, dd { text-wrap: pretty; }
   color: var(--color-text-secondary);
   font-size: 0.875rem;
   line-height: 1.48;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(3 * 1.48em);
 }
 .card-cta-bar {
   display: flex;
@@ -618,18 +648,20 @@ p, li, dd { text-wrap: pretty; }
   height: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
 }
 .game-info {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 .game-overline {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.76rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--color-accent-solid);
 }
 .game-overline-ru { color: var(--color-ru-text); }
@@ -679,7 +711,7 @@ p, li, dd { text-wrap: pretty; }
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
+  gap: 10px;
   padding-block-start: 4px;
 }
 .game-cta-row {
@@ -691,48 +723,20 @@ p, li, dd { text-wrap: pretty; }
 .game-cta-row > .btn {
   flex: 1 1 auto;
 }
-.ea-split {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-  gap: 14px 20px;
-  width: 100%;
-  padding-block-start: 12px;
-  border-block-start: 1px solid var(--color-border-subtle);
-}
-.ea-split-col {
-  padding-inline-start: 12px;
-  border-inline-start: 2px solid var(--color-border-strong);
-}
-.ea-split-col.is-accent { border-inline-start-color: var(--color-accent-solid); }
-.ea-split-col.is-free { border-inline-start-color: var(--color-ru-text); }
-.ea-split-title {
-  margin: 0 0 3px;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
-}
-.ea-split-text {
-  margin: 0;
-  font-size: 0.8rem;
-  line-height: 1.45;
-  color: var(--color-text-secondary);
-}
 .cta-hint {
   margin: 0;
   font-size: 0.8125rem;
   line-height: 1.45;
   color: var(--color-text-muted);
-  max-width: 54ch;
 }
 .game-ext-links {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 6px 10px;
-  padding-block-start: 12px;
+  padding-block-start: 10px;
   border-block-start: 1px solid var(--color-border-subtle);
-  font-size: 0.84rem;
+  font-size: 0.8125rem;
 }
 .game-ext-links a + a::before {
   content: "·";
@@ -797,7 +801,9 @@ p, li, dd { text-wrap: pretty; }
   object-fit: cover;
   border-radius: 6px;
   background: #23221f;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
 }
 .shot-caption {
   font-size: 0.8125rem;
@@ -930,7 +936,9 @@ p, li, dd { text-wrap: pretty; }
   object-fit: cover;
   border-radius: 6px;
   background: #23221f;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
 }
 .related-body {
   display: flex;
@@ -993,6 +1001,211 @@ p, li, dd { text-wrap: pretty; }
   font-size: 1rem;
 }
 
+/* Comparison Section & Home FAQ */
+.cmp-section {
+  padding-block: 24px 8px;
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+.cmp-section--inline { padding-block: 28px; }
+.cmp-section .order-strip-title { margin-block-end: 16px; }
+.cmp-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.85fr);
+  gap: 16px;
+  align-items: stretch;
+}
+.cmp-grid--inline {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+}
+.cmp-single { max-width: 680px; }
+.cmp-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  padding: 18px;
+  border-radius: 12px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+}
+.cmp-card--mod {
+  background: linear-gradient(180deg, rgba(229, 162, 60, 0.08) 0%, var(--color-bg-surface) 140px);
+  border-color: var(--color-accent-edge);
+}
+.cmp-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+}
+.cmp-card-title {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+}
+.cmp-card-body--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 14px 18px;
+  align-items: start;
+}
+.cmp-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.cmp-badge--free {
+  background: rgba(110, 231, 183, 0.1);
+  border: 1px solid rgba(110, 231, 183, 0.28);
+  color: var(--color-ru-text);
+}
+.cmp-badge--accent {
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-accent-edge);
+  color: var(--color-accent-solid);
+}
+.cmp-preview {
+  margin: 0;
+  border-radius: 6px;
+}
+.cmp-preview-link {
+  display: block;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+}
+.cmp-preview-link:focus-visible {
+  outline: 2px solid var(--color-accent-solid);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.cmp-preview-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--color-bg-elevated);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
+}
+.cmp-preview-cap {
+  margin-block-start: 7px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  transition: color 140ms ease-out;
+}
+.cmp-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 0.875rem;
+  line-height: 1.48;
+  color: var(--color-text-secondary);
+}
+.cmp-list li {
+  position: relative;
+  padding-inline-start: 16px;
+}
+.cmp-list li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-border-strong);
+}
+.cmp-card--mod .cmp-list li::before { background: var(--color-accent-solid); }
+.cmp-kbd {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-strong);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.78rem;
+  color: var(--color-text-primary);
+  vertical-align: 0.04em;
+  white-space: nowrap;
+}
+.cmp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-block-start: 16px;
+}
+
+.home-faq {
+  padding-block: 28px 18px;
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+.home-faq .order-strip-title { margin-block-end: 16px; }
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 20px;
+  align-items: start;
+}
+.faq-item {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 6px;
+  transition: border-color 140ms ease-out;
+}
+.faq-item[open] { border-color: var(--color-border-strong); }
+.faq-q {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 16px;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after {
+  content: "+";
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--color-accent-solid);
+  transition: transform 150ms ease-out;
+}
+.faq-item[open] .faq-q::after { content: "-"; }
+.faq-q:focus-visible {
+  outline: 2px solid var(--color-accent-solid);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.faq-a {
+  margin: 0;
+  padding: 0 16px 14px;
+  font-size: 0.84375rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
 /* Footer */
 .site-footer {
   border-block-start: 1px solid var(--color-border-subtle);
@@ -1028,13 +1241,20 @@ p, li, dd { text-wrap: pretty; }
   .btn-secondary:hover { border-color: var(--color-text-secondary); }
   .chip:hover, .nav-link:hover, .tab-btn:hover { color: var(--color-text-primary); }
   .card:hover .card-cover { transform: scale(1.02); }
-  .card-title-link:hover, .card-detail-link:hover, .card-ext-link:hover, .breadcrumb a:hover, .footer-links a:hover, .game-ext-links a:hover, .related-card:hover .related-title {
+  .faq-item:hover { border-color: var(--color-border-strong); }
+  .cmp-preview-link:hover .cmp-preview-cap { color: var(--color-text-primary); }
+  .card-title-link:hover, .card-detail-link:hover, .card-ext-link:hover, .breadcrumb a:hover, .footer-links a:hover, .game-ext-links a:hover, .shelf-note-link:hover, .inline-jump-link:hover, .related-card:hover .related-title {
     color: var(--color-accent-solid);
   }
 }
 
 @media (max-width: 1120px) {
   .games-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1024px) {
+  .cmp-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+  .cmp-card-body--split { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 980px) {
@@ -1065,10 +1285,11 @@ p, li, dd { text-wrap: pretty; }
     -webkit-overflow-scrolling: touch;
   }
   .filter-row::-webkit-scrollbar { display: none; }
-  .chip.is-active::after { inset-block-end: 0; }
+  .chip.is-active::after, .chip[aria-pressed="true"]::after { inset-block-end: 0; }
   .toolbar-controls { flex-basis: 100%; justify-content: space-between; }
   .search-wrap { max-width: none; }
   .search-wrap input { min-height: 40px; font-size: 1rem; }
+  .faq-grid, .cmp-grid { grid-template-columns: 1fr; }
 
   .mobile-cta-bar {
     position: fixed;
@@ -1113,7 +1334,7 @@ p, li, dd { text-wrap: pretty; }
 }
 
 @media (max-width: 640px) {
-  .games-grid, .shots-grid, .related-grid, .ea-split { grid-template-columns: 1fr; }
+  .games-grid, .shots-grid, .related-grid { grid-template-columns: 1fr; }
   .games-grid { gap: 28px; }
   .card {
     display: flex;
@@ -1124,19 +1345,27 @@ p, li, dd { text-wrap: pretty; }
   .card-cta-bar { flex-wrap: wrap; }
   .game-cta-row { width: 100%; }
   .game-cta-row .btn { flex: 1 1 auto; }
+  .cmp-card { padding: 14px; }
+  .cmp-actions .btn { width: 100%; min-height: 40px; }
+}
+
+@media (max-width: 420px) {
+  .container { width: min(1240px, 100% - 24px); }
+  .btn { white-space: normal; text-align: center; }
+  .btn-lg { padding: 10px 14px; font-size: 0.875rem; }
+  .mobile-cta-bar { gap: 8px; padding-inline: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn, .chip, .card-cover, .mobile-cta-bar { transition: none; }
+  .btn, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link { transition: none; }
   .btn:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) { transform: none; }
 }
-
-.card[hidden]{display:none}.chip[aria-pressed="true"]{color:var(--color-text-primary)}.chip[aria-pressed="true"]::after{content:"";position:absolute;inset-inline:0;inset-block-end:-7px;height:2px;background:var(--color-accent-solid)}.home-faq{padding-block:28px 18px;border-block-start:1px solid var(--color-border-subtle)}.home-faq .order-strip-title{margin-block-end:16px}.faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px;align-items:start}.faq-item{background:var(--color-bg-surface);border:1px solid var(--color-border-subtle);border-radius:6px;transition:border-color 140ms ease-out}.faq-item[open]{border-color:var(--color-border-strong)}.faq-q{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;font-family:"Manrope",sans-serif;font-size:0.9375rem;font-weight:700;line-height:1.35;color:var(--color-text-primary);cursor:pointer;-webkit-tap-highlight-color:transparent}.faq-q::-webkit-details-marker{display:none}.faq-q::after{content:"+";flex-shrink:0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:1.05rem;line-height:1;color:var(--color-accent-solid);transition:transform 150ms ease-out}.faq-item[open] .faq-q::after{content:"-"}.faq-q:focus-visible{outline:2px solid var(--color-accent-solid);outline-offset:2px;border-radius:6px}.faq-a{margin:0;padding:0 16px 14px;font-size:0.84375rem;line-height:1.5;color:var(--color-text-secondary)}.tg-strip{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;padding:12px 16px;border-radius:8px;background:var(--color-bg-surface);border:1px solid rgba(56,189,248,0.28)}.main-content>.tg-strip{margin-block-start:4px}.empty-state:not([hidden])+.tg-strip{margin-block-start:24px}.game-section+.tg-strip{margin-block:0 28px}.tg-strip-body{display:flex;align-items:center;gap:12px;min-width:0}.tg-strip-icon{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;flex-shrink:0;border-radius:6px;background:rgba(56,189,248,0.12);color:#56c2f6}.tg-strip-icon svg{display:block;transform:translateX(-0.5px)}.tg-strip-text{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;min-width:0;line-height:1.4}.tg-strip-title{font-family:"Manrope",sans-serif;font-size:0.9375rem;font-weight:700;color:var(--color-text-primary)}.tg-strip-sub{font-size:0.875rem;color:var(--color-text-secondary)}.tg-strip-handle{color:#7dd3fc;font-weight:600}.tg-strip-btn{flex-shrink:0;touch-action:manipulation;background:rgba(56,189,248,0.14);border-color:rgba(56,189,248,0.44);color:#e0f2fe}.tg-strip-btn:focus-visible{outline:2px solid #56c2f6;outline-offset:2px}.cmp-section{padding-block:24px 8px;border-block-start:1px solid var(--color-border-subtle)}.main-content>.tg-strip+.cmp-section{margin-block-start:24px}.cmp-section--inline{padding-block:28px}.cmp-section .order-strip-title{margin-block-end:16px}.cmp-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.85fr);gap:16px;align-items:stretch}.cmp-grid--inline{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}.cmp-single{max-width:680px}.cmp-card{display:flex;flex-direction:column;gap:14px;min-width:0;padding:18px 20px;border-radius:8px;background:var(--color-bg-surface);border:1px solid var(--color-border-subtle)}.cmp-card--mod{background:linear-gradient(180deg,rgba(229,162,60,0.08) 0%,var(--color-bg-surface) 140px);border-color:var(--color-accent-edge)}.cmp-card-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px}.cmp-card-title{margin:0;font-family:"Manrope",sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;color:var(--color-text-primary)}.cmp-card-body--split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:14px 18px;align-items:start}.cmp-badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:4px;font-size:0.75rem;font-weight:600;line-height:1.3}.cmp-badge--free{background:rgba(110,231,183,0.1);border:1px solid rgba(110,231,183,0.28);color:var(--color-ru-text)}.cmp-badge--accent{background:var(--color-accent-soft);border:1px solid var(--color-accent-edge);color:var(--color-accent-solid)}.cmp-preview{margin:0}.cmp-preview-link{display:block;text-decoration:none;color:var(--color-text-secondary)}.cmp-preview-link:focus-visible{outline:2px solid var(--color-accent-solid);outline-offset:2px;border-radius:5px}.cmp-preview-img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:5px;background:var(--color-bg-elevated);outline:1px solid rgba(255,255,255,0.1);outline-offset:-1px}.cmp-preview-cap{margin-block-start:7px;font-size:0.8rem;color:var(--color-text-muted);transition:color 140ms ease-out}.cmp-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.875rem;line-height:1.48;color:var(--color-text-secondary)}.cmp-list li{position:relative;padding-inline-start:16px}.cmp-list li::before{content:"";position:absolute;inset-inline-start:0;inset-block-start:0.55em;width:6px;height:6px;border-radius:50%;background:var(--color-border-strong)}.cmp-card--mod .cmp-list li::before{background:var(--color-accent-solid)}.cmp-kbd{display:inline-block;padding:1px 6px;border-radius:4px;background:var(--color-bg-elevated);border:1px solid var(--color-border-strong);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.78rem;color:var(--color-text-primary);vertical-align:0.04em;white-space:nowrap}.cmp-actions{display:flex;flex-wrap:wrap;gap:10px;margin-block-start:16px}@media (hover:hover){.faq-item:hover{border-color:var(--color-border-strong)}.tg-strip-btn:hover{background:rgba(56,189,248,0.24);border-color:rgba(56,189,248,0.72);color:#f0f9ff}.cmp-preview-link:hover .cmp-preview-cap{color:var(--color-text-primary)}}@media (max-width:1024px){.cmp-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}.cmp-card-body--split{grid-template-columns:1fr}}@media (max-width:767px){.chip[aria-pressed="true"]::after{inset-block-end:0}.faq-grid,.cmp-grid{grid-template-columns:1fr}}@media (max-width:640px){.tg-strip{flex-direction:column;align-items:stretch;gap:12px;padding:12px 14px}.main-content>.tg-strip{margin-block-start:28px}.game-section+.tg-strip{margin-block:0 24px}.tg-strip-body{align-items:flex-start}.tg-strip-text{flex-direction:column;gap:2px}.tg-strip-btn{width:100%;min-height:40px}.cmp-card{padding:14px 16px}.cmp-actions .btn{width:100%;min-height:40px}}@media (prefers-reduced-motion:reduce){.faq-item,.faq-q::after,.cmp-preview-cap{transition:none}}</style>
+</style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Полка neoru-droid", "item": "https://neoru-droid.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Dice Hoarder", "item": "https://neoru-droid.github.io/games/dice-hoarder/"}]}, {"@type": "SoftwareApplication", "name": "Dice Hoarder - трейнер (мод-меню), таблица Cheat Engine, сохранение скачать", "applicationCategory": "GameApplication", "operatingSystem": "Windows, Steam Deck", "softwareVersion": "1.0", "description": "Сохранение на 4 уровень, прокачка всех 8 навыков, бесконечная выносливость, дальний захват x3 и автосортировка.", "image": "https://neoru-droid.github.io/media/dice-hoarder.jpg", "url": "https://neoru-droid.github.io/games/dice-hoarder/", "author": {"@type": "Person", "name": "neoru-droid", "url": "https://neoru-droid.github.io/"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Как установить трейнер (мод-меню) для Dice Hoarder?", "acceptedAnswer": {"@type": "Answer", "text": "Скачайте архив со страницы игры на Boosty, распакуйте его и запустите установщик на Windows - он сам определит папку игры в Steam. На Steam Deck и Linux запустите скрипт install-steamdeck.sh из архива. Таблицу .CT откройте в Cheat Engine 7.5+ и подключите к процессу игры."}}, {"@type": "Question", "name": "Сохранится ли прогресс в Dice Hoarder?", "acceptedAnswer": {"@type": "Answer", "text": "Да, ваш прогресс не затирается автоматически. Перед установкой стартового сохранения из архива скопируйте свой слот в отдельную папку. Проверено на сборке Steam 1.0 (Windows, Steam Deck)."}}, {"@type": "Question", "name": "Как удалить трейнер (мод-меню) для Dice Hoarder и вернуть оригинальные файлы?", "acceptedAnswer": {"@type": "Answer", "text": "Запустите тот же установщик (или скрипт удаления для Steam Deck) и выберите возврат резервной копии, либо выполните проверку целостности файлов игры в Steam."}}]}]}</script>
 </head>
 <body class="has-mobile-bar">
-  <header class="site-nav"><div class="container site-nav-inner"><a class="brand-link" href="../../"><img class="brand-avatar" src="https://images.boosty.to/image/143f3aac-acd2-4964-abe8-508c11c3589f" data-fallback="../../media/avatar.png" referrerpolicy="no-referrer" alt="neoru-droid" width="34" height="34"><span class="brand-text"><span class="brand-name">neoru-droid</span><span class="brand-tag">игры на русском, шрифты и сохранения</span></span></a><nav class="nav-links" aria-label="Навигация сайта"><a class="nav-link" href="../../">Полка игр</a><a class="nav-link" href="../../?type=translation">Русификаторы</a><a class="nav-link" href="#order-game">Заказать игру</a><a class="nav-link" href="https://t.me/neoru_droid" target="_blank" rel="noopener">Telegram ↗</a><a class="nav-link nav-link-accent" href="https://boosty.to/cd_tixo?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=hub" target="_blank" rel="noopener">Boosty ↗</a></nav></div></header>
+  <header class="site-nav"><div class="container site-nav-inner"><a class="brand-link" href="../../"><img class="brand-avatar" src="https://images.boosty.to/image/143f3aac-acd2-4964-abe8-508c11c3589f" data-fallback="../../media/avatar.png" referrerpolicy="no-referrer" alt="neoru-droid" width="34" height="34"><span class="brand-text"><span class="brand-name">neoru-droid</span><span class="brand-tag">переводы, мод-меню и таблицы .CT</span></span></a><nav class="nav-links" aria-label="Навигация сайта"><a class="nav-link" href="../../">Полка игр</a><a class="nav-link" href="../../?type=translation">Русификаторы</a><a class="nav-link" href="#order-game">Заказать игру</a><a class="nav-link" href="https://t.me/neoru_droid" target="_blank" rel="noopener">Telegram ↗</a><a class="nav-link nav-link-accent" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Boosty ↗</a></nav></div></header>
   <main class="container">
     <div class="breadcrumb-bar">
       <nav class="breadcrumb" aria-label="Хлебные крошки">
@@ -1152,7 +1381,7 @@ p, li, dd { text-wrap: pretty; }
         <img class="game-cover-img" src="https://images.boosty.to/image/e8697702-fd9d-4690-8020-926620e9e0bc" data-fallback="../../media/dice-hoarder.webp" referrerpolicy="no-referrer" alt="Dice Hoarder" width="680" height="382" fetchpriority="high">
       </div>
       <div class="game-info">
-        <span class="game-overline">Игровая сборка · трейнер (мод-меню) + таблица .CT + сохранение</span>
+        <span class="game-overline">Мод-меню · Таблица .CT · Сохранение</span>
         <h1>Dice Hoarder</h1>
         <div class="spec-strip">
           <span>v1.0</span>
@@ -1160,8 +1389,8 @@ p, li, dd { text-wrap: pretty; }
           <span>Windows, Steam Deck</span>
         </div>
         <p class="game-lead">Сохранение на 4 уровень, прокачка всех 8 навыков, бесконечная выносливость, дальний захват x3 и автосортировка.</p>
-        <div class="game-cta-box"><div class="ea-inline" data-ea-until="1795827600000"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · скоро откроется</span></div><div class="game-cta-row"><a id="hero-boosty-cta" class="btn btn-primary btn-lg" href="https://boosty.to/cd_tixo/posts/0585ec01-e32d-46a6-87fe-edee2045a9fc?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=dice_hoarder" target="_blank" rel="noopener">Мод-меню · 120 ₽ на Boosty ↗</a><a class="btn btn-shelf btn-lg" data-ea-free-btn="1" href="https://github.com/neoru-droid/dice-hoarder-mod-ru/releases/latest" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a><a class="btn btn-secondary btn-lg tg-strip-btn" data-ea-tg-btn="1" href="https://t.me/neoru_droid" target="_blank" rel="noopener">Узнать об открытии в Telegram ↗</a></div><div class="ea-split"><div class="ea-split-col is-free"><p class="ea-split-title">Бесплатно прямо сейчас</p><p class="ea-split-text">Русская таблица .CT (для Cheat Engine 7.5+ на ПК) и стартовое сохранение уже лежат открыто на GitHub и PlayGround.</p></div><div class="ea-split-col is-accent"><p class="ea-split-title">Мод-меню без ожидания · 120 ₽</p><p class="ea-split-text">На 7 дней раньше на Boosty (дата открытия не переносится): подписка 120 ₽ открывает сразу все новинки. Установка в один клик (Cheat Engine не нужен), русская панель и работа на Steam Deck.</p></div></div></div>
-        <div class="game-ext-links"><a href="https://github.com/neoru-droid/dice-hoarder-mod-ru" target="_blank" rel="noopener">Исходный код на GitHub</a><a href="https://www.playground.ru/misc/cheat/dice_hoarder_tablitsa_dlya_cheat_engine_ochki_navykov_urovni_8_navykov_vynoslivost_beg_i_zahvat-1893957" target="_blank" rel="noopener">PlayGround (.CT)</a><a href="https://www.playground.ru/misc/cheat/dice_hoarder_startovoe_sohranenie_syuzhetnogo_rezhima_na_4_uroven_i_zapas_ochkov_navykov-1893959" target="_blank" rel="noopener">PlayGround (сохранение)</a></div>
+        <div class="game-cta-box"><div class="ea-inline" data-ea-until="1795827600000"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · скоро откроется</span></div><div class="game-cta-row"><a id="hero-boosty-cta" class="btn btn-primary btn-lg" href="https://boosty.to/cd_tixo/posts/0585ec01-e32d-46a6-87fe-edee2045a9fc" target="_blank" rel="noopener">Мод-меню · 120 ₽ на Boosty ↗</a><a class="btn btn-shelf btn-lg" data-ea-free-btn="1" href="https://github.com/neoru-droid/dice-hoarder-mod-ru/releases/latest" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a></div><p class="cta-hint">Дата открытия не переносится · Подписка 120 ₽ открывает все новинки сразу · <a class="inline-jump-link" href="#ct-vs-mod">Чем мод-меню лучше .CT ↓</a></p></div>
+        <div class="game-ext-links"><a href="https://github.com/neoru-droid/dice-hoarder-mod-ru" target="_blank" rel="noopener">Исходный код на GitHub</a><a href="https://www.playground.ru/misc/cheat/dice_hoarder_tablitsa_dlya_cheat_engine_ochki_navykov_urovni_8_navykov_vynoslivost_beg_i_zahvat-1893957" target="_blank" rel="noopener">PlayGround (.CT)</a><a href="https://www.playground.ru/misc/cheat/dice_hoarder_startovoe_sohranenie_syuzhetnogo_rezhima_na_4_uroven_i_zapas_ochkov_navykov-1893959" target="_blank" rel="noopener">PlayGround (сохранение)</a><a href="https://t.me/neoru_droid" target="_blank" rel="noopener">Анонсы открытия в Telegram</a></div>
       </div>
     </section>
 
@@ -1180,9 +1409,8 @@ p, li, dd { text-wrap: pretty; }
       </div>
     </section>
 
-    <section id="ct-vs-mod" class="game-section cmp-section cmp-section--inline" aria-labelledby="cmp-heading"><h2 id="cmp-heading" class="order-strip-title">Таблица .CT или мод-меню</h2><div class="cmp-grid cmp-grid--inline"><article class="cmp-card cmp-card--ct"><div class="cmp-card-head"><h3 class="cmp-card-title">Таблица .CT</h3><span class="cmp-badge cmp-badge--free">Бесплатно сразу</span></div><ul class="cmp-list"><li>Базовые числа: деньги, здоровье, ресурсы и множители.</li><li>Нужен установленный Cheat Engine и переключение через <kbd class="cmp-kbd">Alt+Tab</kbd>.</li><li>Удобно на ПК с мышкой, без установки в папку игры.</li></ul></article><article class="cmp-card cmp-card--mod"><div class="cmp-card-head"><h3 class="cmp-card-title">Мод-меню</h3><span class="cmp-badge cmp-badge--accent">7 дней на Boosty, затем всем</span></div><ul class="cmp-list"><li>Открывается поверх игры без Cheat Engine и <kbd class="cmp-kbd">Alt+Tab</kbd>.</li><li>Управление с геймпада и на Steam Deck (вызов по <kbd class="cmp-kbd">L3 + R3</kbd>).</li><li>Свой интерфейс под игру и функции сверх .CT: автосбор, редактор, пресеты.</li><li>Подписка 120 ₽ открывает все новинки на 7 дней раньше; фиксы под патчи бесплатны (подписчикам - приоритет).</li></ul></article></div><div class="cmp-actions"><a class="btn btn-primary" href="https://boosty.to/cd_tixo/posts/0585ec01-e32d-46a6-87fe-edee2045a9fc?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=dice_hoarder" target="_blank" rel="noopener">Мод-меню · от 120 ₽ на Boosty ↗</a><a class="btn btn-secondary tg-strip-btn" href="https://t.me/neoru_droid" target="_blank" rel="noopener">Telegram @neoru_droid ↗</a></div></section>
-    <aside class="tg-strip" aria-label="Канал в Telegram"><div class="tg-strip-body"><span class="tg-strip-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.6c.3-1.2-.9-2.2-2-1.7L2.6 9.8c-1.1.4-1.1 2 .1 2.4l4.4 1.4 10.3-6.5c.5-.3.9.1.5.5l-8.3 7.5-.3 4.3c.5 0 .8-.2 1.1-.5l2.6-2.5 4.4 3.2c.8.5 1.8.1 2-.9L21.9 4.6z"/></svg></span><p class="tg-strip-text"><strong class="tg-strip-title">Новые релизы и фиксы под патчи Steam</strong> <span class="tg-strip-sub">бесплатно в Telegram (<span class="tg-strip-handle" translate="no">@neoru_droid</span>)</span></p></div><a class="btn tg-strip-btn" href="https://t.me/neoru_droid" target="_blank" rel="noopener">Открыть Telegram</a></aside>
-    <section id="order-game" class="game-section order-compact" aria-labelledby="order-heading"><div class="order-compact-copy"><h2 id="order-heading" class="order-strip-title">Уведомления о патчах и заказ своей игры</h2><p class="order-strip-sub">Нажмите «Отслеживать» на Boosty (бесплатно), чтобы не пропустить фикс под патч Steam. Своя игра в очередь - от 350 ₽/мес, вне очереди - 750 ₽/мес.</p></div><div class="order-strip-actions"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo?utm_source=catalog_game_page&amp;utm_medium=follow&amp;utm_campaign=dice_hoarder" target="_blank" rel="noopener">Отслеживать бесплатно ↗</a><a class="btn btn-secondary" href="https://t.me/neoru_droid" target="_blank" rel="noopener">Канал в Telegram ↗</a><a class="btn btn-secondary" href="https://boosty.to/cd_tixo?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=order_game" target="_blank" rel="noopener">Заказать на Boosty ↗</a></div></section>
+    <section id="ct-vs-mod" class="game-section cmp-section cmp-section--inline" aria-labelledby="cmp-heading"><h2 id="cmp-heading" class="order-strip-title">Таблица .CT или мод-меню</h2><div class="cmp-grid cmp-grid--inline"><article class="cmp-card cmp-card--ct"><div class="cmp-card-head"><h3 class="cmp-card-title">Таблица .CT</h3><span class="cmp-badge cmp-badge--free">Бесплатно сразу</span></div><ul class="cmp-list"><li>Базовые числа: деньги, здоровье, ресурсы и множители.</li><li>Нужен установленный Cheat Engine и переключение через <kbd class="cmp-kbd">Alt+Tab</kbd>.</li><li>Удобно на ПК с мышкой, без установки в папку игры.</li></ul></article><article class="cmp-card cmp-card--mod"><div class="cmp-card-head"><h3 class="cmp-card-title">Мод-меню</h3><span class="cmp-badge cmp-badge--accent">7 дней на Boosty, затем всем</span></div><ul class="cmp-list"><li>Открывается поверх игры без Cheat Engine и <kbd class="cmp-kbd">Alt+Tab</kbd>.</li><li>Управление с геймпада и на Steam Deck (вызов по <kbd class="cmp-kbd">L3 + R3</kbd>).</li><li>Свой интерфейс под игру и функции сверх .CT: автосбор, редактор, пресеты.</li><li>Подписка 120 ₽ открывает все новинки на 7 дней раньше; фиксы под патчи бесплатны (подписчикам - приоритет).</li></ul></article></div><div class="cmp-actions"><a class="btn btn-primary" href="https://boosty.to/cd_tixo/posts/0585ec01-e32d-46a6-87fe-edee2045a9fc" target="_blank" rel="noopener">Мод-меню · от 120 ₽ на Boosty ↗</a></div></section>
+    <section id="order-game" class="game-section order-compact" aria-labelledby="order-heading"><div class="order-compact-copy"><h2 id="order-heading" class="order-strip-title">Уведомления о патчах и заказ своей игры</h2><p class="order-strip-sub">Нажмите «Отслеживать» на Boosty (бесплатно), чтобы не пропустить фикс под патч Steam. Своя игра в очередь - от 350 ₽/мес, вне очереди - 750 ₽/мес.</p></div><div class="order-strip-actions"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Отслеживать бесплатно ↗</a><a class="btn btn-secondary" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Заказать на Boosty ↗</a></div></section>
     <section class="game-section" aria-labelledby="related-heading"><div class="section-head"><h2 id="related-heading">Другие сборки в каталоге</h2><a class="card-detail-link" href="../../">Все игры на полке →</a></div><div class="related-grid"><a class="related-card" href="../slotbound/"><img src="https://images.boosty.to/image/ee7b5a86-1bdf-4bb5-9174-b807df5235e5" data-fallback="../../media/slotbound.webp" referrerpolicy="no-referrer" style="background:#312831" alt="Slotbound" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Slotbound</span><span class="related-meta">v1.0 · Win, Deck</span></span></a><a class="related-card" href="../no-asteroids/"><img src="https://images.boosty.to/image/911fb3d3-730a-4744-975e-86c780917690" data-fallback="../../media/no-asteroids.webp" referrerpolicy="no-referrer" style="background:#1e1f23" alt="No Asteroids" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">No Asteroids</span><span class="related-meta">v1.3 · Win, Deck, macOS</span></span></a><a class="related-card" href="../pc-store-together/"><img src="https://images.boosty.to/image/72dae576-3aa0-4afe-b257-581da5f7b886" data-fallback="../../media/pc-store-together.webp" referrerpolicy="no-referrer" style="background:#232933" alt="PC Store Together" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">PC Store Together</span><span class="related-meta">v1.0 · Win, Deck</span></span></a></div></section>
   </main>
 
@@ -1191,10 +1419,10 @@ p, li, dd { text-wrap: pretty; }
       <span class="mobile-cta-title">Dice Hoarder</span>
       <span class="mobile-cta-sub">v1.0 · Win, Deck</span>
     </div>
-    <div style="display:flex;gap:8px;flex-shrink:0;"><a class="btn btn-shelf" href="https://github.com/neoru-droid/dice-hoarder-mod-ru/releases/latest" target="_blank" rel="noopener">.CT бесплатно</a><a class="btn btn-primary" href="https://boosty.to/cd_tixo/posts/0585ec01-e32d-46a6-87fe-edee2045a9fc?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=dice_hoarder" target="_blank" rel="noopener">Мод-меню · 120 ₽</a></div>
+    <div style="display:flex;gap:8px;flex-shrink:0;"><a class="btn btn-shelf" href="https://github.com/neoru-droid/dice-hoarder-mod-ru/releases/latest" target="_blank" rel="noopener">.CT бесплатно</a><a class="btn btn-primary" href="https://boosty.to/cd_tixo/posts/0585ec01-e32d-46a6-87fe-edee2045a9fc" target="_blank" rel="noopener">Мод-меню · 120 ₽</a></div>
   </div>
 
-  <footer class="site-footer"><div class="container footer-inner"><p>neoru-droid · переводы, шрифты и сборки для одиночных игр</p><div class="footer-links"><a href="https://boosty.to/cd_tixo?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=hub" target="_blank" rel="noopener">Страница на Boosty</a><a href="https://boosty.to/cd_tixo/posts/2a55d7e9-0f53-4d93-9f66-280981158dec?utm_source=catalog_game_page&amp;utm_medium=seo&amp;utm_campaign=hub" target="_blank" rel="noopener">Закреп на Boosty</a><a href="https://t.me/neoru_droid" target="_blank" rel="noopener">Telegram</a><a href="https://steamcommunity.com/id/cd-_-TiXo/myworkshopfiles/?section=guides" target="_blank" rel="noopener">Руководства Steam</a><a href="https://github.com/neoru-droid" target="_blank" rel="noopener">GitHub</a></div></div></footer>
+  <footer class="site-footer"><div class="container footer-inner"><p>neoru-droid · переводы, шрифты и сборки для одиночных игр</p><div class="footer-links"><a href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Страница на Boosty</a><a href="https://boosty.to/cd_tixo/posts/2a55d7e9-0f53-4d93-9f66-280981158dec" target="_blank" rel="noopener">Закреп на Boosty</a><a href="https://t.me/neoru_droid" target="_blank" rel="noopener">Telegram</a><a href="https://steamcommunity.com/id/cd-_-TiXo/myworkshopfiles/?section=guides" target="_blank" rel="noopener">Руководства Steam</a><a href="https://github.com/neoru-droid" target="_blank" rel="noopener">GitHub</a></div></div></footer>
   <script>(function () {
   function escapeHtml(text) {
     return String(text)
@@ -1204,10 +1432,8 @@ p, li, dd { text-wrap: pretty; }
       .replaceAll('"', "&quot;");
   }
 
-  function withUtm(rawUrl, slug) {
-    const base = String(rawUrl || "").split("?")[0];
-    const campaign = String(slug || "hub").replaceAll("-", "_");
-    return `${base}?utm_source=catalog_site&utm_medium=web&utm_campaign=${encodeURIComponent(campaign)}`;
+  function cleanUrl(rawUrl) {
+    return String(rawUrl || "").split("?")[0].trim();
   }
 
   function formatCountdown(msLeft) {
@@ -1248,8 +1474,6 @@ p, li, dd { text-wrap: pretty; }
         if (heroBox) {
           const heroBtn = heroBox.querySelector(".btn-primary");
           if (heroBtn) heroBtn.textContent = "Скачать бесплатно на Boosty ↗";
-          const split = heroBox.querySelector(".ea-split");
-          if (split) split.remove();
         }
         node.remove();
         return;
@@ -1411,7 +1635,7 @@ p, li, dd { text-wrap: pretty; }
     const eaBadge = isEarly
       ? `<div class="ea-badge${posCls}" data-ea-until="${escapeHtml(String(unlockMs))}"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · ${formatCountdown(unlockMs - Date.now())}</span></div>`
       : "";
-    const boostyHref = withUtm(game.boosty_url, game.slug);
+    const boostyHref = cleanUrl(game.boosty_url);
     const pageHref = `games/${encodeURIComponent(game.slug)}/`;
     const cleanGh = escapeHtml(String(game.github_url || "").replace(/\/$/, ""));
     const ghReleases = `${cleanGh}/releases/latest`;
@@ -1437,7 +1661,7 @@ p, li, dd { text-wrap: pretty; }
       `<a class="card-cover-link" href="${pageHref}"${bgStyle}>${eaBadge}` +
       `<img class="card-cover" src="${imgSrc}"${fbAttr} referrerpolicy="no-referrer" alt="${escapeHtml(game.title)}" width="680" height="382"${loadAttr}>` +
       `</a>` +
-      `<div class="card-head"><h2 class="card-title"><a class="card-title-link" href="${pageHref}">${escapeHtml(game.title)}</a></h2>` +
+      `<div class="card-head"><h2 class="card-title"><a class="card-title-link" href="${pageHref}" title="${escapeHtml(game.title)}">${escapeHtml(game.title)}</a></h2>` +
       `<span class="card-ver">v${escapeHtml(game.version)} · ${escapeHtml(formatPlatforms(game))}</span></div>` +
       `<p class="card-summary">${escapeHtml(game.summary)}</p>` +
       `<div class="card-cta-bar">${ctaBtns}</div>` +
