@@ -202,6 +202,20 @@
     return plat.join(", ");
   }
 
+  function formatKit(game) {
+    const parts = [];
+    if (game.has_translation) parts.push("Русификатор");
+    if (game.has_mod_menu) parts.push("Мод-меню");
+    if (game.has_ct) parts.push(".CT");
+    const hasSave = game.has_save === true || (game.has_save !== false && (
+      (game.pg_cards || []).some((c) => c && c.kind === "save") ||
+      /сохранение/i.test(`${(game.tags || []).join(" ")} ${game.summary || ""}`)
+    ));
+    if (hasSave) parts.push("Сейв");
+    if (parts.length === 1 && parts[0] === "Русификатор") return "Русификатор текста и шрифтов";
+    return parts.length ? parts.join(" · ") : "Игровая сборка";
+  }
+
   function renderCard(game, idx) {
     const unlockMs = game.early_access_until ? Date.parse(game.early_access_until) : NaN;
     const isEarly = Number.isFinite(unlockMs) && unlockMs > Date.now();
@@ -238,6 +252,7 @@
       `</a>` +
       `<div class="card-head"><h2 class="card-title"><a class="card-title-link" href="${pageHref}" title="${escapeHtml(game.title)}">${escapeHtml(game.title)}</a></h2>` +
       `<span class="card-ver">v${escapeHtml(game.version)} · ${escapeHtml(formatPlatforms(game))}</span></div>` +
+      `<div class="card-kit">${escapeHtml(formatKit(game))}</div>` +
       `<p class="card-summary">${escapeHtml(game.summary)}</p>` +
       `<div class="card-cta-bar">${ctaBtns}</div>` +
       `<div class="card-links">${linksItems}</div>` +

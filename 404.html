@@ -373,7 +373,7 @@ p, li, dd { text-wrap: pretty; }
 }
 .card {
   display: grid;
-  grid-row: span 5;
+  grid-row: span 6;
   grid-template-rows: subgrid;
   row-gap: 0;
   min-width: 0;
@@ -444,7 +444,7 @@ p, li, dd { text-wrap: pretty; }
   justify-content: space-between;
   align-items: first baseline;
   gap: 10px;
-  margin-block-end: 6px;
+  margin-block-end: 4px;
   min-width: 0;
 }
 .card-title {
@@ -476,6 +476,17 @@ p, li, dd { text-wrap: pretty; }
   color: var(--color-text-muted);
   font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
+}
+.card-kit {
+  margin: 0 0 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .card-summary {
   margin: 0 0 14px;
@@ -570,25 +581,48 @@ p, li, dd { text-wrap: pretty; }
   margin: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: start;
-  gap: 20px 28px;
+  align-items: stretch;
+  gap: 16px;
 }
 .tier-col {
-  padding-inline-start: 16px;
-  border-inline-start: 2px solid var(--color-border-strong);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 16px 18px;
+  border-radius: 10px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
 }
 .tier-col dt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 10px;
+  margin: 0;
+}
+.tier-price {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.9375rem;
   font-weight: 700;
   color: var(--color-accent-solid);
   font-variant-numeric: tabular-nums;
-  margin-block-end: 4px;
+}
+.tier-tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-subtle);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  white-space: nowrap;
 }
 .tier-col dd {
   margin: 0;
   font-size: 0.84375rem;
-  line-height: 1.45;
+  line-height: 1.48;
   color: var(--color-text-secondary);
 }
 
@@ -1001,12 +1035,9 @@ p, li, dd { text-wrap: pretty; }
 .cmp-section .order-strip-title { margin-block-end: 16px; }
 .cmp-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.85fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   align-items: stretch;
-}
-.cmp-grid--inline {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
 }
 .cmp-single { max-width: 680px; }
 .cmp-card {
@@ -1037,12 +1068,6 @@ p, li, dd { text-wrap: pretty; }
   font-weight: 700;
   line-height: 1.25;
   color: var(--color-text-primary);
-}
-.cmp-card-body--split {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: 14px 18px;
-  align-items: start;
 }
 .cmp-badge {
   display: inline-flex;
@@ -1241,11 +1266,6 @@ p, li, dd { text-wrap: pretty; }
 
 @media (max-width: 1120px) {
   .games-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-@media (max-width: 1024px) {
-  .cmp-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
-  .cmp-card-body--split { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 980px) {

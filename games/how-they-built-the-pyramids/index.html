@@ -382,7 +382,7 @@ p, li, dd { text-wrap: pretty; }
 }
 .card {
   display: grid;
-  grid-row: span 5;
+  grid-row: span 6;
   grid-template-rows: subgrid;
   row-gap: 0;
   min-width: 0;
@@ -453,7 +453,7 @@ p, li, dd { text-wrap: pretty; }
   justify-content: space-between;
   align-items: first baseline;
   gap: 10px;
-  margin-block-end: 6px;
+  margin-block-end: 4px;
   min-width: 0;
 }
 .card-title {
@@ -485,6 +485,17 @@ p, li, dd { text-wrap: pretty; }
   color: var(--color-text-muted);
   font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
+}
+.card-kit {
+  margin: 0 0 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .card-summary {
   margin: 0 0 14px;
@@ -579,25 +590,48 @@ p, li, dd { text-wrap: pretty; }
   margin: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: start;
-  gap: 20px 28px;
+  align-items: stretch;
+  gap: 16px;
 }
 .tier-col {
-  padding-inline-start: 16px;
-  border-inline-start: 2px solid var(--color-border-strong);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 16px 18px;
+  border-radius: 10px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
 }
 .tier-col dt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 10px;
+  margin: 0;
+}
+.tier-price {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.9375rem;
   font-weight: 700;
   color: var(--color-accent-solid);
   font-variant-numeric: tabular-nums;
-  margin-block-end: 4px;
+}
+.tier-tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-subtle);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  white-space: nowrap;
 }
 .tier-col dd {
   margin: 0;
   font-size: 0.84375rem;
-  line-height: 1.45;
+  line-height: 1.48;
   color: var(--color-text-secondary);
 }
 
@@ -1010,12 +1044,9 @@ p, li, dd { text-wrap: pretty; }
 .cmp-section .order-strip-title { margin-block-end: 16px; }
 .cmp-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.85fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   align-items: stretch;
-}
-.cmp-grid--inline {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
 }
 .cmp-single { max-width: 680px; }
 .cmp-card {
@@ -1046,12 +1077,6 @@ p, li, dd { text-wrap: pretty; }
   font-weight: 700;
   line-height: 1.25;
   color: var(--color-text-primary);
-}
-.cmp-card-body--split {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: 14px 18px;
-  align-items: start;
 }
 .cmp-badge {
   display: inline-flex;
@@ -1252,11 +1277,6 @@ p, li, dd { text-wrap: pretty; }
   .games-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@media (max-width: 1024px) {
-  .cmp-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
-  .cmp-card-body--split { grid-template-columns: 1fr; }
-}
-
 @media (max-width: 980px) {
   .game-hero, .details-grid, .tier-columns { grid-template-columns: 1fr; }
   .detail-col:first-child { padding-inline-end: 0; }
@@ -1409,7 +1429,7 @@ p, li, dd { text-wrap: pretty; }
       </div>
     </section>
 
-    <section id="ct-vs-mod" class="game-section cmp-section cmp-section--inline" aria-labelledby="cmp-heading"><h2 id="cmp-heading" class="order-strip-title">Таблица .CT или мод-меню</h2><div class="cmp-grid cmp-grid--inline"><article class="cmp-card cmp-card--ct"><div class="cmp-card-head"><h3 class="cmp-card-title">Таблица .CT</h3><span class="cmp-badge cmp-badge--free">Бесплатно сразу</span></div><ul class="cmp-list"><li>Базовые числа: деньги, здоровье, ресурсы и множители.</li><li>Нужен установленный Cheat Engine и переключение через <kbd class="cmp-kbd">Alt+Tab</kbd>.</li><li>Удобно на ПК с мышкой, без установки в папку игры.</li></ul></article><article class="cmp-card cmp-card--mod"><div class="cmp-card-head"><h3 class="cmp-card-title">Мод-меню</h3><span class="cmp-badge cmp-badge--accent">Открыто на Boosty</span></div><ul class="cmp-list"><li>Открывается поверх игры без Cheat Engine и <kbd class="cmp-kbd">Alt+Tab</kbd>.</li><li>Управление с геймпада и на Steam Deck (вызов по <kbd class="cmp-kbd">L3 + R3</kbd>).</li><li>Свой интерфейс под игру и функции сверх .CT: автосбор, редактор, пресеты.</li><li>Подписка 120 ₽ открывает все новинки на 7 дней раньше; фиксы под патчи бесплатны (подписчикам - приоритет).</li></ul></article></div><div class="cmp-actions"><a class="btn btn-primary" href="https://boosty.to/cd_tixo/posts/41ca289e-3e82-4c0f-af84-9cad91e1b84a" target="_blank" rel="noopener">Скачать на Boosty ↗</a></div></section>
+    <section id="ct-vs-mod" class="game-section cmp-section cmp-section--inline" aria-labelledby="cmp-heading"><h2 id="cmp-heading" class="order-strip-title">Таблица .CT или мод-меню</h2><div class="cmp-grid cmp-grid--inline"><article class="cmp-card cmp-card--ct"><div class="cmp-card-head"><h3 class="cmp-card-title">Таблица .CT</h3><span class="cmp-badge cmp-badge--free">Бесплатно сразу</span></div><ul class="cmp-list"><li>Работает через Cheat Engine с переключением по <kbd class="cmp-kbd">Alt+Tab</kbd>.</li><li>Удобно на ПК с мышкой, без установки в папку игры.</li><li>Базовые числа: деньги, здоровье, ресурсы и множители.</li><li>Открыта сразу, фиксы под патчи Steam выходят бесплатно.</li></ul></article><article class="cmp-card cmp-card--mod"><div class="cmp-card-head"><h3 class="cmp-card-title">Мод-меню</h3><span class="cmp-badge cmp-badge--accent">Открыто на Boosty</span></div><ul class="cmp-list"><li>Открывается поверх игры по <kbd class="cmp-kbd">F1</kbd> - без Cheat Engine и <kbd class="cmp-kbd">Alt+Tab</kbd>.</li><li>Управление с геймпада и на Steam Deck (вызов по <kbd class="cmp-kbd">L3 + R3</kbd>).</li><li>Свой интерфейс под игру и функции сверх .CT: автосбор, редактор, пресеты.</li><li>Новинки на 7 дней раньше на Boosty (от 120 ₽), фиксы под патчи бесплатны.</li></ul></article></div><div class="cmp-actions"><a class="btn btn-primary" href="https://boosty.to/cd_tixo/posts/41ca289e-3e82-4c0f-af84-9cad91e1b84a" target="_blank" rel="noopener">Скачать на Boosty ↗</a></div></section>
     <section id="order-game" class="game-section order-compact" aria-labelledby="order-heading"><div class="order-compact-copy"><h2 id="order-heading" class="order-strip-title">Уведомления о патчах и заказ своей игры</h2><p class="order-strip-sub">Нажмите «Отслеживать» на Boosty (бесплатно), чтобы не пропустить фикс под патч Steam. Своя игра в очередь - от 350 ₽/мес, вне очереди - 750 ₽/мес.</p></div><div class="order-strip-actions"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Отслеживать бесплатно ↗</a><a class="btn btn-secondary" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Заказать на Boosty ↗</a></div></section>
     <section class="game-section" aria-labelledby="related-heading"><div class="section-head"><h2 id="related-heading">Другие сборки в каталоге</h2><a class="card-detail-link" href="../../">Все игры на полке →</a></div><div class="related-grid"><a class="related-card" href="../slotbound/"><img src="https://images.boosty.to/image/ee7b5a86-1bdf-4bb5-9174-b807df5235e5" data-fallback="../../media/slotbound.webp" referrerpolicy="no-referrer" style="background:#312831" alt="Slotbound" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Slotbound</span><span class="related-meta">v1.0 · Win, Deck</span></span></a><a class="related-card" href="../no-asteroids/"><img src="https://images.boosty.to/image/911fb3d3-730a-4744-975e-86c780917690" data-fallback="../../media/no-asteroids.webp" referrerpolicy="no-referrer" style="background:#1e1f23" alt="No Asteroids" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">No Asteroids</span><span class="related-meta">v1.3 · Win, Deck, macOS</span></span></a><a class="related-card" href="../pc-store-together/"><img src="https://images.boosty.to/image/72dae576-3aa0-4afe-b257-581da5f7b886" data-fallback="../../media/pc-store-together.webp" referrerpolicy="no-referrer" style="background:#232933" alt="PC Store Together" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">PC Store Together</span><span class="related-meta">v1.0 · Win, Deck</span></span></a></div></section>
   </main>
@@ -1627,6 +1647,20 @@ p, li, dd { text-wrap: pretty; }
     return plat.join(", ");
   }
 
+  function formatKit(game) {
+    const parts = [];
+    if (game.has_translation) parts.push("Русификатор");
+    if (game.has_mod_menu) parts.push("Мод-меню");
+    if (game.has_ct) parts.push(".CT");
+    const hasSave = game.has_save === true || (game.has_save !== false && (
+      (game.pg_cards || []).some((c) => c && c.kind === "save") ||
+      /сохранение/i.test(`${(game.tags || []).join(" ")} ${game.summary || ""}`)
+    ));
+    if (hasSave) parts.push("Сейв");
+    if (parts.length === 1 && parts[0] === "Русификатор") return "Русификатор текста и шрифтов";
+    return parts.length ? parts.join(" · ") : "Игровая сборка";
+  }
+
   function renderCard(game, idx) {
     const unlockMs = game.early_access_until ? Date.parse(game.early_access_until) : NaN;
     const isEarly = Number.isFinite(unlockMs) && unlockMs > Date.now();
@@ -1663,6 +1697,7 @@ p, li, dd { text-wrap: pretty; }
       `</a>` +
       `<div class="card-head"><h2 class="card-title"><a class="card-title-link" href="${pageHref}" title="${escapeHtml(game.title)}">${escapeHtml(game.title)}</a></h2>` +
       `<span class="card-ver">v${escapeHtml(game.version)} · ${escapeHtml(formatPlatforms(game))}</span></div>` +
+      `<div class="card-kit">${escapeHtml(formatKit(game))}</div>` +
       `<p class="card-summary">${escapeHtml(game.summary)}</p>` +
       `<div class="card-cta-bar">${ctaBtns}</div>` +
       `<div class="card-links">${linksItems}</div>` +
