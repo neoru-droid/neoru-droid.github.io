@@ -144,6 +144,13 @@
     io.observe(heroCta);
   }
 
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll(".demo-video").forEach((video) => {
+      video.pause();
+      video.controls = true;
+    });
+  }
+
   // Home shelf search, filters, URL sync & keyboard shortcut
   const grid = document.getElementById("games-grid");
   const searchInput = document.getElementById("search-input");

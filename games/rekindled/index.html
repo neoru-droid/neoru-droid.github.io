@@ -810,6 +810,69 @@ p, li, dd { text-wrap: pretty; }
   color: var(--color-text-muted);
 }
 
+/* Optional In-Game Demo Showcase (.mp4/.webm/.webp/.gif) */
+.demo-showcase {
+  margin: 0 0 20px;
+  padding: 4px;
+  max-width: 100%;
+  min-width: 0;
+  border-radius: 10px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+}
+.demo-showcase:last-child { margin-block-end: 0; }
+.demo-frame {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #141413;
+  aspect-ratio: 16 / 9;
+}
+.demo-video, .demo-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #141413;
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
+}
+.demo-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 10px 10px 6px;
+}
+.demo-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-accent-edge);
+  color: var(--color-accent-solid);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.demo-caption {
+  margin: 0;
+  min-width: 0;
+  flex: 1 1 200px;
+  font-size: 0.84375rem;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+}
+
 /* Unboxed Screenshots Gallery + Lightbox */
 .shots-grid {
   display: grid;
@@ -1367,6 +1430,7 @@ p, li, dd { text-wrap: pretty; }
   .game-cta-row .btn { flex: 1 1 auto; }
   .cmp-card { padding: 14px; }
   .cmp-actions .btn { width: 100%; min-height: 40px; }
+  .demo-bar { padding: 8px 8px 4px; }
 }
 
 @media (max-width: 420px) {
@@ -1378,7 +1442,7 @@ p, li, dd { text-wrap: pretty; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link { transition: none; }
+  .btn, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link, .demo-showcase, .demo-video, .demo-img { transition: none; }
   .btn:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) { transform: none; }
 }
 </style>
@@ -1409,12 +1473,12 @@ p, li, dd { text-wrap: pretty; }
           <span>Windows, Steam Deck</span>
         </div>
         <p class="game-lead">1 630 ключей текста, 4 кириллических шрифта, «Книга трактирщика» на 16 функций, таблица .CT и сохранение 1-го дня.</p>
-        <div class="game-cta-box"><div class="ea-inline" data-ea-until="1796360400000"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · скоро откроется</span></div><div class="game-cta-row"><a id="hero-boosty-cta" class="btn btn-primary btn-lg" href="https://boosty.to/cd_tixo/posts/be1a3886-76d1-4d95-b90d-56ecaff4d976" target="_blank" rel="noopener">Мод-меню · 120 ₽ на Boosty ↗</a><a class="btn btn-shelf btn-lg" data-ea-free-btn="1" href="https://github.com/neoru-droid/rekindled-ru/releases/latest" target="_blank" rel="noopener">Русификатор · бесплатно ↗</a></div><p class="cta-hint">Дата открытия не переносится · Подписка 120 ₽ открывает все новинки сразу · <a class="inline-jump-link" href="#ct-vs-mod">Чем мод-меню лучше .CT ↓</a></p></div>
+        <div class="game-cta-box"><div class="ea-inline" data-ea-until="1796360400000"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · скоро откроется</span></div><div class="game-cta-row"><a id="hero-boosty-cta" class="btn btn-primary btn-lg" href="https://boosty.to/cd_tixo/posts/be1a3886-76d1-4d95-b90d-56ecaff4d976" target="_blank" rel="noopener">Мод-меню · 120 ₽ на Boosty ↗</a><a class="btn btn-shelf btn-lg" data-ea-free-btn="1" href="https://github.com/neoru-droid/rekindled-ru/releases/latest" target="_blank" rel="noopener">Русификатор · бесплатно ↗</a></div><p class="cta-hint">Дата открытия не переносится · Подписка 120 ₽ дешевле 1 поста (150 ₽) и открывает все новинки · <a class="inline-jump-link" href="#ct-vs-mod">Чем мод-меню лучше .CT ↓</a></p></div>
         <div class="game-ext-links"><a href="https://github.com/neoru-droid/rekindled-ru" target="_blank" rel="noopener">Исходный код на GitHub</a><a href="https://github.com/neoru-droid/rekindled-mod-ru" target="_blank" rel="noopener">Таблица .CT на GitHub</a><a href="https://steamcommunity.com/app/4156500/discussions/0/574933513436076459/" target="_blank" rel="noopener">Тема в Steam</a><a href="https://forum.zoneofgames.ru/topic/84700-rekindled-cozy-tavern-life/" target="_blank" rel="noopener">Тема на Zone of Games</a><a href="https://www.playground.ru/misc/file/rekindled_cozy_tavern_life_rusifikator_teksta_i_shriftov-1894222" target="_blank" rel="noopener">PlayGround (русификатор)</a><a href="https://www.playground.ru/misc/cheat/rekindled_cozy_tavern_life_tablitsa_dlya_cheat_engine_zoloto_serdtsa_opyt_uroven_avtopopolnenie_pauza_i_beg-1894228" target="_blank" rel="noopener">PlayGround (.CT)</a><a href="https://t.me/neoru_droid" target="_blank" rel="noopener">Анонсы открытия в Telegram</a></div>
       </div>
     </section>
 
-    <section class="game-section" aria-labelledby="shots-heading"><div class="section-head"><h2 id="shots-heading">Живые кадры из игры</h2><p class="section-sub">Нажмите на кадр, чтобы открыть в полном размере</p></div><div class="shots-grid"><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/54bd088c-7d96-4365-844f-70e7ec8780ba" data-shot-fallback="../../media/shots/rekindled-1.webp" data-shot-cap="Главное меню со шрифтами Alice и Lora"><img src="https://images.boosty.to/image/54bd088c-7d96-4365-844f-70e7ec8780ba" data-fallback="../../media/shots/rekindled-1.webp" referrerpolicy="no-referrer" alt="Rekindled: Cozy Tavern Life - Главное меню со шрифтами Alice и Lora" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Главное меню со шрифтами Alice и Lora</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/73dc8ad9-dbcf-4252-aacc-76c3fa038345" data-shot-fallback="../../media/shots/rekindled-2.webp" data-shot-cap="«Книга трактирщика» с обновлением золота и сердец в HUD игры"><img src="https://images.boosty.to/image/73dc8ad9-dbcf-4252-aacc-76c3fa038345" data-fallback="../../media/shots/rekindled-2.webp" referrerpolicy="no-referrer" alt="Rekindled: Cozy Tavern Life - «Книга трактирщика» с обновлением золота и сердец в HUD игры" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">«Книга трактирщика» с обновлением золота и сердец в HUD игры</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/e09f89e4-525a-4ed1-ae65-0963736e919b" data-shot-fallback="../../media/shots/rekindled-3.webp" data-shot-cap="Таблица Cheat Engine на русском поверх таверны"><img src="https://images.boosty.to/image/e09f89e4-525a-4ed1-ae65-0963736e919b" data-fallback="../../media/shots/rekindled-3.webp" referrerpolicy="no-referrer" alt="Rekindled: Cozy Tavern Life - Таблица Cheat Engine на русском поверх таверны" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Таблица Cheat Engine на русском поверх таверны</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/9c0129b5-bb0a-46a0-921e-eabb9e944a5e" data-shot-fallback="../../media/shots/rekindled-4.webp" data-shot-cap="Стартовое сохранение 1-го дня: 50 050 золота и 2 500 сердец"><img src="https://images.boosty.to/image/9c0129b5-bb0a-46a0-921e-eabb9e944a5e" data-fallback="../../media/shots/rekindled-4.webp" referrerpolicy="no-referrer" alt="Rekindled: Cozy Tavern Life - Стартовое сохранение 1-го дня: 50 050 золота и 2 500 сердец" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Стартовое сохранение 1-го дня: 50 050 золота и 2 500 сердец</span></button></div><dialog id="shot-lightbox" class="lightbox" tabindex="-1" aria-label="Просмотр скриншота"><div class="lightbox-inner"><img id="lightbox-img" class="lightbox-img" alt=""><div class="lightbox-bar"><p id="lightbox-cap" class="lightbox-cap"></p><div class="lightbox-controls"><button id="lightbox-prev" class="btn btn-secondary" type="button">← Назад</button><button id="lightbox-next" class="btn btn-secondary" type="button">Вперёд →</button><button id="lightbox-close" class="btn btn-primary" type="button">Закрыть</button></div></div></div></dialog></section>
+    <section class="game-section shots-section" aria-labelledby="shots-heading"><div class="section-head"><h2 id="shots-heading">Живые кадры из игры</h2><p class="section-sub">Нажмите на кадр, чтобы открыть в полном размере</p></div><div class="shots-grid"><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/54bd088c-7d96-4365-844f-70e7ec8780ba" data-shot-fallback="../../media/shots/rekindled-1.webp" data-shot-cap="Главное меню со шрифтами Alice и Lora"><img src="https://images.boosty.to/image/54bd088c-7d96-4365-844f-70e7ec8780ba" data-fallback="../../media/shots/rekindled-1.webp" referrerpolicy="no-referrer" alt="Rekindled: Cozy Tavern Life - Главное меню со шрифтами Alice и Lora" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Главное меню со шрифтами Alice и Lora</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/73dc8ad9-dbcf-4252-aacc-76c3fa038345" data-shot-fallback="../../media/shots/rekindled-2.webp" data-shot-cap="«Книга трактирщика» с обновлением золота и сердец в HUD игры"><img src="https://images.boosty.to/image/73dc8ad9-dbcf-4252-aacc-76c3fa038345" data-fallback="../../media/shots/rekindled-2.webp" referrerpolicy="no-referrer" alt="Rekindled: Cozy Tavern Life - «Книга трактирщика» с обновлением золота и сердец в HUD игры" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">«Книга трактирщика» с обновлением золота и сердец в HUD игры</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/e09f89e4-525a-4ed1-ae65-0963736e919b" data-shot-fallback="../../media/shots/rekindled-3.webp" data-shot-cap="Таблица Cheat Engine на русском поверх таверны"><img src="https://images.boosty.to/image/e09f89e4-525a-4ed1-ae65-0963736e919b" data-fallback="../../media/shots/rekindled-3.webp" referrerpolicy="no-referrer" alt="Rekindled: Cozy Tavern Life - Таблица Cheat Engine на русском поверх таверны" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Таблица Cheat Engine на русском поверх таверны</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/9c0129b5-bb0a-46a0-921e-eabb9e944a5e" data-shot-fallback="../../media/shots/rekindled-4.webp" data-shot-cap="Стартовое сохранение 1-го дня: 50 050 золота и 2 500 сердец"><img src="https://images.boosty.to/image/9c0129b5-bb0a-46a0-921e-eabb9e944a5e" data-fallback="../../media/shots/rekindled-4.webp" referrerpolicy="no-referrer" alt="Rekindled: Cozy Tavern Life - Стартовое сохранение 1-го дня: 50 050 золота и 2 500 сердец" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Стартовое сохранение 1-го дня: 50 050 золота и 2 500 сердец</span></button></div><dialog id="shot-lightbox" class="lightbox" tabindex="-1" aria-label="Просмотр скриншота"><div class="lightbox-inner"><img id="lightbox-img" class="lightbox-img" alt=""><div class="lightbox-bar"><p id="lightbox-cap" class="lightbox-cap"></p><div class="lightbox-controls"><button id="lightbox-prev" class="btn btn-secondary" type="button">← Назад</button><button id="lightbox-next" class="btn btn-secondary" type="button">Вперёд →</button><button id="lightbox-close" class="btn btn-primary" type="button">Закрыть</button></div></div></div></dialog></section>
 
     <section class="game-section">
       <div class="details-grid">
@@ -1587,6 +1651,13 @@ p, li, dd { text-wrap: pretty; }
       });
     }, { threshold: 0.15 });
     io.observe(heroCta);
+  }
+
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll(".demo-video").forEach((video) => {
+      video.pause();
+      video.controls = true;
+    });
   }
 
   // Home shelf search, filters, URL sync & keyboard shortcut

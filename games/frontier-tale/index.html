@@ -810,6 +810,69 @@ p, li, dd { text-wrap: pretty; }
   color: var(--color-text-muted);
 }
 
+/* Optional In-Game Demo Showcase (.mp4/.webm/.webp/.gif) */
+.demo-showcase {
+  margin: 0 0 20px;
+  padding: 4px;
+  max-width: 100%;
+  min-width: 0;
+  border-radius: 10px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+}
+.demo-showcase:last-child { margin-block-end: 0; }
+.demo-frame {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #141413;
+  aspect-ratio: 16 / 9;
+}
+.demo-video, .demo-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #141413;
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
+}
+.demo-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 10px 10px 6px;
+}
+.demo-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-accent-edge);
+  color: var(--color-accent-solid);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.demo-caption {
+  margin: 0;
+  min-width: 0;
+  flex: 1 1 200px;
+  font-size: 0.84375rem;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+}
+
 /* Unboxed Screenshots Gallery + Lightbox */
 .shots-grid {
   display: grid;
@@ -1367,6 +1430,7 @@ p, li, dd { text-wrap: pretty; }
   .game-cta-row .btn { flex: 1 1 auto; }
   .cmp-card { padding: 14px; }
   .cmp-actions .btn { width: 100%; min-height: 40px; }
+  .demo-bar { padding: 8px 8px 4px; }
 }
 
 @media (max-width: 420px) {
@@ -1378,7 +1442,7 @@ p, li, dd { text-wrap: pretty; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link { transition: none; }
+  .btn, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link, .demo-showcase, .demo-video, .demo-img { transition: none; }
   .btn:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) { transform: none; }
 }
 </style>
@@ -1414,7 +1478,7 @@ p, li, dd { text-wrap: pretty; }
       </div>
     </section>
 
-    <section class="game-section" aria-labelledby="shots-heading"><div class="section-head"><h2 id="shots-heading">Живые кадры из игры</h2><p class="section-sub">Нажмите на кадр, чтобы открыть в полном размере</p></div><div class="shots-grid"><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/0f76f2a1-1088-4368-bf05-c3bd50347f59" data-shot-fallback="../../media/shots/frontier-tale-1.webp" data-shot-cap="Главное меню на русском"><img src="https://images.boosty.to/image/0f76f2a1-1088-4368-bf05-c3bd50347f59" data-fallback="../../media/shots/frontier-tale-1.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Главное меню на русском" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Главное меню на русском</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/d0a4f33f-c094-4544-a308-e3c59f84736d" data-shot-fallback="../../media/shots/frontier-tale-2.webp" data-shot-cap="Перевод сюжетных диалогов"><img src="https://images.boosty.to/image/d0a4f33f-c094-4544-a308-e3c59f84736d" data-fallback="../../media/shots/frontier-tale-2.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Перевод сюжетных диалогов" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Перевод сюжетных диалогов</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/f90c7de6-f3e4-4805-803b-2f29ab754d7e" data-shot-fallback="../../media/shots/frontier-tale-3.webp" data-shot-cap="Предметы, задания и мини-карта"><img src="https://images.boosty.to/image/f90c7de6-f3e4-4805-803b-2f29ab754d7e" data-fallback="../../media/shots/frontier-tale-3.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Предметы, задания и мини-карта" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Предметы, задания и мини-карта</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/4f8ef929-5f74-401c-8891-8bb2c60c8eec" data-shot-fallback="../../media/shots/frontier-tale-4.webp" data-shot-cap="Установщик с возвратом оригинала"><img src="https://images.boosty.to/image/4f8ef929-5f74-401c-8891-8bb2c60c8eec" data-fallback="../../media/shots/frontier-tale-4.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Установщик с возвратом оригинала" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Установщик с возвратом оригинала</span></button></div><dialog id="shot-lightbox" class="lightbox" tabindex="-1" aria-label="Просмотр скриншота"><div class="lightbox-inner"><img id="lightbox-img" class="lightbox-img" alt=""><div class="lightbox-bar"><p id="lightbox-cap" class="lightbox-cap"></p><div class="lightbox-controls"><button id="lightbox-prev" class="btn btn-secondary" type="button">← Назад</button><button id="lightbox-next" class="btn btn-secondary" type="button">Вперёд →</button><button id="lightbox-close" class="btn btn-primary" type="button">Закрыть</button></div></div></div></dialog></section>
+    <section class="game-section shots-section" aria-labelledby="shots-heading"><div class="section-head"><h2 id="shots-heading">Живые кадры из игры</h2><p class="section-sub">Нажмите на кадр, чтобы открыть в полном размере</p></div><div class="shots-grid"><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/0f76f2a1-1088-4368-bf05-c3bd50347f59" data-shot-fallback="../../media/shots/frontier-tale-1.webp" data-shot-cap="Главное меню на русском"><img src="https://images.boosty.to/image/0f76f2a1-1088-4368-bf05-c3bd50347f59" data-fallback="../../media/shots/frontier-tale-1.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Главное меню на русском" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Главное меню на русском</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/d0a4f33f-c094-4544-a308-e3c59f84736d" data-shot-fallback="../../media/shots/frontier-tale-2.webp" data-shot-cap="Перевод сюжетных диалогов"><img src="https://images.boosty.to/image/d0a4f33f-c094-4544-a308-e3c59f84736d" data-fallback="../../media/shots/frontier-tale-2.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Перевод сюжетных диалогов" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Перевод сюжетных диалогов</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/f90c7de6-f3e4-4805-803b-2f29ab754d7e" data-shot-fallback="../../media/shots/frontier-tale-3.webp" data-shot-cap="Предметы, задания и мини-карта"><img src="https://images.boosty.to/image/f90c7de6-f3e4-4805-803b-2f29ab754d7e" data-fallback="../../media/shots/frontier-tale-3.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Предметы, задания и мини-карта" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Предметы, задания и мини-карта</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/4f8ef929-5f74-401c-8891-8bb2c60c8eec" data-shot-fallback="../../media/shots/frontier-tale-4.webp" data-shot-cap="Установщик с возвратом оригинала"><img src="https://images.boosty.to/image/4f8ef929-5f74-401c-8891-8bb2c60c8eec" data-fallback="../../media/shots/frontier-tale-4.webp" referrerpolicy="no-referrer" alt="Frontier Tale - Установщик с возвратом оригинала" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Установщик с возвратом оригинала</span></button></div><dialog id="shot-lightbox" class="lightbox" tabindex="-1" aria-label="Просмотр скриншота"><div class="lightbox-inner"><img id="lightbox-img" class="lightbox-img" alt=""><div class="lightbox-bar"><p id="lightbox-cap" class="lightbox-cap"></p><div class="lightbox-controls"><button id="lightbox-prev" class="btn btn-secondary" type="button">← Назад</button><button id="lightbox-next" class="btn btn-secondary" type="button">Вперёд →</button><button id="lightbox-close" class="btn btn-primary" type="button">Закрыть</button></div></div></div></dialog></section>
 
     <section class="game-section">
       <div class="details-grid">
@@ -1587,6 +1651,13 @@ p, li, dd { text-wrap: pretty; }
       });
     }, { threshold: 0.15 });
     io.observe(heroCta);
+  }
+
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll(".demo-video").forEach((video) => {
+      video.pause();
+      video.controls = true;
+    });
   }
 
   // Home shelf search, filters, URL sync & keyboard shortcut

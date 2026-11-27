@@ -768,7 +768,6 @@
     "has_ct": true,
     "version": "1.0",
     "steam_build": "26897379",
-    "early_access_until": "2026-12-04T15:00:00+10:00",
     "ea_badge_pos": "top-right",
     "platforms": {
       "windows": true,
@@ -814,6 +813,59 @@
       "симулятор таверны",
       "cozy tavern",
       "книга трактирщика"
-    ]
+    ],
+    "early_access_until": "2026-12-04T15:00:00+10:00"
+  },
+  {
+    "slug": "reshine",
+    "title": "Reshine",
+    "appid": "4253570",
+    "track": "track2",
+    "owned_on_steam": false,
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "version": "1.0",
+    "steam_build": "5173",
+    "early_access_until": "2026-12-04T16:00:00+10:00",
+    "ea_badge_pos": "top-right",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "«Картотека реставратора» на 16 функций, таблица .CT (7 скриптов) и сохранение с открытым каталогом «Винтажная классика».",
+    "features": [
+      "Разборка, очистка, сборка и электролиз в 1 клик, снятие крепежа детали и открытие всего каталога",
+      "Инструмент x2/x3, детектив грязи, мгновенная камера без качки, темп x1.5/x2, смена света и вызов кота",
+      "Таблица Reshine_RU_v1.0.CT (7 скриптов) и сохранение с открытым каталогом «Винтажная классика»"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/01243865-3899-432b-a787-d2d7b1a0ac80",
+    "github_url": "https://github.com/neoru-droid/reshine-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1894237",
+        "kind": "ct",
+        "url": "https://www.playground.ru/reshine/cheat/reshine_tablitsa_dlya_cheat_engine_kamera_bez_zaderzhki_radius_instrumenta_kursor_fov_temp_igry_otkrytie_kataloga-1894237"
+      },
+      {
+        "id": "1894243",
+        "kind": "save",
+        "url": "https://www.playground.ru/reshine/cheat/reshine_sohranenie_otkryt_ves_katalog_vintazhnaya_klassika-1894243"
+      }
+    ],
+    "keywords": [
+      "решайн",
+      "реставрация",
+      "мастерская",
+      "антиквариат",
+      "граммофон",
+      "картотека реставратора",
+      "винтажная классика"
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/0592dc6a-cc43-4074-8dc7-be3cb6fb177d",
+    "cover_color": "#372921"
   }
 ]

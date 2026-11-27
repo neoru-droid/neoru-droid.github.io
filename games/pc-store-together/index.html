@@ -810,6 +810,69 @@ p, li, dd { text-wrap: pretty; }
   color: var(--color-text-muted);
 }
 
+/* Optional In-Game Demo Showcase (.mp4/.webm/.webp/.gif) */
+.demo-showcase {
+  margin: 0 0 20px;
+  padding: 4px;
+  max-width: 100%;
+  min-width: 0;
+  border-radius: 10px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+}
+.demo-showcase:last-child { margin-block-end: 0; }
+.demo-frame {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #141413;
+  aspect-ratio: 16 / 9;
+}
+.demo-video, .demo-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #141413;
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
+}
+.demo-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 10px 10px 6px;
+}
+.demo-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-accent-edge);
+  color: var(--color-accent-solid);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.demo-caption {
+  margin: 0;
+  min-width: 0;
+  flex: 1 1 200px;
+  font-size: 0.84375rem;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+}
+
 /* Unboxed Screenshots Gallery + Lightbox */
 .shots-grid {
   display: grid;
@@ -1367,6 +1430,7 @@ p, li, dd { text-wrap: pretty; }
   .game-cta-row .btn { flex: 1 1 auto; }
   .cmp-card { padding: 14px; }
   .cmp-actions .btn { width: 100%; min-height: 40px; }
+  .demo-bar { padding: 8px 8px 4px; }
 }
 
 @media (max-width: 420px) {
@@ -1378,7 +1442,7 @@ p, li, dd { text-wrap: pretty; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link { transition: none; }
+  .btn, .chip, .card-cover, .mobile-cta-bar, .faq-item, .faq-q::after, .cmp-preview-cap, .shelf-note-link, .inline-jump-link, .demo-showcase, .demo-video, .demo-img { transition: none; }
   .btn:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) { transform: none; }
 }
 </style>
@@ -1409,12 +1473,12 @@ p, li, dd { text-wrap: pretty; }
           <span>Windows, Steam Deck</span>
         </div>
         <p class="game-lead">Старт магазина с бюджетом 250 000 $ и 28 уровнем репутации, все навыки ремонта, очистка ПК от пыли и вирусов и 30 C.</p>
-        <div class="game-cta-box"><div class="ea-inline" data-ea-until="1795852800000"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · скоро откроется</span></div><div class="game-cta-row"><a id="hero-boosty-cta" class="btn btn-primary btn-lg" href="https://boosty.to/cd_tixo/posts/6a6f1442-48c9-4107-94a0-0d108e2b061b" target="_blank" rel="noopener">Мод-меню · 120 ₽ на Boosty ↗</a><a class="btn btn-shelf btn-lg" data-ea-free-btn="1" href="https://github.com/neoru-droid/pc-store-together-mod-ru/releases/latest" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a></div><p class="cta-hint">Дата открытия не переносится · Подписка 120 ₽ открывает все новинки сразу · <a class="inline-jump-link" href="#ct-vs-mod">Чем мод-меню лучше .CT ↓</a></p></div>
+        <div class="game-cta-box"><div class="ea-inline" data-ea-until="1795852800000"><span class="ea-dot" aria-hidden="true"></span><span class="ea-clock">Ранний доступ · скоро откроется</span></div><div class="game-cta-row"><a id="hero-boosty-cta" class="btn btn-primary btn-lg" href="https://boosty.to/cd_tixo/posts/6a6f1442-48c9-4107-94a0-0d108e2b061b" target="_blank" rel="noopener">Мод-меню · 120 ₽ на Boosty ↗</a><a class="btn btn-shelf btn-lg" data-ea-free-btn="1" href="https://github.com/neoru-droid/pc-store-together-mod-ru/releases/latest" target="_blank" rel="noopener">.CT и сейв · бесплатно ↗</a></div><p class="cta-hint">Дата открытия не переносится · Подписка 120 ₽ дешевле 1 поста (150 ₽) и открывает все новинки · <a class="inline-jump-link" href="#ct-vs-mod">Чем мод-меню лучше .CT ↓</a></p></div>
         <div class="game-ext-links"><a href="https://github.com/neoru-droid/pc-store-together-mod-ru" target="_blank" rel="noopener">Исходный код на GitHub</a><a href="https://www.playground.ru/misc/cheat/pc_store_together_tablitsa_dlya_cheat_engine_dengi_reputatsiya_navyki_remonta_arenda_chistka_pk_i_30_c-1894024" target="_blank" rel="noopener">PlayGround (.CT)</a><a href="https://www.playground.ru/misc/cheat/pc_store_together_startovoe_sohranenie_magazina_s_byudzhetom_250_000_i_28_urovnem_reputatsii-1894026" target="_blank" rel="noopener">PlayGround (сохранение)</a><a href="https://t.me/neoru_droid" target="_blank" rel="noopener">Анонсы открытия в Telegram</a></div>
       </div>
     </section>
 
-    <section class="game-section" aria-labelledby="shots-heading"><div class="section-head"><h2 id="shots-heading">Живые кадры из игры</h2><p class="section-sub">Нажмите на кадр, чтобы открыть в полном размере</p></div><div class="shots-grid"><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/c786d93b-6f5b-4048-af97-b6d7c1ce2a3f" data-shot-fallback="../../media/shots/pc-store-together-1.webp" data-shot-cap="Окно StoreOS: касса и репутация"><img src="https://images.boosty.to/image/c786d93b-6f5b-4048-af97-b6d7c1ce2a3f" data-fallback="../../media/shots/pc-store-together-1.webp" referrerpolicy="no-referrer" alt="PC Store Together - Окно StoreOS: касса и репутация" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Окно StoreOS: касса и репутация</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/c6260f93-9414-4b02-bfbf-f7951f2a212d" data-shot-fallback="../../media/shots/pc-store-together-2.webp" data-shot-cap="Окно StoreOS: верстак и стресс-тест 30 C"><img src="https://images.boosty.to/image/c6260f93-9414-4b02-bfbf-f7951f2a212d" data-fallback="../../media/shots/pc-store-together-2.webp" referrerpolicy="no-referrer" alt="PC Store Together - Окно StoreOS: верстак и стресс-тест 30 C" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Окно StoreOS: верстак и стресс-тест 30 C</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/1cdbfba4-1d72-4eb1-8f5f-5620ff9add4c" data-shot-fallback="../../media/shots/pc-store-together-3.webp" data-shot-cap="Сохранение магазина с бюджетом 250 000 $"><img src="https://images.boosty.to/image/1cdbfba4-1d72-4eb1-8f5f-5620ff9add4c" data-fallback="../../media/shots/pc-store-together-3.webp" referrerpolicy="no-referrer" alt="PC Store Together - Сохранение магазина с бюджетом 250 000 $" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Сохранение магазина с бюджетом 250 000 $</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/3183ca38-a0e5-42bd-9014-178ad6812871" data-shot-fallback="../../media/shots/pc-store-together-4.webp" data-shot-cap="Таблица Cheat Engine на русском"><img src="https://images.boosty.to/image/3183ca38-a0e5-42bd-9014-178ad6812871" data-fallback="../../media/shots/pc-store-together-4.webp" referrerpolicy="no-referrer" alt="PC Store Together - Таблица Cheat Engine на русском" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Таблица Cheat Engine на русском</span></button></div><dialog id="shot-lightbox" class="lightbox" tabindex="-1" aria-label="Просмотр скриншота"><div class="lightbox-inner"><img id="lightbox-img" class="lightbox-img" alt=""><div class="lightbox-bar"><p id="lightbox-cap" class="lightbox-cap"></p><div class="lightbox-controls"><button id="lightbox-prev" class="btn btn-secondary" type="button">← Назад</button><button id="lightbox-next" class="btn btn-secondary" type="button">Вперёд →</button><button id="lightbox-close" class="btn btn-primary" type="button">Закрыть</button></div></div></div></dialog></section>
+    <section class="game-section shots-section" aria-labelledby="shots-heading"><div class="section-head"><h2 id="shots-heading">Живые кадры из игры</h2><p class="section-sub">Нажмите на кадр, чтобы открыть в полном размере</p></div><div class="shots-grid"><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/c786d93b-6f5b-4048-af97-b6d7c1ce2a3f" data-shot-fallback="../../media/shots/pc-store-together-1.webp" data-shot-cap="Окно StoreOS: касса и репутация"><img src="https://images.boosty.to/image/c786d93b-6f5b-4048-af97-b6d7c1ce2a3f" data-fallback="../../media/shots/pc-store-together-1.webp" referrerpolicy="no-referrer" alt="PC Store Together - Окно StoreOS: касса и репутация" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Окно StoreOS: касса и репутация</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/c6260f93-9414-4b02-bfbf-f7951f2a212d" data-shot-fallback="../../media/shots/pc-store-together-2.webp" data-shot-cap="Окно StoreOS: верстак и стресс-тест 30 C"><img src="https://images.boosty.to/image/c6260f93-9414-4b02-bfbf-f7951f2a212d" data-fallback="../../media/shots/pc-store-together-2.webp" referrerpolicy="no-referrer" alt="PC Store Together - Окно StoreOS: верстак и стресс-тест 30 C" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Окно StoreOS: верстак и стресс-тест 30 C</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/1cdbfba4-1d72-4eb1-8f5f-5620ff9add4c" data-shot-fallback="../../media/shots/pc-store-together-3.webp" data-shot-cap="Сохранение магазина с бюджетом 250 000 $"><img src="https://images.boosty.to/image/1cdbfba4-1d72-4eb1-8f5f-5620ff9add4c" data-fallback="../../media/shots/pc-store-together-3.webp" referrerpolicy="no-referrer" alt="PC Store Together - Сохранение магазина с бюджетом 250 000 $" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Сохранение магазина с бюджетом 250 000 $</span></button><button class="shot-card" type="button" data-shot-src="https://images.boosty.to/image/3183ca38-a0e5-42bd-9014-178ad6812871" data-shot-fallback="../../media/shots/pc-store-together-4.webp" data-shot-cap="Таблица Cheat Engine на русском"><img src="https://images.boosty.to/image/3183ca38-a0e5-42bd-9014-178ad6812871" data-fallback="../../media/shots/pc-store-together-4.webp" referrerpolicy="no-referrer" alt="PC Store Together - Таблица Cheat Engine на русском" width="880" height="495" loading="lazy" decoding="async"><span class="shot-caption">Таблица Cheat Engine на русском</span></button></div><dialog id="shot-lightbox" class="lightbox" tabindex="-1" aria-label="Просмотр скриншота"><div class="lightbox-inner"><img id="lightbox-img" class="lightbox-img" alt=""><div class="lightbox-bar"><p id="lightbox-cap" class="lightbox-cap"></p><div class="lightbox-controls"><button id="lightbox-prev" class="btn btn-secondary" type="button">← Назад</button><button id="lightbox-next" class="btn btn-secondary" type="button">Вперёд →</button><button id="lightbox-close" class="btn btn-primary" type="button">Закрыть</button></div></div></div></dialog></section>
 
     <section class="game-section">
       <div class="details-grid">
@@ -1431,7 +1495,7 @@ p, li, dd { text-wrap: pretty; }
 
     <section id="ct-vs-mod" class="game-section cmp-section cmp-section--inline" aria-labelledby="cmp-heading"><h2 id="cmp-heading" class="order-strip-title">Таблица .CT или мод-меню</h2><div class="cmp-grid cmp-grid--inline"><article class="cmp-card cmp-card--ct"><div class="cmp-card-head"><h3 class="cmp-card-title">Таблица .CT</h3><span class="cmp-badge cmp-badge--free">Бесплатно сразу</span></div><ul class="cmp-list"><li>Работает через Cheat Engine с переключением по <kbd class="cmp-kbd">Alt+Tab</kbd>.</li><li>Удобно на ПК с мышкой, без установки в папку игры.</li><li>Базовые числа: деньги, здоровье, ресурсы и множители.</li><li>Открыта сразу, фиксы под патчи Steam выходят бесплатно.</li></ul></article><article class="cmp-card cmp-card--mod"><div class="cmp-card-head"><h3 class="cmp-card-title">Мод-меню</h3><span class="cmp-badge cmp-badge--accent">Сначала на Boosty, через 7 дней всем</span></div><ul class="cmp-list"><li>Открывается поверх игры по <kbd class="cmp-kbd">F1</kbd> - без Cheat Engine и <kbd class="cmp-kbd">Alt+Tab</kbd>.</li><li>Управление с геймпада и на Steam Deck (вызов по <kbd class="cmp-kbd">L3 + R3</kbd>).</li><li>Свой интерфейс под игру и функции сверх .CT: автосбор, редактор, пресеты.</li><li>Новинки на 7 дней раньше на Boosty (от 120 ₽), фиксы под патчи бесплатны.</li></ul></article></div><div class="cmp-actions"><a class="btn btn-primary" href="https://boosty.to/cd_tixo/posts/6a6f1442-48c9-4107-94a0-0d108e2b061b" target="_blank" rel="noopener">Мод-меню · от 120 ₽ на Boosty ↗</a></div></section>
     <section id="order-game" class="game-section order-compact" aria-labelledby="order-heading"><div class="order-compact-copy"><h2 id="order-heading" class="order-strip-title">Уведомления о патчах и заказ своей игры</h2><p class="order-strip-sub">Нажмите «Отслеживать» на Boosty (бесплатно), чтобы не пропустить фикс под патч Steam. Своя игра в очередь - от 350 ₽/мес, вне очереди - 750 ₽/мес.</p></div><div class="order-strip-actions"><a class="btn btn-shelf" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Отслеживать бесплатно ↗</a><a class="btn btn-secondary" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Заказать на Boosty ↗</a></div></section>
-    <section class="game-section" aria-labelledby="related-heading"><div class="section-head"><h2 id="related-heading">Другие сборки в каталоге</h2><a class="card-detail-link" href="../../">Все игры на полке →</a></div><div class="related-grid"><a class="related-card" href="../slotbound/"><img src="https://images.boosty.to/image/ee7b5a86-1bdf-4bb5-9174-b807df5235e5" data-fallback="../../media/slotbound.webp" referrerpolicy="no-referrer" style="background:#312831" alt="Slotbound" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Slotbound</span><span class="related-meta">v1.0 · Win, Deck</span></span></a><a class="related-card" href="../no-asteroids/"><img src="https://images.boosty.to/image/911fb3d3-730a-4744-975e-86c780917690" data-fallback="../../media/no-asteroids.webp" referrerpolicy="no-referrer" style="background:#1e1f23" alt="No Asteroids" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">No Asteroids</span><span class="related-meta">v1.3 · Win, Deck, macOS</span></span></a><a class="related-card" href="../ski-e-o/"><img src="https://images.boosty.to/image/f277435c-6fd4-4c30-8046-071a18813b98" data-fallback="../../media/ski-e-o.webp" referrerpolicy="no-referrer" style="background:#3d3a42" alt="Ski-E-O! Ski Resort Tycoon" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Ski-E-O! Ski Resort Tycoon</span><span class="related-meta">v1.0 · Win, Deck</span></span></a></div></section>
+    <section class="game-section" aria-labelledby="related-heading"><div class="section-head"><h2 id="related-heading">Другие сборки в каталоге</h2><a class="card-detail-link" href="../../">Все игры на полке →</a></div><div class="related-grid"><a class="related-card" href="../reshine/"><img src="https://images.boosty.to/image/0592dc6a-cc43-4074-8dc7-be3cb6fb177d" data-fallback="../../media/reshine.webp" referrerpolicy="no-referrer" style="background:#372921" alt="Reshine" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Reshine</span><span class="related-meta">v1.0 · Win, Deck</span></span></a><a class="related-card" href="../slotbound/"><img src="https://images.boosty.to/image/ee7b5a86-1bdf-4bb5-9174-b807df5235e5" data-fallback="../../media/slotbound.webp" referrerpolicy="no-referrer" style="background:#312831" alt="Slotbound" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Slotbound</span><span class="related-meta">v1.0 · Win, Deck</span></span></a><a class="related-card" href="../no-asteroids/"><img src="https://images.boosty.to/image/911fb3d3-730a-4744-975e-86c780917690" data-fallback="../../media/no-asteroids.webp" referrerpolicy="no-referrer" style="background:#1e1f23" alt="No Asteroids" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">No Asteroids</span><span class="related-meta">v1.3 · Win, Deck, macOS</span></span></a></div></section>
   </main>
 
   <div id="mobile-cta-bar" class="mobile-cta-bar is-docked-hidden">
@@ -1587,6 +1651,13 @@ p, li, dd { text-wrap: pretty; }
       });
     }, { threshold: 0.15 });
     io.observe(heroCta);
+  }
+
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll(".demo-video").forEach((video) => {
+      video.pause();
+      video.controls = true;
+    });
   }
 
   // Home shelf search, filters, URL sync & keyboard shortcut
