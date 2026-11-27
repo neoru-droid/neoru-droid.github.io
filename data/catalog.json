@@ -925,5 +925,58 @@
       "камни мира"
     ],
     "early_access_until": "2026-12-04T20:00:00+10:00"
+  },
+  {
+    "slug": "sandustry",
+    "title": "Sandustry",
+    "appid": "2764460",
+    "track": "track2",
+    "owned_on_steam": false,
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "has_save": true,
+    "version": "1.0",
+    "steam_build": "0.6.0 (26751478)",
+    "early_access_until": "2026-12-05T01:00:00+10:00",
+    "ea_badge_pos": "top-right",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": true
+    },
+    "summary": "«Пульт фабрики» (17 функций: бесплатные технологии, 27 построек, всё снаряжение, 3 пресета), таблица .CT (5 строк) и сохранение.",
+    "features": [
+      "«Пульт фабрики» (17 функций): золото, поточник, артефакты, энергия сети, бесплатные технологии, все 27 построек, 9 веток улучшений и всё снаряжение",
+      "3 пресета (Комфорт, Песочница, Сброс), сохранение настроек, поддержка геймпада (L3 + R3), Steam Deck / Linux и macOS",
+      "Таблица Sandustry_RU_v1.0.CT (5 базовых строк) и стартовое сохранение (250 000 золота, 15 000 поточника, 25 артефактов, фабрика 3-го ур.)"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/d59084a0-5ec0-49e3-92fa-1aad29d53266",
+    "github_url": "https://github.com/neoru-droid/sandustry-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1894375",
+        "kind": "ct",
+        "url": "https://www.playground.ru/sandustry/cheat/sandustry_tablitsa_dlya_cheat_engine_zoloto_potochnik_energiya_sprint_i_rakety-1894375"
+      },
+      {
+        "id": "1894377",
+        "kind": "save",
+        "url": "https://www.playground.ru/sandustry/cheat/sandustry_sohranenie_250_000_zolota_15_000_potochnika_25_artefaktov_i_27_postroek-1894377"
+      }
+    ],
+    "keywords": [
+      "сандустри",
+      "песок",
+      "фабрика",
+      "автоматизация",
+      "песочница",
+      "пульт фабрики",
+      "поточник"
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/0ae7b8b6-0959-4a84-af99-d6d3ce9c7faf",
+    "cover_color": "#41423d"
   }
 ]
