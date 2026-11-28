@@ -343,9 +343,20 @@ p, li, dd { text-wrap: pretty; }
 .main-content { padding-block: 22px 20px; }
 .shelf-note {
   margin: 0 0 22px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
   color: var(--color-text-muted);
   font-size: 0.84375rem;
   line-height: 1.45;
+}
+.shelf-tg-cta {
+  min-height: 32px;
+  padding: 5px 11px;
+  font-size: 0.8125rem;
+  flex-shrink: 0;
 }
 .shelf-note-link, .inline-jump-link {
   color: var(--color-text-secondary);

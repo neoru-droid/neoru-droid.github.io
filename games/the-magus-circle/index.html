@@ -363,9 +363,20 @@ p, li, dd { text-wrap: pretty; }
 .main-content { padding-block: 22px 20px; }
 .shelf-note {
   margin: 0 0 22px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
   color: var(--color-text-muted);
   font-size: 0.84375rem;
   line-height: 1.45;
+}
+.shelf-tg-cta {
+  min-height: 32px;
+  padding: 5px 11px;
+  font-size: 0.8125rem;
+  flex-shrink: 0;
 }
 .shelf-note-link, .inline-jump-link {
   color: var(--color-text-secondary);
@@ -1904,6 +1915,6 @@ p, li, dd { text-wrap: pretty; }
     });
 })();
 </script>
-  <script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(114716595,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true});document.addEventListener("click",function(e){var el=e.target&&e.target.closest&&e.target.closest("[data-track-goal]");if(!el||typeof window.ym!=="function")return;var goal=el.getAttribute("data-track-goal");if(!goal)return;var slug=el.getAttribute("data-track-slug")||"";window.ym(114716595,'reachGoal',goal,{slug});});</script><noscript><div><img src="https://mc.yandex.ru/watch/114716595" style="position:absolute;left:-9999px;" alt=""></div></noscript>
+  <script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(114716595,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true});function _gt(e){var el=e.target&&e.target.closest&&e.target.closest("[data-track-goal]");if(!el||typeof window.ym!=="function")return;var goal=el.getAttribute("data-track-goal");if(!goal)return;var slug=el.getAttribute("data-track-slug")||"";window.ym(114716595,'reachGoal',goal,{slug});}document.addEventListener("click",_gt);document.addEventListener("auxclick",function(e){if(e.button===1)_gt(e);});</script><noscript><div><img src="https://mc.yandex.ru/watch/114716595" style="position:absolute;left:-9999px;" alt=""></div></noscript>
 </body>
 </html>
