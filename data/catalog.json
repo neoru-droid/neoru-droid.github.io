@@ -1138,5 +1138,50 @@
     ],
     "cover_cdn_url": "https://images.boosty.to/image/4108de0d-7e07-4d8b-9a40-5f9ecae74200",
     "cover_color": "#302d2c"
+  },
+  {
+    "slug": "am-i-nima",
+    "title": "Am I Nima",
+    "appid": "3224600",
+    "track": "track1",
+    "owned_on_steam": false,
+    "has_translation": true,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "has_save": true,
+    "version": "1.0",
+    "steam_build": "1.0.4",
+    "early_access_until": "2026-12-05T16:30:00+10:00",
+    "ea_badge_pos": "top-right",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "Полный перевод глав 1-5 и всех 11 концовок (9 шрифтов, дневник, русский поиск), «Атлас мыслей», таблица .CT и сохранение.",
+    "features": [
+      "10 946 реплик и 1 145 выборов (главы 1-5 и 11+ концовок), 480 понятий, 190 осмотров, 9 шрифтов, дневник Нимы и русский поиск",
+      "«Атлас мыслей»: подсказка слияния слов, доверие мамы, яд 999 с, 224 слова, 11 концовок, 3 пресета, .ini и Steam Deck (L3 + R3)",
+      "Таблица AmINima_RU_v1.0.CT (5 базовых строк) и коллекционное сохранение (слот №1 с 224 словами и галерея 11 из 11 концовок)"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/25f39e62-086d-4c31-813b-a7b02dbb4323",
+    "github_url": "https://github.com/neoru-droid/am-i-nima-ru",
+    "mod_github_url": "https://github.com/neoru-droid/am-i-nima-mod-ru",
+    "steam_guide_url": "",
+    "steam_discussion_url": "https://steamcommunity.com/app/3224600/discussions/0/568178383063647580/",
+    "zog_url": "https://forum.zoneofgames.ru/topic/84716-am-i-nima/",
+    "cover_cdn_url": "https://images.boosty.to/image/88c3938d-8e11-49e5-b1a4-f8c9c18c0b13",
+    "cover_color": "#141210",
+    "pg_cards": [],
+    "keywords": [
+      "ам ай нима",
+      "я ли нима",
+      "нима",
+      "атлас мыслей",
+      "психологический хоррор",
+      "визуальная новелла",
+      "подсказки слияний",
+      "слова"
+    ]
   }
 ]
