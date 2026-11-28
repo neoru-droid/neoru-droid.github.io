@@ -1197,5 +1197,48 @@
       "подсказки слияний",
       "слова"
     ]
+  },
+  {
+    "slug": "dungeonbound",
+    "title": "Dungeonbound",
+    "appid": "5200620",
+    "track": "track2",
+    "owned_on_steam": false,
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "has_save": true,
+    "version": "1.0",
+    "steam_build": "1.0.18",
+    "early_access_until": "2026-12-05T23:30:00+10:00",
+    "ea_badge_pos": "top-right",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": true
+    },
+    "summary": "«Гримуар Подземелий» (бессмертие, враги 1 ОЗ, золото, ОН/ОУ, легендарный комплект, 10 томов, 9 героев и 5 актов), .CT и сохранение.",
+    "features": [
+      "«Гримуар Подземелий» (строго соло): бессмертие, непробиваемый блок (95%), враги 1 ОЗ и 0 блока, супер-атака x4 (крит 100%, уклонение 85%), 10 сердец PvE, скорость боя 1x..5x",
+      "+1 000..+100 000 золота, опыт, ОН/ОУ, продажа x5, легендарный комплект, все 10 томов, самоцветы, все ряды, 9 героев и 5 актов, 3 пресета, .cfg, Steam Deck (L3 + R3) и macOS",
+      "Таблица Dungeonbound_RU_v1.0.CT (5 базовых строк с MemSeal) и подписанное стартовое сохранение (Воин 9 ур., 25 000 золота, 23 ОН, 10 ОУ, легендарный комплект, 9 героев и 5 актов)"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/82d718e0-5d01-4b43-8c8f-48d55df602ca",
+    "github_url": "https://github.com/neoru-droid/dungeonbound-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "cover_cdn_url": "https://images.boosty.to/image/b75e9d32-a9b4-4167-bdfa-b384b07384ba",
+    "cover_color": "#120e16",
+    "pg_cards": [],
+    "keywords": [
+      "данжнбаунд",
+      "подземелье",
+      "гримуар подземелий",
+      "рогалик",
+      "автобаттлер",
+      "инвентарь",
+      "сборка",
+      "соло"
+    ]
   }
 ]
