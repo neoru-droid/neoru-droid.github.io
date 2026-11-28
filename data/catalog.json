@@ -1084,5 +1084,59 @@
     ],
     "cover_cdn_url": "https://images.boosty.to/image/f07fdeeb-917c-45ea-95d5-77c8b94f517d",
     "cover_color": "#58432b"
+  },
+  {
+    "slug": "never-sort-by-color",
+    "title": "Never Sort By Color",
+    "appid": "4876650",
+    "track": "track2",
+    "owned_on_steam": false,
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "has_save": true,
+    "version": "1.0",
+    "steam_build": "1.0.8491",
+    "early_access_until": "2026-12-05T13:00:00+10:00",
+    "ea_badge_pos": "top-right",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": true
+    },
+    "summary": "«Органайзер ящиков» (автосортировка 120 деталей, навыки без отката, сборка MOC, 3 пресета), таблица .CT (5 строк) и сохранение.",
+    "features": [
+      "«Органайзер ящиков»: автосортировка волны до 120 деталей в подписанные ящики с йенами, навыки без отката (Магнит, Глаз, Локатор), сборка MOC и укладка ящиков",
+      "+10 000 / +100 000 йен, скорость x1.0..x3.0, дальность x1.0..x4.0, руки до 500, Шкаф 64, шар Катамари, 3 пресета, сохранение настроек, Steam Deck (L3 + R3) и macOS",
+      "Таблица NeverSortByColor_RU_v1.0.CT (5 базовых строк) и стартовое сохранение (250 000 йен, все навыки на максимуме, Шкаф 64, шар Катамари и чистая Куча)"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/da45b6f7-8970-4a88-a992-47f2f36079d8",
+    "github_url": "https://github.com/neoru-droid/never-sort-by-color-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1894495",
+        "kind": "ct",
+        "url": "https://www.playground.ru/misc/cheat/never_sort_by_color_tablitsa_dlya_cheat_engine_jeny_vmestimost_ruk_dalnost_skorost_i_bystryj_sbor-1894495"
+      },
+      {
+        "id": "1894496",
+        "kind": "save",
+        "url": "https://www.playground.ru/misc/cheat/never_sort_by_color_sohranenie_250_000_jen_vse_navyki_na_maksimume_shkaf_64_i_shar_katamari-1894496"
+      }
+    ],
+    "keywords": [
+      "никогда не сортируй по цвету",
+      "невер сорт бай колор",
+      "органайзер ящиков",
+      "лего",
+      "конструктор",
+      "автосортировка",
+      "катамари",
+      "симулятор"
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/4108de0d-7e07-4d8b-9a40-5f9ecae74200",
+    "cover_color": "#302d2c"
   }
 ]
