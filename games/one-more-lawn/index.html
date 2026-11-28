@@ -782,9 +782,9 @@ p, li, dd { text-wrap: pretty; }
   min-height: 36px;
   padding: 7px 12px;
   border-radius: 6px;
-  border: 1px solid var(--color-border-subtle);
-  background: var(--color-bg-surface);
-  color: var(--color-text-secondary);
+  border: 1px solid rgba(110, 231, 183, 0.28);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   font-size: 0.84375rem;
   font-weight: 600;
   line-height: 1.35;
@@ -794,6 +794,32 @@ p, li, dd { text-wrap: pretty; }
 }
 .ea-tg-remind:active:not(:disabled) {
   transform: scale(0.96);
+}
+.btn-tg {
+  border-color: rgba(110, 231, 183, 0.34);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+}
+.tg-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: var(--color-ru-text);
+}
+.install-tg-note {
+  margin: 12px 0 0;
+  padding-block-start: 10px;
+  border-block-start: 1px solid var(--color-border-subtle);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+.install-tg-note a {
+  color: var(--color-ru-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: color 140ms ease-out;
 }
 .game-ext-links {
   display: flex;
@@ -1361,11 +1387,12 @@ p, li, dd { text-wrap: pretty; }
     color: var(--color-text-primary);
   }
   .btn-secondary:hover { border-color: var(--color-text-secondary); }
-  .ea-tg-remind:hover {
-    background: var(--color-bg-elevated);
-    border-color: var(--color-border-strong);
+  .ea-tg-remind:hover, .btn-tg:hover {
+    background: var(--color-bg-active);
+    border-color: rgba(110, 231, 183, 0.56);
     color: var(--color-text-primary);
   }
+  .install-tg-note a:hover { color: var(--color-text-primary); }
   .chip:hover, .nav-link:hover, .tab-btn:hover { color: var(--color-text-primary); }
   .card:hover .card-cover { transform: scale(1.02); }
   .faq-item:hover { border-color: var(--color-border-strong); }
@@ -1485,7 +1512,7 @@ p, li, dd { text-wrap: pretty; }
   .btn:active:not(:disabled), .ea-tg-remind:active:not(:disabled), .chip:active:not(:disabled), .tab-btn:active:not(:disabled) { transform: none; }
 }
 </style>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Полка neoru-droid", "item": "https://neoru-droid.github.io/"}, {"@type": "ListItem", "position": 2, "name": "One More Lawn", "item": "https://neoru-droid.github.io/games/one-more-lawn/"}]}, {"@type": "SoftwareApplication", "name": "One More Lawn - трейнер (мод-меню), таблица Cheat Engine скачать", "applicationCategory": "GameApplication", "operatingSystem": "Windows, Steam Deck", "softwareVersion": "1.0", "description": "Скорость косилки x2.5, широкая дека 4.4 м, бесконечное топливо, покос участка 18x18 м, деньги и смена погоды.", "image": "https://neoru-droid.github.io/media/one-more-lawn.jpg", "url": "https://neoru-droid.github.io/games/one-more-lawn/", "author": {"@type": "Person", "name": "neoru-droid", "url": "https://neoru-droid.github.io/"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Как установить трейнер (мод-меню) для One More Lawn?", "acceptedAnswer": {"@type": "Answer", "text": "Скачайте архив со страницы игры на Boosty, распакуйте его и запустите установщик на Windows - он сам определит папку игры в Steam. На Steam Deck и Linux запустите скрипт install-steamdeck.sh из архива. Таблицу .CT откройте в Cheat Engine 7.5+ и подключите к процессу игры."}}, {"@type": "Question", "name": "Сохранится ли прогресс в One More Lawn?", "acceptedAnswer": {"@type": "Answer", "text": "Да, игровой прогресс остаётся на месте, а опции можно включать и выключать в любой момент. Проверено на сборке Steam 1.0.3 (Windows, Steam Deck)."}}, {"@type": "Question", "name": "Как удалить трейнер (мод-меню) для One More Lawn и вернуть оригинальные файлы?", "acceptedAnswer": {"@type": "Answer", "text": "Запустите тот же установщик (или скрипт удаления для Steam Deck) и выберите возврат резервной копии, либо выполните проверку целостности файлов игры в Steam."}}]}, {"@type": "VideoObject", "name": "One More Lawn - видео-демо: Вызов панели по F1: скорость косилки x2.5, дека 4.4 м, покос 18x18 м, топливо, деньги и погода", "description": "Скорость косилки x2.5, широкая дека 4.4 м, бесконечное топливо, покос участка 18x18 м, деньги и смена погоды.", "thumbnailUrl": "https://neoru-droid.github.io/media/demos/one-more-lawn-poster.webp", "contentUrl": "https://neoru-droid.github.io/media/demos/one-more-lawn.mp4", "embedUrl": "https://neoru-droid.github.io/games/one-more-lawn/", "uploadDate": "2026-11-28T11:01:08Z", "inLanguage": "ru"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Полка neoru-droid", "item": "https://neoru-droid.github.io/"}, {"@type": "ListItem", "position": 2, "name": "One More Lawn", "item": "https://neoru-droid.github.io/games/one-more-lawn/"}]}, {"@type": "SoftwareApplication", "name": "One More Lawn - трейнер (мод-меню), таблица Cheat Engine скачать", "applicationCategory": "GameApplication", "operatingSystem": "Windows, Steam Deck", "softwareVersion": "1.0", "description": "Скорость косилки x2.5, широкая дека 4.4 м, бесконечное топливо, покос участка 18x18 м, деньги и смена погоды.", "image": "https://neoru-droid.github.io/media/one-more-lawn.jpg", "url": "https://neoru-droid.github.io/games/one-more-lawn/", "author": {"@type": "Person", "name": "neoru-droid", "url": "https://neoru-droid.github.io/"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Как установить трейнер (мод-меню) для One More Lawn?", "acceptedAnswer": {"@type": "Answer", "text": "Скачайте архив со страницы игры на Boosty, распакуйте его и запустите установщик на Windows - он сам определит папку игры в Steam. На Steam Deck и Linux запустите скрипт install-steamdeck.sh из архива. Таблицу .CT откройте в Cheat Engine 7.5+ и подключите к процессу игры."}}, {"@type": "Question", "name": "Сохранится ли прогресс в One More Lawn?", "acceptedAnswer": {"@type": "Answer", "text": "Да, игровой прогресс остаётся на месте, а опции можно включать и выключать в любой момент. Проверено на сборке Steam 1.0.3 (Windows, Steam Deck)."}}, {"@type": "Question", "name": "Как удалить трейнер (мод-меню) для One More Lawn и вернуть оригинальные файлы?", "acceptedAnswer": {"@type": "Answer", "text": "Запустите тот же установщик (или скрипт удаления для Steam Deck) и выберите возврат резервной копии, либо выполните проверку целостности файлов игры в Steam."}}]}, {"@type": "VideoObject", "name": "One More Lawn - видео-демо: Вызов панели по F1: скорость косилки x2.5, дека 4.4 м, покос 18x18 м, топливо, деньги и погода", "description": "Скорость косилки x2.5, широкая дека 4.4 м, бесконечное топливо, покос участка 18x18 м, деньги и смена погоды.", "thumbnailUrl": "https://neoru-droid.github.io/media/demos/one-more-lawn-poster.webp", "contentUrl": "https://neoru-droid.github.io/media/demos/one-more-lawn.mp4", "embedUrl": "https://neoru-droid.github.io/games/one-more-lawn/", "uploadDate": "2026-11-28T11:19:47Z", "inLanguage": "ru"}]}</script>
 </head>
 <body class="has-mobile-bar">
   <header class="site-nav"><div class="container site-nav-inner"><a class="brand-link" href="../../"><img class="brand-avatar" src="https://images.boosty.to/image/143f3aac-acd2-4964-abe8-508c11c3589f" data-fallback="../../media/avatar.png" referrerpolicy="no-referrer" alt="neoru-droid" width="34" height="34"><span class="brand-text"><span class="brand-name">neoru-droid</span><span class="brand-tag">переводы, мод-меню и таблицы .CT</span></span></a><nav class="nav-links" aria-label="Навигация сайта"><a class="nav-link" href="../../">Полка игр</a><a class="nav-link" href="../../?type=translation">Русификаторы</a><a class="nav-link" href="#order-game">Заказать игру</a><a class="nav-link" data-track-goal="click_telegram" data-track-slug="one-more-lawn" href="https://t.me/neoru_droid" target="_blank" rel="noopener">Telegram ↗</a><a class="nav-link nav-link-accent" data-track-goal="click_boosty" data-track-slug="one-more-lawn" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Boosty ↗</a></nav></div></header>
@@ -1512,7 +1539,7 @@ p, li, dd { text-wrap: pretty; }
           <span>Windows, Steam Deck</span>
         </div>
         <p class="game-lead">Скорость косилки x2.5, широкая дека 4.4 м, бесконечное топливо, покос участка 18x18 м, деньги и смена погоды.</p>
-        <div class="game-cta-box"><div class="game-cta-row"><a id="hero-boosty-cta" class="btn btn-primary btn-lg" data-track-goal="click_boosty" data-track-slug="one-more-lawn" href="https://boosty.to/cd_tixo/posts/67ce4af5-4975-4f8e-9f0c-e64ab7899433" target="_blank" rel="noopener">Скачать бесплатно на Boosty ↗</a><a class="btn btn-shelf btn-lg" data-track-goal="click_github" data-track-slug="one-more-lawn" href="https://github.com/neoru-droid/one-more-lawn-mod-ru/releases/latest" target="_blank" rel="noopener">Релизы на GitHub ↗</a></div><a class="ea-tg-remind" data-open-tg-cta="1" data-track-goal="click_telegram" data-track-slug="one-more-lawn" href="https://t.me/neoru_droid" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Патчи и новые игры в Telegram&nbsp;↗</a><p class="cta-hint">Пост на Boosty полностью открыт - архивы скачиваются внизу поста без оплаты, там же выходят обновления под патчи.</p></div>
+        <div class="game-cta-box"><div class="game-cta-row"><a id="hero-boosty-cta" class="btn btn-primary btn-lg" data-track-goal="click_boosty" data-track-slug="one-more-lawn" href="https://boosty.to/cd_tixo/posts/67ce4af5-4975-4f8e-9f0c-e64ab7899433" target="_blank" rel="noopener">Скачать бесплатно на Boosty ↗</a><a class="btn btn-shelf btn-lg" data-track-goal="click_github" data-track-slug="one-more-lawn" href="https://github.com/neoru-droid/one-more-lawn-mod-ru/releases/latest" target="_blank" rel="noopener">Релизы на GitHub ↗</a></div><a class="ea-tg-remind" data-open-tg-cta="1" data-track-goal="click_telegram" data-track-slug="one-more-lawn" href="https://t.me/neoru_droid" target="_blank" rel="noopener"><svg class="tg-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.2 4.3c.3-1.2-.8-2.2-2-1.7L2.8 9.1c-1.2.5-1.1 2.2.1 2.5l4.4 1.3 1.7 5.2c.3 1 1.6 1.3 2.3.5l2.4-2.5 4.4 3.2c.9.7 2.2.2 2.4-.9l2.7-14.1zm-3.9 3.4-7.6 6.8-.5 2.7-1.1-3.5 9.2-6z"/></svg><span class="tg-pill-label">Патчи и новые игры в Telegram&nbsp;↗</span></a><p class="cta-hint">Пост на Boosty полностью открыт - архивы скачиваются внизу поста без оплаты.</p></div>
         <div class="game-ext-links"><a data-track-goal="click_github" data-track-slug="one-more-lawn" href="https://github.com/neoru-droid/one-more-lawn-mod-ru" target="_blank" rel="noopener">Исходный код на GitHub</a><a href="https://www.playground.ru/misc/cheat/one_more_lawn_chit_mod_na_bystruyu_kosilku_shirokuyu_deku_toplivo_dengi_i_pogodu-1893643" target="_blank" rel="noopener">PlayGround (мод)</a><a href="https://www.playground.ru/misc/cheat/one_more_lawn_tablitsa_dlya_cheat_engine_skorost_kosilki_shirokaya_deka_i_vysokij_pryzhok-1893646" target="_blank" rel="noopener">PlayGround (.CT)</a><a data-track-goal="click_telegram" data-track-slug="one-more-lawn" href="https://t.me/neoru_droid" target="_blank" rel="noopener">Анонсы патчей в Telegram</a></div>
       </div>
     </section>
@@ -1528,12 +1555,13 @@ p, li, dd { text-wrap: pretty; }
         <div class="detail-col">
           <div class="detail-head-row"><h2>Установка за минуту</h2><div class="tab-list" role="tablist" aria-label="Платформа установки"><button class="tab-btn" role="tab" type="button" aria-selected="true" aria-controls="panel-win">Windows</button><button class="tab-btn" role="tab" type="button" aria-selected="false" aria-controls="panel-deck">Steam Deck</button></div></div>
           <div id="panel-win" class="tab-panel" role="tabpanel"><ol class="install-steps"><li>Скачайте архив со страницы игры на Boosty и распакуйте в любую папку.</li><li>Запустите установщик, проверьте путь к папке игры в Steam и нажмите «Установить».</li><li>Запустите игру из библиотеки Steam. Возврат оригинальных файлов игры доступен в том же установщике. Для таблицы .CT откройте её в Cheat Engine 7.5+ и подключитесь к процессу запущенной игры.</li></ol></div><div id="panel-deck" class="tab-panel" role="tabpanel" hidden><ol class="install-steps"><li>В режиме рабочего стола скачайте и распакуйте архив сборки.</li><li>Запустите скрипт <code>install-steamdeck.sh</code> - он скопирует файлы в папку игры и подскажет параметр запуска Proton при необходимости.</li><li>Вернитесь в игровой режим Steam Deck и запустите игру из библиотеки Steam.</li></ol></div>
+          <p class="install-tg-note">Вышел патч Steam? <a data-install-tg-cta="1" data-track-goal="click_telegram" data-track-slug="one-more-lawn" href="https://t.me/neoru_droid" target="_blank" rel="noopener">Фиксы сначала выходят в Telegram&nbsp;↗</a></p>
         </div>
       </div>
     </section>
 
     <section id="ct-vs-mod" class="game-section cmp-section cmp-section--inline" aria-labelledby="cmp-heading"><h2 id="cmp-heading" class="order-strip-title">Таблица .CT или мод-меню</h2><div class="cmp-grid cmp-grid--inline"><article class="cmp-card cmp-card--ct"><div class="cmp-card-head"><h3 class="cmp-card-title">Таблица .CT</h3><span class="cmp-badge cmp-badge--free">Бесплатно сразу</span></div><ul class="cmp-list"><li>Работает через Cheat Engine с переключением по <kbd class="cmp-kbd">Alt+Tab</kbd>.</li><li>Удобно на ПК с мышкой, без установки в папку игры.</li><li>Базовые числа: деньги, здоровье, ресурсы и множители.</li><li>Открыта сразу, фиксы под патчи Steam выходят бесплатно.</li></ul></article><article class="cmp-card cmp-card--mod"><div class="cmp-card-head"><h3 class="cmp-card-title">Мод-меню</h3><span class="cmp-badge cmp-badge--accent">Открыто на Boosty</span></div><ul class="cmp-list"><li>Открывается поверх игры по <kbd class="cmp-kbd">F1</kbd> - без Cheat Engine и <kbd class="cmp-kbd">Alt+Tab</kbd>.</li><li>Управление с геймпада и на Steam Deck (вызов по <kbd class="cmp-kbd">L3 + R3</kbd>).</li><li>Свой интерфейс под игру и функции сверх .CT: автосбор, редактор, пресеты.</li><li>Новинки на 7 дней раньше на Boosty (от 120 ₽), фиксы под патчи бесплатны.</li></ul></article></div><div class="cmp-actions"><a class="btn btn-primary" data-track-goal="click_boosty" data-track-slug="one-more-lawn" href="https://boosty.to/cd_tixo/posts/67ce4af5-4975-4f8e-9f0c-e64ab7899433" target="_blank" rel="noopener">Скачать на Boosty ↗</a></div></section>
-    <section id="order-game" class="game-section order-compact" aria-labelledby="order-heading"><div class="order-compact-copy"><h2 id="order-heading" class="order-strip-title">Уведомления о патчах и заказ своей игры</h2><p class="order-strip-sub">Нажмите «Отслеживать» на Boosty (бесплатно), чтобы не пропустить фикс под патч Steam. Своя игра в очередь - от 350 ₽/мес, вне очереди - 750 ₽/мес.</p></div><div class="order-strip-actions"><a class="btn btn-shelf" data-track-goal="click_boosty" data-track-slug="one-more-lawn" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Отслеживать бесплатно ↗</a><a class="btn btn-secondary" data-track-goal="click_telegram" data-track-slug="one-more-lawn" href="https://t.me/neoru_droid" target="_blank" rel="noopener">Telegram с анонсами ↗</a><a class="btn btn-secondary" data-track-goal="click_boosty" data-track-slug="one-more-lawn" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Заказать на Boosty ↗</a></div></section>
+    <section id="order-game" class="game-section order-compact" aria-labelledby="order-heading"><div class="order-compact-copy"><h2 id="order-heading" class="order-strip-title">Уведомления о патчах и заказ своей игры</h2><p class="order-strip-sub">О фиксах под патчи Steam и открытии сборок пишу в Telegram (без регистрации). Своя игра в очередь на Boosty - от 350 ₽/мес, вне очереди - 750 ₽/мес.</p></div><div class="order-strip-actions"><a class="btn btn-shelf btn-tg" data-track-goal="click_telegram" data-track-slug="one-more-lawn" href="https://t.me/neoru_droid" target="_blank" rel="noopener"><svg class="tg-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.2 4.3c.3-1.2-.8-2.2-2-1.7L2.8 9.1c-1.2.5-1.1 2.2.1 2.5l4.4 1.3 1.7 5.2c.3 1 1.6 1.3 2.3.5l2.4-2.5 4.4 3.2c.9.7 2.2.2 2.4-.9l2.7-14.1zm-3.9 3.4-7.6 6.8-.5 2.7-1.1-3.5 9.2-6z"/></svg><span>Telegram с патчами ↗</span></a><a class="btn btn-secondary" data-track-goal="click_boosty" data-track-slug="one-more-lawn" href="https://boosty.to/cd_tixo" target="_blank" rel="noopener">Заказать на Boosty ↗</a></div></section>
     <section class="game-section" aria-labelledby="related-heading"><div class="section-head"><h2 id="related-heading">Другие сборки в каталоге</h2><a class="card-detail-link" href="../../">Все игры на полке →</a></div><div class="related-grid"><a class="related-card" href="../never-sort-by-color/"><img src="https://images.boosty.to/image/4108de0d-7e07-4d8b-9a40-5f9ecae74200" data-fallback="../../media/never-sort-by-color.webp" referrerpolicy="no-referrer" style="background:#302d2c" alt="Never Sort By Color" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Never Sort By Color</span><span class="related-meta">v1.0 · Win, Deck, macOS</span></span></a><a class="related-card" href="../can-em-all/"><img src="https://images.boosty.to/image/f07fdeeb-917c-45ea-95d5-77c8b94f517d" data-fallback="../../media/can-em-all.webp" referrerpolicy="no-referrer" style="background:#58432b" alt="Can &#x27;Em All" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Can &#x27;Em All</span><span class="related-meta">v1.0 · Win, Deck</span></span></a><a class="related-card" href="../find-the-needle/"><img src="https://images.boosty.to/image/84fbfa5d-b1c5-4c5a-bb73-85e0c7424794" data-fallback="../../media/find-the-needle.webp" referrerpolicy="no-referrer" style="background:#52402b" alt="Find The Needle" width="680" height="382" loading="lazy" decoding="async"><span class="related-body"><span class="related-title">Find The Needle</span><span class="related-meta">v1.0 · Win, Deck</span></span></a></div></section>
   </main>
 
@@ -1597,7 +1625,17 @@ p, li, dd { text-wrap: pretty; }
         if (heroBox) {
           const heroBtn = heroBox.querySelector(".btn-primary");
           if (heroBtn) heroBtn.textContent = "Скачать бесплатно на Boosty ↗";
-          heroBox.querySelectorAll("[data-ea-tg-remind]").forEach((el) => el.remove());
+          heroBox.querySelectorAll("[data-ea-tg-remind]").forEach((el) => {
+            el.removeAttribute("data-ea-tg-remind");
+            el.setAttribute("data-open-tg-cta", "1");
+            const nextText = el.getAttribute("data-open-label") || "Патчи и новые игры в Telegram ↗";
+            const lbl = el.querySelector(".tg-pill-label");
+            if (lbl) {
+              lbl.textContent = nextText;
+            } else {
+              el.textContent = nextText;
+            }
+          });
         }
         node.remove();
         return;

@@ -762,9 +762,9 @@ p, li, dd { text-wrap: pretty; }
   min-height: 36px;
   padding: 7px 12px;
   border-radius: 6px;
-  border: 1px solid var(--color-border-subtle);
-  background: var(--color-bg-surface);
-  color: var(--color-text-secondary);
+  border: 1px solid rgba(110, 231, 183, 0.28);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   font-size: 0.84375rem;
   font-weight: 600;
   line-height: 1.35;
@@ -774,6 +774,32 @@ p, li, dd { text-wrap: pretty; }
 }
 .ea-tg-remind:active:not(:disabled) {
   transform: scale(0.96);
+}
+.btn-tg {
+  border-color: rgba(110, 231, 183, 0.34);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+}
+.tg-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: var(--color-ru-text);
+}
+.install-tg-note {
+  margin: 12px 0 0;
+  padding-block-start: 10px;
+  border-block-start: 1px solid var(--color-border-subtle);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+.install-tg-note a {
+  color: var(--color-ru-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: color 140ms ease-out;
 }
 .game-ext-links {
   display: flex;
@@ -1341,11 +1367,12 @@ p, li, dd { text-wrap: pretty; }
     color: var(--color-text-primary);
   }
   .btn-secondary:hover { border-color: var(--color-text-secondary); }
-  .ea-tg-remind:hover {
-    background: var(--color-bg-elevated);
-    border-color: var(--color-border-strong);
+  .ea-tg-remind:hover, .btn-tg:hover {
+    background: var(--color-bg-active);
+    border-color: rgba(110, 231, 183, 0.56);
     color: var(--color-text-primary);
   }
+  .install-tg-note a:hover { color: var(--color-text-primary); }
   .chip:hover, .nav-link:hover, .tab-btn:hover { color: var(--color-text-primary); }
   .card:hover .card-cover { transform: scale(1.02); }
   .faq-item:hover { border-color: var(--color-border-strong); }

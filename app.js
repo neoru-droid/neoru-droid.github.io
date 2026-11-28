@@ -49,7 +49,17 @@
         if (heroBox) {
           const heroBtn = heroBox.querySelector(".btn-primary");
           if (heroBtn) heroBtn.textContent = "Скачать бесплатно на Boosty ↗";
-          heroBox.querySelectorAll("[data-ea-tg-remind]").forEach((el) => el.remove());
+          heroBox.querySelectorAll("[data-ea-tg-remind]").forEach((el) => {
+            el.removeAttribute("data-ea-tg-remind");
+            el.setAttribute("data-open-tg-cta", "1");
+            const nextText = el.getAttribute("data-open-label") || "Патчи и новые игры в Telegram ↗";
+            const lbl = el.querySelector(".tg-pill-label");
+            if (lbl) {
+              lbl.textContent = nextText;
+            } else {
+              el.textContent = nextText;
+            }
+          });
         }
         node.remove();
         return;
