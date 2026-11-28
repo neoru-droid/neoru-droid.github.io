@@ -613,7 +613,6 @@
     "has_ct": true,
     "version": "1.0",
     "steam_build": "26903133",
-    "early_access_until": "2026-11-28T18:00:00+10:00",
     "platforms": {
       "windows": true,
       "steamdeck": true,
