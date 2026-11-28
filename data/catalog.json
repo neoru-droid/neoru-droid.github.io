@@ -1229,7 +1229,18 @@
     "zog_url": "",
     "cover_cdn_url": "https://images.boosty.to/image/b75e9d32-a9b4-4167-bdfa-b384b07384ba",
     "cover_color": "#120e16",
-    "pg_cards": [],
+    "pg_cards": [
+      {
+        "id": "1894627",
+        "kind": "ct",
+        "url": "https://www.playground.ru/misc/cheat/dungeonbound_tablitsa_dlya_cheat_engine_bessmertie_schit_bloka_ataka_bronya_krit_i_skorost_boya-1894627"
+      },
+      {
+        "id": "1894629",
+        "kind": "save",
+        "url": "https://www.playground.ru/misc/cheat/dungeonbound_sohranenie_voin_9_ur_25_000_zolota_legendarnyj_komplekt_9_geroev_i_5_aktov-1894629"
+      }
+    ],
     "keywords": [
       "данжнбаунд",
       "подземелье",
