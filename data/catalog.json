@@ -123,7 +123,7 @@
       {
         "id": "1891317",
         "kind": "localization",
-        "url": "https://www.playground.ru/misc/file/frontier_tale_rusifikator_teksta_dlya_vseh_versij_igry-1891317"
+        "url": "https://www.playground.ru/frontier_tale/file/frontier_tale_rusifikator_teksta_dlya_vseh_versij_igry-1891317"
       }
     ],
     "keywords": [
@@ -787,7 +787,7 @@
       {
         "id": "1894222",
         "kind": "localization",
-        "url": "https://www.playground.ru/misc/file/rekindled_cozy_tavern_life_rusifikator_teksta_i_shriftov-1894222"
+        "url": "https://www.playground.ru/rekindled_cozy_tavern_life/file/rekindled_cozy_tavern_life_rusifikator_teksta_i_shriftov-1894222"
       },
       {
         "id": "1894228",
@@ -1147,7 +1147,7 @@
     "has_mod_menu": true,
     "has_ct": true,
     "has_save": true,
-    "version": "1.0",
+    "version": "1.1",
     "steam_build": "1.0.4",
     "early_access_until": "2026-12-05T16:30:00+10:00",
     "ea_badge_pos": "top-right",
@@ -1158,7 +1158,7 @@
     },
     "summary": "Полный перевод глав 1-5 и всех 11 концовок (9 шрифтов, дневник, русский поиск), «Атлас мыслей», таблица .CT и сохранение.",
     "features": [
-      "10 946 реплик и 1 145 выборов (главы 1-5 и 11+ концовок), 480 понятий, 190 осмотров, 9 шрифтов, дневник Нимы и русский поиск",
+      "11 000+ реплик и 1 145 выборов (главы 1-5 и 11+ концовок), 488 понятий, 190 осмотров, пауза/настройки/обучение, 9 шрифтов, дневник и поиск",
       "«Атлас мыслей»: подсказка слияния слов, доверие мамы, яд 999 с, 224 слова, 11 концовок, 3 пресета, .ini и Steam Deck (L3 + R3)",
       "Таблица AmINima_RU_v1.0.CT (5 базовых строк) и коллекционное сохранение (слот №1 с 224 словами и галерея 11 из 11 концовок)"
     ],
@@ -1174,7 +1174,7 @@
       {
         "id": "1894547",
         "kind": "localization",
-        "url": "https://www.playground.ru/misc/file/am_i_nima_rusifikator_teksta_9_shriftov_i_dnevnika-1894547"
+        "url": "https://www.playground.ru/am_i_nima/file/am_i_nima_rusifikator_teksta_9_shriftov_i_dnevnika-1894547"
       },
       {
         "id": "1894548",
