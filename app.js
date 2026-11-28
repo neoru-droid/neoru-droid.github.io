@@ -239,14 +239,17 @@
     const freeLabel = game.has_translation
       ? "Русификатор · бесплатно ↗"
       : (game.has_ct ? ".CT и сейв · бесплатно ↗" : "Сохранение · бесплатно ↗");
+    const slugAttr = escapeHtml(game.slug);
+    const boostyTrack = `data-track-goal="click_boosty" data-track-slug="${slugAttr}"`;
+    const ghTrack = `data-track-goal="click_github" data-track-slug="${slugAttr}"`;
     const ctaBtns = isEarly
-      ? `<a class="btn btn-primary" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a>` +
-        `<a class="btn btn-shelf" data-ea-free-btn="1" href="${ghReleases}" target="_blank" rel="noopener">${freeLabel}</a>`
-      : `<a class="btn btn-shelf" href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a>` +
+      ? `<a class="btn btn-primary" ${boostyTrack} href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener">Мод-меню · 120 ₽ ↗</a>` +
+        `<a class="btn btn-shelf" data-ea-free-btn="1" ${ghTrack} href="${ghReleases}" target="_blank" rel="noopener">${freeLabel}</a>`
+      : `<a class="btn btn-shelf" ${boostyTrack} href="${escapeHtml(boostyHref)}" target="_blank" rel="noopener"><span class="btn-free-dot" aria-hidden="true"></span>Бесплатно на Boosty <span class="btn-shelf-arrow" aria-hidden="true">↗</span></a>` +
         `<a class="btn btn-secondary" href="${pageHref}">Кадры и детали</a>`;
     const linksItems = isEarly
-      ? `<a class="card-detail-link" href="${pageHref}">Кадры и детали</a><a class="card-ext-link" href="${cleanGh}" target="_blank" rel="noopener">GitHub</a>`
-      : `<a class="card-ext-link" href="${cleanGh}" target="_blank" rel="noopener">GitHub</a>` +
+      ? `<a class="card-detail-link" href="${pageHref}">Кадры и детали</a><a class="card-ext-link" ${ghTrack} href="${cleanGh}" target="_blank" rel="noopener">GitHub</a>`
+      : `<a class="card-ext-link" ${ghTrack} href="${cleanGh}" target="_blank" rel="noopener">GitHub</a>` +
         (game.steam_guide_url ? `<a class="card-ext-link" href="${escapeHtml(game.steam_guide_url)}" target="_blank" rel="noopener">Steam</a>` : "");
     const localWebp = `media/${escapeHtml(game.slug)}.webp`;
     const imgSrc = game.cover_cdn_url ? escapeHtml(game.cover_cdn_url) : localWebp;
