@@ -1030,5 +1030,59 @@
     ],
     "cover_cdn_url": "https://images.boosty.to/image/84fbfa5d-b1c5-4c5a-bb73-85e0c7424794",
     "cover_color": "#52402b"
+  },
+  {
+    "slug": "can-em-all",
+    "title": "Can 'Em All",
+    "appid": "5133900",
+    "track": "track2",
+    "owned_on_steam": false,
+    "has_translation": false,
+    "has_mod_menu": true,
+    "has_ct": true,
+    "has_save": true,
+    "version": "1.0",
+    "steam_build": "2026-10-31",
+    "early_access_until": "2026-12-05T11:00:00+10:00",
+    "ea_badge_pos": "top-right",
+    "platforms": {
+      "windows": true,
+      "steamdeck": true,
+      "macos": false
+    },
+    "summary": "«Пульт цеха» (автосбор в фарш-машины, джекпот слота x999, сияющие и x3 банки, всё оружие, 3 пресета), таблица .CT (5 строк) и стартовое сохранение.",
+    "features": [
+      "«Пульт цеха»: автосбор зверушек в активные фарш-машины, 100% сияющие и x3 банки (x4 цех, x2 $), пауза смены, ваншот, бесконечные патроны и выносливость, скорость x1.0..x2.5",
+      "+$10 000 / +$100 000 в HUD, джекпот слота x999 (100% победа), открыть всё оружие (10 слотов), перерождение +50, 3 пресета, сохранение в .ini, геймпад / Steam Deck (L3 + R3)",
+      "Таблица CanEmAll_RU_v1.0.CT (5 базовых строк) и стартовое сохранение ($250 000, 50 очков перерождения, 3 фарш-машины, конвейер, робот, турель и 7 пушек)"
+    ],
+    "boosty_url": "https://boosty.to/cd_tixo/posts/2f0a9c54-63be-4659-a436-6e60c140fcfc",
+    "github_url": "https://github.com/neoru-droid/can-em-all-mod-ru",
+    "steam_guide_url": "",
+    "zog_url": "",
+    "pg_cards": [
+      {
+        "id": "1894487",
+        "kind": "ct",
+        "url": "https://www.playground.ru/misc/cheat/can_em_all_tablitsa_dlya_cheat_engine_dengi_vynoslivost_skorost_uron_i_beskonechnye_patrony-1894487"
+      },
+      {
+        "id": "1894489",
+        "kind": "save",
+        "url": "https://www.playground.ru/misc/cheat/can_em_all_sohranenie_250_000_50_ochkov_pererozhdeniya_3_farsh_mashiny_i_7_pushek-1894489"
+      }
+    ],
+    "keywords": [
+      "кан эм олл",
+      "кэн эм олл",
+      "консервный завод",
+      "пульт цеха",
+      "фарш-машины",
+      "автосбор",
+      "слот машина",
+      "симулятор"
+    ],
+    "cover_cdn_url": "https://images.boosty.to/image/f07fdeeb-917c-45ea-95d5-77c8b94f517d",
+    "cover_color": "#58432b"
   }
 ]
