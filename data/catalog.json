@@ -1170,7 +1170,23 @@
     "zog_url": "https://forum.zoneofgames.ru/topic/84716-am-i-nima/",
     "cover_cdn_url": "https://images.boosty.to/image/88c3938d-8e11-49e5-b1a4-f8c9c18c0b13",
     "cover_color": "#141210",
-    "pg_cards": [],
+    "pg_cards": [
+      {
+        "id": "1894547",
+        "kind": "localization",
+        "url": "https://www.playground.ru/misc/file/am_i_nima_rusifikator_teksta_9_shriftov_i_dnevnika-1894547"
+      },
+      {
+        "id": "1894548",
+        "kind": "ct",
+        "url": "https://www.playground.ru/misc/cheat/am_i_nima_tablitsa_dlya_cheat_engine_otklyuchenie_yada_tajmer_yada_uskorenie_teksta_udalenie_slov_i_vyhod_iz_replik-1894548"
+      },
+      {
+        "id": "1894549",
+        "kind": "save",
+        "url": "https://www.playground.ru/misc/cheat/am_i_nima_sohranenie_224_syuzhetnyh_slova_i_vse_11_kontsovok-1894549"
+      }
+    ],
     "keywords": [
       "ам ай нима",
       "я ли нима",
